@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORPORACION PROALIMENTAR SALUD Y VIDA</title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            padding-bottom: 60px;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: #34495e;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .mission-statement {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: #2c3e50;
+        }
+
+        .mission-statement p {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .job-listing {
+            border: 1px solid #eee;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .job-listing:hover {
+            transform: translateY(-5px);
+        }
+
+        .job-title {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .requirements {
+            margin: 1rem 0;
+        }
+
+        .requirements ul {
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+
+        .requirements li {
+            margin: 0.5rem 0;
+            position: relative;
+        }
+
+        .requirements li:before {
+            content: "•";
+            color: #3498db;
+            position: absolute;
+            left: -1rem;
+        }
+
+        .apply-button {
+            background-color: #27ae60;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+        }
+
+        .apply-button:hover {
+            background-color: #219a52;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .job-listing {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="./logo_proalimentar.png" alt="Logo Proalimentar" style="max-width: 200px; margin-bottom: 1rem; float: left; margin-right: 1rem;">
+        <h1>CORPORACION PROALIMENTAR SALUD Y VIDA</h1>
+        <p>Nit: 900939414</p>
+        <p>Comprometidos con el desarrollo integral de la primera infancia en el Casanare</p>
+    </header>
+
+    <nav class="nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#convocatorias">Convocatorias</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <div id="contador-container"></div>
+    <div class="container">
+        
+        <h2>Convocatorias Actuales - Educación Inicial En El Hogar (EIH) - Centro De Desarrollo Infantil (CDI) 2025</h2>
+        <div class="mission-statement">
+            <p>El EIH busca potenciar el desarrollo integral de las niñas y los niños de primera infancia y el bienestar de las mujeres 
+            y personas en estado de gestación, a través de la vivencia de prácticas y acciones de cuidado y crianza 
+            que favorezcan el disfrute de experiencias pedagógicas con sus familias y comunidades.
+            El CDI busca potenciar el desarrollo integral de las niñas y niños de la primera infancia a partir del fortalecimiento
+            de interacciones, ambientes y experiencias pedagógicas, que se enmarcan en criterios de pertinencia,
+            oportunidad y calidad, en las que se garantice el goce efectivo de los derechos.</p>
+        </div>
+        <div class="job-listing">
+            <h3 class="job-title">Coordinador/Director</h3>
+            <p><strong>Ubicación:</strong> Recetor - Aguazul - Chameza - Yopal, Casanare</p>
+            <div class="requirements">
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Título profesional en pedagogía infantil, educación preescolar, educación inicial, psicología, sociología, trabajo social o antropología</li>
+                    <li>36 meses de experiencia profesional</li>
+                    <li>12 meses relacionados con primera infancia</li>
+                </ul>
+            </div>
+            <button class="apply-button" onclick="window.location.href='postulacion.html'">Postularse</button>
+        </div>
+
+        <div class="job-listing">
+            <h3 class="job-title">Agente Educativo</h3>
+            <p><strong>Ubicación:</strong> Recetor - Aguazul - Chameza - Yopal, Casanare</p>
+            <div class="requirements">
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Título profesional en pedagogía infantil, educación preescolar o áreas afines</li>
+                    <li>6 meses de experiencia profesional relacionada</li>
+                    <li>Alternativa: Normalista superior con 12 meses de experiencia</li>
+                </ul>
+            </div>
+            <button class="apply-button" onclick="window.location.href='postulacion.html'">Postularse</button>
+        </div>
+
+        <div class="job-listing">
+            <h3 class="job-title">Profesional Psicosocial</h3>
+            <p><strong>Ubicación:</strong> Recetor - Aguazul - Chameza - Yopal, Casanare</p>
+            <div class="requirements">
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Título profesional en psicología, trabajo social o desarrollo familiar</li>
+                    <li>6 meses de experiencia profesional relacionada</li>
+                </ul>
+            </div>
+            <button class="apply-button" onclick="window.location.href='postulacion.html'">Postularse</button>
+        </div>
+
+        <div class="job-listing">
+            <h3 class="job-title">Profesional en Salud y Nutrición</h3>
+            <p><strong>Ubicación:</strong> Recetor - Aguazul - Chameza - Yopal, Casanare</p>
+            <div class="requirements">
+                <p><strong>Requisitos Perfil 1:</strong></p>
+                <ul>
+                    <li>Título profesional en nutrición o nutrición y dietética</li>
+                    <li>6 meses de experiencia profesional relacionada</li>
+                    <li>Preferible: Formación en Consejería en lactancia humana</li>
+                </ul>
+                <p><strong>Requisitos Perfil 2:</strong></p>
+                <ul>
+                    <li>Título profesional en enfermería con 6 meses de experiencia</li>
+                    <li>O Técnico auxiliar de enfermería con 12 meses de experiencia</li>
+                </ul>
+            </div>
+            <button class="apply-button" onclick="window.location.href='postulacion.html'">Postularse</button>
+        </div>
+
+        <div class="job-listing">
+            <h3 class="job-title">Auxiliar Pedagógico</h3>
+            <p><strong>Ubicación:</strong> Recetor - Aguazul - Chameza - Yopal, Casanare</p>
+            <div class="requirements">
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Título de normalista superior o técnico en atención integral a la primera infancia</li>
+                    <li>6 meses de experiencia laboral relacionada</li>
+                </ul>
+            </div>
+            <button class="apply-button" onclick="window.location.href='postulacion.html'">Postularse</button>
+        </div>
+
+        <div class="job-listing">
+            <h3 class="job-title">Auxiliar Administrativo</h3>
+            <p><strong>Ubicación:</strong> Recetor - Aguazul - Chameza - Yopal, Casanare</p>
+            <div class="requirements">
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Título técnico o tecnólogo en ciencias económicas, administrativas o sistemas</li>
+                    <li>12 meses de experiencia laboral relacionada</li>
+                </ul>
+            </div>
+            <button class="apply-button" onclick="window.location.href='postulacion.html'">Postularse</button>
+        </div>
+
+        <!-- Nuevos perfiles agregados -->
+        <div class="job-listing">
+            <h3 class="job-title">Gestor de Alimentos</h3>
+            <p><strong>Ubicación:</strong> Recetor - Aguazul - Chameza - Yopal, Casanare</p>
+            <div class="requirements">
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Certificado de manipulación de alimentos vigente, expedido por la entidad competente acorde con la legislación que regula la materia</li>
+                    <li>6 meses de experiencia relacionada con el objeto y obligaciones del contrato a celebrarse</li>
+                </ul>
+            </div>
+            <button class="apply-button" onclick="window.location.href='postulacion.html'">Postularse</button>
+        </div>
+
+        <div class="job-listing">
+            <h3 class="job-title">Auxiliar de Servicios Generales</h3>
+            <p><strong>Ubicación:</strong> Recetor - Aguazul - Chameza - Yopal, Casanare</p>
+            <div class="requirements">
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Certificado de manipulación de alimentos vigente, expedido por la entidad competente acorde con la legislación que regula la materia</li>
+                    <li>6 meses de experiencia laboral relacionada con el objeto y obligaciones del contrato a celebrarse</li>
+                </ul>
+            </div>
+            <button class="apply-button" onclick="window.location.href='postulacion.html'">Postularse</button>
+        </div>
+    </div>
+     <script src="countdown.js"></script>
+    <script src="visitor-counter.js"></script>
+    <script>
+        const fechaLimite = new Date('2025-02-17T16:59:59').getTime();
+        const contador = crearContador(fechaLimite);
+        document.getElementById('contador-container').appendChild(contador);
+    </script>
+    <footer class="footer">
+        <p>Contacto: corporacionproalimentar2023@gmail.com | Tel: 3164218351</p>
+        <p>© 2024 CORPORACION PROALIMENTAR SALUD Y VIDA - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

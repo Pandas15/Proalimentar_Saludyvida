@@ -1,0 +1,17 @@
+/* Hace que solo el enlace "Convocatorias" sea más grande y en negrita */
+li a[href="convocatoria.html"] {
+    font-size: 20px; /* Aumenta el tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    color: red; /* Cambia el color del texto a rojo */
+    background-color: yellow; /* Fondo amarillo */
+    padding: 5px 10px; /* Espaciado dentro del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Quita el subrayado del enlace */
+}
+
+/* Cuando pasas el mouse sobre el enlace */
+li a[href="convocatoria.html"]:hover {
+    color: white;
+    background-color: blue;
+    transition: 0.3s; /* Suaviza el cambio de color */
+}

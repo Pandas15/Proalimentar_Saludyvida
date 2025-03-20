@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proceso de Postulación</title>
     <style>
+        /* Mantén todos los estilos que ya tienes */
         * {
             margin: 0;
             padding: 0;
@@ -107,6 +108,53 @@
             margin-top: 1rem;
         }
 
+        /* Estilos nuevos para el contenedor del formulario */
+        .form-container {
+            margin-top: 2rem;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .form-iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        /* Estilos para los botones de opciones */
+        .options-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-button {
+            padding: 0.5rem 1rem;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .option-button.active {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Estilos para contenido oculto/visible */
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 1rem;
@@ -120,6 +168,10 @@
             .back-button, .email-button {
                 text-align: center;
             }
+
+            .form-iframe {
+                height: 900px;
+            }
         }
     </style>
 </head>
@@ -130,97 +182,138 @@
     </header>
 
     <div class="container">
-        <section class="section">
-            <h2>Instrucciones de Postulación</h2>
-            <p>Enviar hoja de vida al correo: <strong>proalimentarconvocatoria@gmail.com</strong></p>
-            <p>La Hoja de vida debe presentarse en el formato unico de hoja de vida"</p>
-            <p>En el asunto especificar: "Aspirante al cargo de [CARGO] -[MUNICIPIO]- [NOMBRE COMPLETO]"</p>
-        </section>
-
-        <section class="section">
-            <h2>Documentos Requeridos</h2>
-            <ul class="requirements-list">
-                <li>Anexos (Diplomas, Acta de Grados de estudios formales)</li>
-                <li>Tarjeta profesional (si aplica)</li>
-                <li>Certificado RETHUS (para Psicólogos, Coordinadores, Nutricionistas o Enfermeras)</li>
-                <li>Certificados Laborales en orden cronológico</li>
-                <li>Copia de Cédula legible</li>
-                <li>RUT actualizado 2024-2025</li>
-                <li>Certificado de antecedentes disciplinarios (Procuraduría) 2025</li>
-                <li>Certificado de Antecedentes fiscales (Contraloría) 2025</li>
-                <li>Antecedentes judiciales (Policía Nacional) 2025</li>
-                <li>Certificado RNMC 2025</li>
-                <li>Consulta de inhabilidades por delitos sexuales</li>
-            </ul>
-        </section>
-
-        <section class="section">
-            <h2>Conocimientos Específicos</h2>
-            <p>Se requiere manejo de:</p>
-            <ul class="requirements-list">
-                <li>Word, Excel, PowerPoint</li>
-                <li>Navegadores de internet</li>
-                <li>Correo electrónico</li>
-                <li>Herramientas específicas según el cargo</li>
-            </ul>
-        </section>
-
-                <!-- ... Sección de Aclaraciones Importantes ... -->
-        <section class="section">
-            <h2>Aclaraciones Importantes</h2>
-            <ul class="requirements-list">
-                <li>Si No Cumples con el perfil no enviar la hoja de vida</li>
-                <li>El envío de la hoja de vida no garantiza la contratación</li>
-                <li>No se considerarán hojas de vida incompletas</li>
-                <li>No se aceptarán postulaciones fuera de las fechas establecidas</li>
-            </ul>
-        </section>
-
-        <!-- NUEVA SECCIÓN - ENLACES RELACIONADOS -->
-        <section class="section">
-            <h2>Enlaces Relacionados</h2>
-            <ul class="requirements-list">
-                <li>
-                    <a href="https://www.icbf.gov.co/system/files/procesos/go1.mt2_.pp_guia_operativa_del_servicio_educacion_inicial_en_el_hogar_v1.pdf" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Guía Operativa del Servicio Educación Inicial en el Hogar
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.icbf.gov.co/system/files/procesos/a3.go4_.mt1_.pp_anexo_habilidades_y_acciones_del_talento_humano_contratado_v1.pdf" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Anexo de Habilidades y Acciones del Talento Humano
-                    </a>
-                </li>
-            </ul>
-              </li>
-                <li>
-                    <a href="https://www.icbf.gov.co/system/files/procesos/go4.mt1_.pp_guia_operativa_del_servicio_centro_de_desarrollo_infantil_-_cdi_v1.pdf" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Guia Operativa del Servicio Centro De Desarrollo Infantil - CDI
-                    </a>
-                </li>
-            </ul>
-
-        </section>
-
-        <!-- Bloque de Nota amarilla -->
-        <div class="note">
-            <h3>Nota:</h3>
-            <p>Si es seleccionado, deberá presentar adicionalmente:</p>
-            <ul class="requirements-list">
-                <li>Certificado de afiliación a EPS</li>
-                <li>Certificado de afiliación a Pensión (Historial Laboral)</li>
-            </ul>
+        <!-- Botones de opciones -->
+        <div class="options-buttons">
+            <button id="info-button" class="option-button active" onclick="showContent('info')">Información</button>
+            <button id="form-button" class="option-button" onclick="showContent('form')">Formulario de Postulación</button>
         </div>
 
-        <!-- Botones -->
-        <div class="button-group">
-            <a href="index.html" class="back-button">Volver al Inicio</a>
-            <a href="mailto:convocaria.asomariaeugenia@gmail.com" class="email-button">Enviar Postulación</a>
+        <!-- Contenido de información -->
+        <div id="info-content" class="content active">
+            <section class="section">
+                <h2>Instrucciones de Postulación</h2>
+                <p>Enviar hoja de vida al correo: <strong>convocatoriaprosaludyvida@gmail.com</strong></p>
+                <p>La Hoja de vida debe presentarse en el formato unico de hoja de vida"</p>
+		<p>Diligencia el formulario, aparece en la parte superio "Formulario de Postulacion"</p>
+                <p>En el asunto especificar: "Aspirante al cargo de [CARGO] -[MUNICIPIO]- [NOMBRE COMPLETO]"</p>
+            </section>
+
+            <section class="section">
+                <h2>Documentos Requeridos</h2>
+                <ul class="requirements-list">
+                    <li>Anexos (Diplomas, Acta de Grados de estudios formales)</li>
+                    <li>Tarjeta profesional (si aplica)</li>
+                    <li>Certificado RETHUS (para Psicólogos, Coordinadores, Nutricionistas o Enfermeras)</li>
+                    <li>Certificados Laborales en orden cronológico</li>
+                    <li>Copia de Cédula legible</li>
+                    <li>RUT actualizado 2024-2025</li>
+                    <li>Certificado de antecedentes disciplinarios (Procuraduría) 2025</li>
+                    <li>Certificado de Antecedentes fiscales (Contraloría) 2025</li>
+                    <li>Antecedentes judiciales (Policía Nacional) 2025</li>
+                    <li>Certificado RNMC 2025</li>
+                    <li>Consulta de inhabilidades por delitos sexuales</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Conocimientos Específicos</h2>
+                <p>Se requiere manejo de:</p>
+                <ul class="requirements-list">
+                    <li>Word, Excel, PowerPoint</li>
+                    <li>Navegadores de internet</li>
+                    <li>Correo electrónico</li>
+                    <li>Herramientas específicas según el cargo</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Aclaraciones Importantes</h2>
+                <ul class="requirements-list">
+                    <li>Si No Cumples con el perfil no enviar la hoja de vida</li>
+                    <li>El envío de la hoja de vida no garantiza la contratación</li>
+                    <li>No se considerarán hojas de vida incompletas</li>
+                    <li>No se aceptarán postulaciones fuera de las fechas establecidas</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Enlaces Relacionados</h2>
+                <ul class="requirements-list">
+                    <li>
+                        <a href="https://www.icbf.gov.co/system/files/procesos/go1.mt2_.pp_guia_operativa_del_servicio_educacion_inicial_en_el_hogar_v1.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            Guía Operativa del Servicio Educación Inicial en el Hogar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.icbf.gov.co/system/files/procesos/a3.go4_.mt1_.pp_anexo_habilidades_y_acciones_del_talento_humano_contratado_v1.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            Anexo de Habilidades y Acciones del Talento Humano
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.icbf.gov.co/system/files/procesos/go4.mt1_.pp_guia_operativa_del_servicio_centro_de_desarrollo_infantil_-_cdi_v1.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            Guia Operativa del Servicio Centro De Desarrollo Infantil - CDI
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <div class="note">
+                <h3>Nota:</h3>
+                <p>Si es seleccionado, deberá presentar adicionalmente:</p>
+                <ul class="requirements-list">
+                    <li>Certificado de afiliación a EPS</li>
+                    <li>Certificado de afiliación a Pensión (Historial Laboral)</li>
+                </ul>
+            </div>
+
+            <div class="button-group">
+                <a href="index.html" class="back-button">Volver al Inicio</a>
+                <a href="mailto:proalimentarconvocatoria@gmail.com" class="email-button">Enviar por Email</a>
+                <button class="email-button" onclick="showContent('form')">Completar Formulario</button>
+            </div>
         </div>
+
+        <!-- Contenido del formulario -->
+        <div id="form-content" class="content">
+            <section class="form-container">
+                <h2>Formulario de Postulación</h2>
+                <p>Complete el siguiente formulario para postularse. Los campos marcados con * son obligatorios.</p>
+                
+                <!-- Aquí es donde se incrusta el formulario de Google Forms -->
+                <iframe src="<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScK6D9UhIEMnHeh3mQV7sBpnWnjtwdwtSiwSLjkDEEbKc0TCw/viewform?embedded=true" width="640" height="1999" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>"></iframe>
+                
+                <div class="button-group">
+                    <button class="back-button" onclick="showContent('info')">Volver a la Información</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar contenido
+        function showContent(contentId) {
+            // Ocultar todos los contenidos
+            var contents = document.getElementsByClassName("content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            
+            // Desactivar todos los botones
+            var buttons = document.getElementsByClassName("option-button");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+            
+            // Mostrar el contenido seleccionado
+            document.getElementById(contentId + "-content").classList.add("active");
+            document.getElementById(contentId + "-button").classList.add("active");
+        }
+    </script>
 </body>
 </html>

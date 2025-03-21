@@ -9,21 +9,22 @@ li a[href="convocatoria.html"] {
     text-decoration: none; /* Quita el subrayado del enlace */
 }
 
-/* Cuando pasas el mouse sobre el enlace */
-li a[href="convocatoria.html"]:hover {
-    color: white;
-    background-color: blue;
-    transition: 0.3s; /* Suaviza el cambio de color */
+/* Estilo base + parpadeo */
+.parpadeo-color {
+    animation: cambio-color 1s infinite;
+    color: red; /* Color inicial */
 }
- 
-        /* Agrega esto al final de tu bloque de estilos actual */
-        .parpadeo-color {
-            animation: cambio-color 1s infinite;
-        }
 
-        @keyframes cambio-color {
-            0% { color: inherit; }
-            50% { color: #ff0000; }
-            100% { color: inherit; }
-        }
+/* Animación */
+@keyframes cambio-color {
+    0% { color: red; }
+    50% { color: #ff0000; } /* Rojo más intenso */
+    100% { color: red; }
+}
+
+/* Efecto hover (opcional) */
+.parpadeo-color:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
     

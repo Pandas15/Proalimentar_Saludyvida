@@ -15,8 +15,7 @@ li a[href="convocatoria.html"]:hover {
     background-color: blue;
     transition: 0.3s; /* Suaviza el cambio de color */
 }
-    <!-- Tus otros estilos existentes... -->
-    <style>
+ 
         /* Agrega esto al final de tu bloque de estilos actual */
         .parpadeo-color {
             animation: cambio-color 1s infinite;
@@ -27,4 +26,4 @@ li a[href="convocatoria.html"]:hover {
             50% { color: #ff0000; }
             100% { color: inherit; }
         }
-    </style>
+    

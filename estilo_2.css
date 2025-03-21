@@ -9,6 +9,25 @@ li a[href="convocatoria.html"] {
     text-decoration: none; /* Quita el subrayado del enlace */
 }
 
+/* Estilo base + parpadeo */
+.parpadeo-color {
+    animation: cambio-color 1s infinite;
+    color: red; /* Color inicial */
+}
+
+/* Animación */
+@keyframes cambio-color {
+    0% { color: red; }
+    50% { color: #ff0000; } /* Rojo más intenso */
+    100% { color: red; }
+}
+
+/* Efecto hover (opcional) */
+.parpadeo-color:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
 .parpadeo-color {
     animation: cambio-color 1s infinite;
     color: red;

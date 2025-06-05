@@ -67,7 +67,6 @@
             line-height: 1.8;
         }
 
-        /* Nuevo estilo para el contenedor de trabajos */
         .jobs-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -77,7 +76,6 @@
             margin: 0 auto;
         }
 
-        /* Nuevo estilo para las tarjetas de trabajo */
         .job-listing {
             background: white;
             border-radius: 10px;
@@ -113,12 +111,13 @@
 
         .requirements {
             margin: 0.5rem 0;
+            flex-grow: 1;
         }
 
         .requirements ul {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0 0 1rem 0;
         }
 
         .requirements li {
@@ -134,6 +133,21 @@
             color: #3498db;
             position: absolute;
             left: 0;
+        }
+
+        .requirements p {
+            font-weight: bold;
+            margin: 1rem 0 0.5rem 0;
+            color: #2c3e50;
+        }
+
+        .requirements a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .requirements a:hover {
+            text-decoration: underline;
         }
 
         .apply-button {
@@ -200,91 +214,28 @@
     <div id="contador-container"></div>
 
     <div class="container">
-        <!--<h2>Convocatorias Actuales, Educacion Inicial Campesina- Municipio Hato Corozal, Casanare</h2>
-         <!--<li>Institucional- CDI 2025</li>
         <div class="mission-statement">
             <p>El EIH busca potenciar el desarrollo integral de las niñas y los niños de primera infancia y el bienestar de las mujeres 
             y personas en estado de gestación, a través de la vivencia de prácticas y acciones de cuidado y crianza 
             que favorezcan el disfrute de experiencias pedagógicas con sus familias y comunidades.</p>
         </div>
+        
         <div class="jobs-container">
             <div class="job-listing">
                 <div>
-                  
-                    <!--<h3 class="job-title">Coordinador/Director</h3>
+                    <h3 class="job-title">Profesional en Salud y Nutrición</h3>
                     <p class="job-location">📍 Hato Corozal, Casanare</p>
                     <div class="requirements">
-                        <ul>
-                            <li>Título profesional en pedagogía infantil o afines</li>
-                            <li>36 meses de experiencia profesional</li>
-                            <li>12 meses con primera infancia</li>
-                        </ul>
-                    </div>
-                </div>
-                <button class="apply-button" onclick="window.location.href='postulacion_2.html'">Postularse</button>
-            </div>
-
-            <div class="job-listing">
-                <div>
-                    <h3 class="job-title">Agente Educativo</h3>
-                    <p class="job-location">📍 Hato Corozal, Casanare</p>
-                    <div class="requirements">
-                        <ul>
-                            <li>Título profesional en pedagogía infantil, educación preescolar o psicopedagogía</li>
-                            <li>6 meses de experiencia profesional con primera infancia</li>
-                            <li>Alternativa: Normalista superior con 12 meses</li>
-			    <li>Conocimientos en artes plásticas/escénicas (deseable)</li>
-                        </ul>
-                    </div>
-                </div>
-                <button class="apply-button" onclick="window.location.href='postulacion_2.html'">Postularse</button>
-            </div>
-
-            <div class="job-listing">
-                <div>
-                  <!--  <h3 class="job-title">Profesional Psicosocial</h3>
-                    <p class="job-location">📍 Hato Corozal, Casanare</p>
-                    <div class="requirements">
-                        <ul>
-                            <li>Título profesional en psicología</li>
-                            <li>6 meses de experiencia profesional</li>
-                            <li>Trabajo social o desarrollo familiar</li>
-                        </ul>
-                    </div>
-                </div>
-                <button class="apply-button" onclick="window.location.href='postulacion_2.html'">Postularse</button>
-            </div>
-
-            <div class="job-listing">
-                <div>-->
-                   <h3 class="job-title">Profesional en Salud y Nutrición</h3>
-                    <p class="job-location">📍 Hato Corozal, Casanare</p>
-                    <div class="requirements">
+                        <p><strong>Requisitos Perfil 1:</strong></p>
                         <ul>
                             <li>Título profesional en nutrición o nutrición y dietética</li>
                             <li>6 meses de experiencia profesional relacionada</li>
-			    <li>Preferible: Formación en Consejería en lactancia humana</li>
-                         </ul>
-                          <p><strong>Requisitos Perfil 2:</strong></p>
-                          <ul>
-                               <li>Título profesional en enfermería con 6 meses de experiencia</li>
-                              <li>O Técnico auxiliar de enfermería con 12 meses de experiencia</li>
-              
+                            <li>Preferible: Formación en Consejería en lactancia humana</li>
                         </ul>
-                    </div>
-                </div>
-                <button class="apply-button" onclick="window.location.href='postulacion_2.html'">Postularse</button>
-            </div>
-
-            <div class="job-listing">
-                <!-- <div>
-                    <h3 class="job-title">Auxiliar Pedagógico</h3>
-                    <p class="job-location">📍 Hato Corozal,La Salina,Sacama Casanare</p>
-                    <div class="requirements">
+                        <p><strong>Requisitos Perfil 2:</strong></p>
                         <ul>
-                            <li>Título de normalista superior</li>
-                            <li>6 meses de experiencia laboral</li>
-                            <li>Técnico en atención a primera infancia</li>
+                            <li>Título profesional en enfermería con 6 meses de experiencia</li>
+                            <li>O Técnico auxiliar de enfermería con 12 meses de experiencia</li>
                         </ul>
                     </div>
                 </div>
@@ -293,57 +244,17 @@
 
             <div class="job-listing">
                 <div>
-                    <h3 class="job-title">Auxiliar Administrativo</h3>
-                    <p class="job-location">📍 Hato Corozal, Casanare</p>
+                    <h3 class="job-title">Documentación Relevante</h3>
+                    <p class="job-location">📄 Información Importante</p>
                     <div class="requirements">
                         <ul>
-                            <li>Título técnico o tecnólogo</li>
-                            <li>12 meses de experiencia laboral</li>
-                            <li>Conocimientos administrativos</li>
+                            <li><a href="https://www.icbf.gov.co/system/files/procesos/go4.mt1_.pp_guia_operativa_del_servicio_centro_de_desarrollo_infantil_-_cdi_v1.pdf" target="_blank">Guía operativa del servicio centro desarrollo infantil</a></li>
+                            <li><a href="https://www.icbf.gov.co/system/files/procesos/go1.mt2_.pp_guia_operativa_del_servicio_educacion_inicial_en_el_hogar_v1.pdf" target="_blank">Guía Operativa del Servicio Educación Inicial en el Hogar</a></li>
+                            <li><a href="https://www.icbf.gov.co/system/files/go_ed._inicial_campesina.pdf" target="_blank">Guía Operativa del Servicio Educación Campesina</a></li>
                         </ul>
                     </div>
                 </div>
-                <button class="apply-button" onclick="window.location.href='postulacion_2.html'">Postularse</button>
             </div>
-	   <div class="job-listing"> 
-	    <div>
-                 <!-- <h3 class="job-title">Gestor de Alimentos (Solo CDI)</h3>
-                  <p class="job-location">📍 Hato Corozal, Casanare</p>
-                  <div class="requirements">
-                      <ul>
-                          <li>Certificado de manipulación de alimentos vigente</li>
-                          <li>6 meses de experiencia en gestión alimentaria</li>
-                     </ul>
-                 </div>
-               </div>
-                <button class="apply-button" onclick="window.location.href='postulacion_2.html'">Postularse</button>
-            </div>
-              <div class="job-listing">
-           <div>
-             <!--<h3 class="job-title">Auxiliar de Servicios Generales (Solo CDI)</h3>
-              <p class="job-location">📍 Hato Corozal,La Salina,Sacama Casanare</p>
-              <div class="requirements">
-                  <ul>
-                      <li>Certificado de manipulación de alimentos</li>
-                      <li>6 meses de experiencia en limpieza y apoyo operativo</li>
-                  </ul>
-             </div>
-         </div>
-            <button class="apply-button" onclick="window.location.href='postulacion_2.html'">Postularse</button>
-       </div>-->
-             <div class="job-listing">
-                <h3 class="job-title">Documentación Relevante</h3>
-                <p class="job-location">📄 Información Importante</p>
-                <div class="requirements">
-                    <ul>
-                        <li><a href="https://www.icbf.gov.co/system/files/procesos/go4.mt1_.pp_guia_operativa_del_servicio_centro_de_desarrollo_infantil_-_cdi_v1.pdf" target="_blank">Guia operativa del servicio centro desarrollo infantil</a></li>
-                        <li><a href="https://www.icbf.gov.co/system/files/procesos/go1.mt2_.pp_guia_operativa_del_servicio_educacion_inicial_en_el_hogar_v1.pdf" target="_blank">Guía Operativa del Servicio Educación Inicial en el Hogar</a></li>
-						<li><a href="https://www.icbf.gov.co/system/files/go_ed._inicial_campesina.pdf" target="_blank">Guía Operativa del Servicio Educación Campesina</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
         </div>
     </div>
      
@@ -354,6 +265,7 @@
         const contador = crearContador(fechaLimite);
         document.getElementById('contador-container').appendChild(contador);
     </script>
+    
     <footer class="footer">
         <p>Contacto: corporacionproalimentar2023@gmail.com | Tel: 3164218351 | Aguachica,Cesar</p>
         <p>© 2024 Corporacion Proalimentar Salud y vida - Todos los derechos reservados</p>

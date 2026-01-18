@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convocatoria Aguazul, Chameza y Recetor</title>
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+        body{line-height:1.6;color:#333;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding-bottom:150px}
+        .header{background-color:rgba(255,255,255,0.95);padding:2rem;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+        .header h1{color:#667eea;font-size:2rem;margin-bottom:0.5rem}
+        .header .subtitle{color:#666;font-size:1.1rem}
+        .location-badges{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1rem}
+        .location-badge{background-color:#667eea;color:white;padding:0.5rem 1.5rem;border-radius:25px;font-weight:bold}
+        .container{max-width:1200px;margin:2rem auto;padding:0 1rem}
+        .municipio-selector{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:2rem}
+        .municipio-card{background:white;border-radius:15px;padding:2rem;text-align:center;cursor:pointer;transition:all 0.3s;border:3px solid transparent;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+        .municipio-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(102,126,234,0.3)}
+        .municipio-card.active{border-color:#667eea;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white}
+        .municipio-icon{font-size:3rem;margin-bottom:1rem}
+        .municipio-name{font-size:1.5rem;font-weight:bold;margin-bottom:0.5rem}
+        .municipio-modalidades{font-size:0.9rem;margin-top:0.8rem;opacity:0.9}
+        .status-badge{display:inline-block;padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem;font-weight:600;margin-top:0.8rem}
+        .status-active{background-color:#28a745;color:white}
+		.status-inactive{background-color:#dc3545;color:white} /* oooooojo*/
+        .municipio-content{display:none;background-color:white;border-radius:15px;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.1);animation:fadeIn 0.5s}
+        .municipio-content.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .section-title{color:#667eea;font-size:1.8rem;margin-bottom:1.5rem;text-align:center;position:relative;padding-bottom:0.5rem}
+        .section-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:3px;background:linear-gradient(90deg,#667eea,#764ba2)}
+        .modalidad-tabs{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;justify-content:center}
+        .modalidad-tab{background-color:white;color:#667eea;border:2px solid #667eea;padding:0.8rem 2rem;border-radius:25px;cursor:pointer;font-size:1rem;font-weight:600;transition:all 0.3s}
+        .modalidad-tab:hover{background-color:#667eea;color:white}
+        .modalidad-tab.active{background-color:#667eea;color:white}
+        .modalidad-content{display:none}
+        .modalidad-content.active{display:block}
+        .roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin:2rem 0}
+        .role-card{background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);border-radius:12px;padding:1.5rem;transition:all 0.3s;border:2px solid transparent}
+        .role-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(102,126,234,0.2);border-color:#667eea}
+        .role-card h3{color:#667eea;font-size:1.15rem;margin-bottom:0.8rem}
+        .role-card h3::before{content:'👤 '}
+        .perfil-section{margin:0.8rem 0;padding:0.8rem;background-color:rgba(255,255,255,0.6);border-radius:8px;border-left:3px solid #667eea}
+        .perfil-badge{display:inline-block;background-color:#667eea;color:white;padding:0.25rem 0.8rem;border-radius:15px;font-size:0.75rem;margin-bottom:0.5rem;font-weight:600}
+        .requirement{font-size:0.88rem;color:#555;margin:0.4rem 0;padding-left:1.2rem;position:relative;line-height:1.5}
+        .requirement::before{content:'•';position:absolute;left:0;color:#667eea;font-weight:bold}
+        .experience{background-color:rgba(102,126,234,0.15);padding:0.6rem;border-radius:6px;margin-top:0.5rem;font-size:0.85rem;color:#667eea;font-weight:600}
+        .info-box{background-color:#f8f9fa;border-left:4px solid #667eea;padding:1.5rem;margin:1.5rem 0;border-radius:8px}
+        .info-box h3{color:#667eea;margin-bottom:1rem;font-size:1.2rem}
+        .info-list{list-style:none}
+        .info-list li{padding:0.5rem 0;padding-left:1.5rem;position:relative;line-height:1.6}
+        .info-list li::before{content:'✓';position:absolute;left:0;color:#667eea;font-weight:bold}
+        .doc-section{background-color:#fff;border:2px solid #e0e0e0;border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+        .doc-section h4{color:#667eea;margin-bottom:1rem;font-size:1.1rem}
+        .form-container{margin:2rem 0;padding:1.5rem;background-color:#f8f9fa;border-radius:10px}
+        .form-iframe{width:100%;height:1200px;border:none;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1);margin-top:1rem}
+        .action-buttons{display:flex;gap:1rem;justify-content:center;margin:2rem 0;flex-wrap:wrap}
+        .btn{padding:1rem 2rem;border-radius:25px;text-decoration:none;font-weight:600;transition:all 0.3s;border:none;cursor:pointer;font-size:1rem;display:inline-block}
+        .btn-success{background-color:#28a745;color:white}
+        .btn-success:hover{background-color:#218838;transform:translateY(-2px)}
+        .btn-secondary{background-color:white;color:#667eea;border:2px solid #667eea}
+        .btn-secondary:hover{background-color:#667eea;color:white}
+        .alert-box{background-color:#fff3cd;border-left:4px solid #ffc107;padding:1.5rem;margin:1.5rem 0;border-radius:8px;color:#856404}
+        .countdown-floating{position:fixed;bottom:30px;right:30px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;padding:1.5rem;border-radius:15px;box-shadow:0 10px 30px rgba(102,126,234,0.4);z-index:1000;min-width:280px;animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+        .countdown-floating h4{font-size:0.9rem;margin-bottom:0.8rem;text-align:center}
+        .countdown-timer{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;text-align:center}
+        .countdown-item{background-color:rgba(255,255,255,0.2);padding:0.8rem 0.5rem;border-radius:8px}
+        .countdown-number{display:block;font-size:1.8rem;font-weight:bold}
+        .countdown-label{display:block;font-size:0.7rem;margin-top:0.3rem}
+        @media (max-width:768px){.municipio-selector{grid-template-columns:1fr}.roles-grid{grid-template-columns:1fr}.form-iframe{height:1400px}.countdown-floating{bottom:20px;right:20px;left:20px;min-width:auto}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Convocatoria Multi-Municipio</h1>
+        <p class="subtitle">Corporación Proalimentar Salud Y Vida</p>
+        <div class="location-badges">
+            <span class="location-badge">📍 Aguazul</span>
+            <span class="location-badge">📍 Chameza</span>
+            <span class="location-badge">📍 Recetor</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 style="text-align:center;color:white;margin-bottom:2rem">Seleccione su Municipio</h2>
+
+        <div class="municipio-selector">
+		    <!--<div class="municipio-card" style="opacity:0.6;cursor:not-allowed" id="card-aguazul">--> <!--para cerrar por completo el uso del boton-->
+            <div class="municipio-card" onclick="selectMunicipio('aguazul')" id="card-aguazul">
+                <div class="municipio-icon">🏘️</div>
+                <div class="municipio-name">Aguazul</div>
+                <div class="municipio-modalidades">📚 CDI<br>🏠 Educación Inicial</div>
+                <span class="status-badge status-active">✓ Activa</span> 
+			     <!--<span class="status-badge status-inactive">✗ Cerrada</span>-->  <!--ojo aqui para inacticar copias y comentas-->
+            </div>
+
+            <div class="municipio-card" onclick="selectMunicipio('chameza')" id="card-chameza">
+                <div class="municipio-icon">🏘️</div>
+                <div class="municipio-name">Chameza</div>
+                <div class="municipio-modalidades">📚 CDI<br>🏠 Educación Inicial</div>
+                <span class="status-badge status-active">✓ Activa</span>
+            </div>
+
+            <div class="municipio-card" onclick="selectMunicipio('recetor')" id="card-recetor">
+                <div class="municipio-icon">🏘️</div>
+                <div class="municipio-name">Recetor</div>
+                <div class="municipio-modalidades">🏠 Educación Inicial</div>
+                <span class="status-badge status-active">✓ Activa</span>
+            </div>
+        </div>
+
+        <div id="content-aguazul" class="municipio-content">
+            <h2 class="section-title">Convocatoria Aguazul</h2>
+            <div class="modalidad-tabs">
+                <button class="modalidad-tab active" onclick="showModalidad('aguazul','cdi')">📚 CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('aguazul','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab" onclick="showModalidad('aguazul','postular')">📝 Postular</button>
+            </div>
+
+            <div id="aguazul-cdi" class="modalidad-content active"></div>
+            <div id="aguazul-hogar" class="modalidad-content"></div>
+            <div id="aguazul-postular" class="modalidad-content"></div>
+        </div>
+
+        <div id="content-chameza" class="municipio-content">
+            <h2 class="section-title">Convocatoria Chameza</h2>
+            <div class="modalidad-tabs">
+                <button class="modalidad-tab active" onclick="showModalidad('chameza','cdi')">📚 CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('chameza','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab" onclick="showModalidad('chameza','postular')">📝 Postular</button>
+            </div>
+
+            <div id="chameza-cdi" class="modalidad-content active"></div>
+            <div id="chameza-hogar" class="modalidad-content"></div>
+            <div id="chameza-postular" class="modalidad-content"></div>
+        </div>
+
+        <div id="content-recetor" class="municipio-content">
+            <h2 class="section-title">Convocatoria Recetor</h2>
+            <div class="modalidad-tabs">
+                <button class="modalidad-tab active" onclick="showModalidad('recetor','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab" onclick="showModalidad('recetor','postular')">📝 Postular</button>
+            </div>
+
+            <div id="recetor-hogar" class="modalidad-content active"></div>
+            <div id="recetor-postular" class="modalidad-content"></div>
+        </div>
+
+        <div class="action-buttons" style="margin-top:3rem">
+            <a href="index.html" class="btn btn-secondary">⬅️ Volver al Inicio</a>
+        </div>
+    </div>
+
+    <div class="countdown-floating">
+        <h4>⏰ Tiempo restante</h4>
+        <div id="countdown-content"></div>
+    </div>
+
+    <script>
+        const ROLES_CDI = [
+            {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
+            {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'12 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral'],e:'12 meses'}]},
+            {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'12 meses'}]},
+            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación culminación nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar enfermería'],e:'12 meses'}]},
+            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico atención integral'],e:'6 meses'},{n:'Transitados',r:['Básica primaria + 6 años experiencia','Continuar hasta 9° grado'],e:'6 años'}]},
+            {t:'Gestor de Alimentos',p:[{n:'',r:['Básica primaria completa','Certificación médica manipulación alimentos'],e:'6 meses'}]},
+            {t:'Auxiliar Servicios Generales',p:[{n:'',r:['Certificado manipulación alimentos vigente'],e:'6 meses'}]},
+            {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
+        ];
+
+        const ROLES_HOGAR = [
+            {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
+            {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'6 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral'],e:'12 meses'}]},
+            {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'6 meses'}]},
+            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación culminación nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar enfermería'],e:'12 meses'}]},
+            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico atención integral'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años experiencia','Continuar hasta 9° grado'],e:'6 años'}]},
+            {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
+        ];
+
+        const POSTULAR_HTML = `
+            <div class="form-container">
+                <p style="text-align:center;margin-bottom:1rem;font-size:1.2rem;font-weight:600;color:#667eea">📋 Encuesta de Preselección</p>
+                <iframe class="form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScK6D9UhIEMnHeh3mQV7sBpnWnjtwdwtSiwSLjkDEEbKc0TCw/viewform?embedded=true"></iframe>
+            </div>
+            <div class="info-box">
+                <h3>📧 Instrucciones para Envío de Hoja de Vida</h3>
+                <ul class="info-list">
+                    <li>Hoja de vida en formato único actualizado</li>
+                    <li>Asunto del correo: <strong>"Aspirante [CARGO] - [MUNICIPIO] - [NOMBRE COMPLETO]"</strong></li>
+                    <li>Enviar a: <strong style="color:#667eea">convocatoriaprosaludyvida@gmail.com</strong></li>
+                    <li>No se aceptarán postulaciones incompletas</li>
+                </ul>
+            </div>
+            <div class="doc-section">
+                <h4>📄 Documentos Requeridos</h4>
+                <ul class="info-list">
+                    <li>Diplomas y actas de grado autenticados</li>
+                    <li>Tarjeta profesional (si aplica)</li>
+                    <li>Certificado RETHUS (psicólogos, nutricionistas, enfermeras)</li>
+                    <li>Certificados laborales en orden cronológico</li>
+                    <li>Cédula de ciudadanía legible</li>
+                    <li>RUT actualizado 2025-2026</li>
+                    <li>Antecedentes: Procuraduría, Contraloría, Policía Nacional (2026)</li>
+                    <li>Certificado RNMC 2026</li>
+                    <li>Consulta registro de inhabilidades por delitos sexuales</li>
+                </ul>
+            </div>
+            <div class="doc-section">
+                <h4>💻 Conocimientos Informáticos Requeridos</h4>
+                <ul class="info-list">
+                    <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                    <li>Navegadores de internet</li>
+                    <li>Correo electrónico</li>
+                    <li>Herramientas digitales básicas</li>
+                </ul>
+            </div>
+            <div class="alert-box">
+                <strong>⚠️ Aclaraciones Importantes:</strong><br>
+                • Si no cumple con el perfil, NO envíe hoja de vida<br>
+                • El envío no garantiza contratación<br>
+                • Verificación obligatoria de antecedentes cada 4 meses (Ley 2375 de 2024)<br>
+                • Documentos educativos serán verificados con las instituciones
+            </div>
+            <div class="action-buttons">
+                <a href="mailto:convocatoriaprosaludyvida@gmail.com" class="btn btn-success">📧 Enviar Postulación</a>
+            </div>
+        `;
+
+        function crearTarjetaRol(rol) {
+            let html = `<div class="role-card"><h3>${rol.t}</h3>`;
+            rol.p.forEach(perfil => {
+                html += '<div class="perfil-section">';
+                if(perfil.n) html += `<span class="perfil-badge">${perfil.n}</span>`;
+                perfil.r.forEach(req => html += `<div class="requirement">${req}</div>`);
+                html += `<div class="experience">⏱️ ${perfil.e}</div></div>`;
+            });
+            return html + '</div>';
+        }
+
+        function renderizarRoles() {
+            const cdiHTML = '<div class="roles-grid">' + ROLES_CDI.map(crearTarjetaRol).join('') + '</div>';
+            const hogarHTML = '<div class="roles-grid">' + ROLES_HOGAR.map(crearTarjetaRol).join('') + '</div>';
+            
+            document.getElementById('aguazul-cdi').innerHTML = cdiHTML;
+            document.getElementById('aguazul-hogar').innerHTML = hogarHTML;
+            document.getElementById('aguazul-postular').innerHTML = POSTULAR_HTML.replace('[MUNICIPIO]', 'Aguazul');
+            
+            document.getElementById('chameza-cdi').innerHTML = cdiHTML;
+            document.getElementById('chameza-hogar').innerHTML = hogarHTML;
+            document.getElementById('chameza-postular').innerHTML = POSTULAR_HTML.replace('[MUNICIPIO]', 'Chameza');
+            
+            document.getElementById('recetor-hogar').innerHTML = hogarHTML;
+            document.getElementById('recetor-postular').innerHTML = POSTULAR_HTML.replace('[MUNICIPIO]', 'Recetor');
+        }
+
+        function selectMunicipio(mun) {
+            document.querySelectorAll('.municipio-card').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.municipio-content').forEach(c => c.classList.remove('active'));
+            document.getElementById('card-' + mun).classList.add('active');
+            document.getElementById('content-' + mun).classList.add('active');
+            window.scrollTo({top: document.getElementById('content-' + mun).offsetTop - 100, behavior: 'smooth'});
+        }
+
+        function showModalidad(mun, mod) {
+            document.querySelectorAll(`#content-${mun} .modalidad-tab`).forEach(t => t.classList.remove('active'));
+            document.querySelectorAll(`#content-${mun} .modalidad-content`).forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(`${mun}-${mod}`).classList.add('active');
+        }
+
+        function updateCountdown() {
+            const deadline = new Date('2026-01-31T23:59:59').getTime();
+            const now = new Date().getTime();
+            const distance = deadline - now;
+            if (distance < 0) {
+                document.getElementById('countdown-content').innerHTML = '<div style="text-align:center;padding:1rem">⏰ Cerrada</div>';
+                return;
+            }
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById('countdown-content').innerHTML = `<div class="countdown-timer"><div class="countdown-item"><span class="countdown-number">${d}</span><span class="countdown-label">Días</span></div><div class="countdown-item"><span class="countdown-number">${h}</span><span class="countdown-label">Horas</span></div><div class="countdown-item"><span class="countdown-number">${m}</span><span class="countdown-label">Min</span></div><div class="countdown-item"><span class="countdown-number">${s}</span><span class="countdown-label">Seg</span></div></div>`;
+        }
+
+        renderizarRoles();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

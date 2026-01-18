@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convocatoria CDI Yopal - Casanare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .location-badge {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            background-color: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-btn.active {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .content {
+            display: none;
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+
+        .subsection-title {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        /* Tarjetas de Roles */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .role-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .role-card h3 {
+            color: #667eea;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .role-card h3::before {
+            content: '👤';
+            font-size: 1.3rem;
+        }
+
+        .role-card .requirement {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .role-card .requirement::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .role-card .experience {
+            background-color: rgba(102, 126, 234, 0.1);
+            padding: 0.5rem;
+            border-radius: 6px;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Información General */
+        .info-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .alert-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        .alert-box strong {
+            color: #856404;
+        }
+
+        /* Formulario */
+        .form-container {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .form-iframe {
+            width: 100%;
+            height: 1200px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 1rem;
+        }
+
+        /* Botones de Acción */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        /* Enlaces */
+        .link-item {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .link-item:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .link-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Cuenta Regresiva Flotante */
+        .countdown-floating {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            z-index: 1000;
+            min-width: 280px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .countdown-floating h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .countdown-timer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .countdown-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 0.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            display: block;
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
+            opacity: 0.9;
+        }
+
+
+
+        .countdown-expired {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 1rem;
+        }
+
+        /* Sección de paso a paso */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.3);
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
+
+            .form-iframe {
+                height: 1400px;
+            }
+
+            .countdown-floating {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                min-width: auto;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Convocatoria CDI</h1>
+        <p class="subtitle">Corporación Proalimentar Salud Y Vida</p>
+        <span class="location-badge">📍 Yopal - Casanare</span>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('roles')">👥 Cargos Disponibles</button>
+            <button class="tab-btn" onclick="showTab('postular')">📋 Información y Postulación</button>
+        </div>
+
+        <!-- ROLES Y CARGOS -->
+        <div id="roles" class="content active">
+            <h2 class="section-title">Cargos Disponibles - CDI</h2>
+            
+            <div class="roles-grid">
+                <!-- Coordinador -->
+                <div class="role-card">
+                    <h3>Coordinador/a</h3>
+                    <div class="requirement">Título profesional en educación de primera infancia, educación inicial, pedagogía infantil, psicología o trabajo social</div>
+                    <div class="experience">⏱️ 36 meses de experiencia (12 relacionados)</div>
+                </div>
+
+                <!-- Agente Educativo -->
+                <div class="role-card">
+                    <h3>Agente Educativo/a</h3>
+                    <div class="requirement">Título profesional en pedagogía infantil, educación preescolar o inicial</div>
+                    <div class="requirement">Alternativa: Normalista superior o técnico en primera infancia</div>
+                    <div class="experience">⏱️ 12 meses de experiencia relacionada</div>
+                </div>
+
+                <!-- Profesional Psicosocial -->
+                <div class="role-card">
+                    <h3>Profesional Psicosocial</h3>
+                    <div class="requirement">Título profesional en psicología, trabajo social, desarrollo familiar o sociología</div>
+                    <div class="experience">⏱️ 12 meses de experiencia relacionada</div>
+                </div>
+
+                <!-- Profesional Salud y Nutrición -->
+                <div class="role-card">
+                    <h3>Profesional Salud y Nutrición</h3>
+                    <div class="requirement">Nutricionista o nutrición y dietética</div>
+                    <div class="requirement">Alternativa: Enfermero/a o técnico auxiliar de enfermería</div>
+                    <div class="experience">⏱️ 6-12 meses según perfil</div>
+                </div>
+
+                <!-- Auxiliar Pedagógico -->
+                <div class="role-card">
+                    <h3>Auxiliar Pedagógico/a</h3>
+                    <div class="requirement">Normalista superior o técnico en primera infancia</div>
+                    <div class="requirement">Madres/padres transitados: Primaria + 6 años experiencia</div>
+                    <div class="experience">⏱️ 6 meses de experiencia</div>
+                </div>
+
+                <!-- Gestor de Alimentos -->
+                <div class="role-card">
+                    <h3>Gestor/a de Alimentos</h3>
+                    <div class="requirement">Básica primaria completa</div>
+                    <div class="requirement">Certificación médica para manipulación de alimentos vigente</div>
+                    <div class="experience">⏱️ 6 meses de experiencia</div>
+                </div>
+
+                <!-- Auxiliar Servicios Generales -->
+                <div class="role-card">
+                    <h3>Auxiliar Servicios Generales</h3>
+                    <div class="requirement">Certificado de manipulación de alimentos vigente</div>
+                    <div class="experience">⏱️ 6 meses de experiencia</div>
+                </div>
+
+                <!-- Auxiliar Administrativo -->
+                <div class="role-card">
+                    <h3>Auxiliar Administrativo/a</h3>
+                    <div class="requirement">Técnico o tecnólogo en ciencias económicas, administrativas o sistemas</div>
+                    <div class="experience">⏱️ 12 meses de experiencia</div>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <strong>⚠️ Importante:</strong> Prioridad de vinculación para mujeres en roles educativos y pedagógicos, conforme a políticas de equidad de género del ICBF.
+            </div>
+
+            <div class="action-buttons">
+                <button onclick="showTab('postular')" class="btn btn-primary">
+                    📝 Ver Proceso de Postulación
+                </button>
+            </div>
+        </div>
+
+        <!-- INFORMACIÓN Y POSTULACIÓN -->
+        <div id="postular" class="content">
+            <h2 class="section-title">Proceso de Postulación</h2>
+
+            <!-- Pasos del Proceso -->
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1️⃣</div>
+                    <div class="step-title">Revisa los Cargos</div>
+                    <div class="step-desc">Verifica que cumples con el perfil requerido</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2️⃣</div>
+                    <div class="step-title">Completa la Encuesta</div>
+                    <div class="step-desc">Llena el formulario de preselección</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3️⃣</div>
+                    <div class="step-title">Prepara Documentos</div>
+                    <div class="step-desc">Reúne toda la documentación requerida</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4️⃣</div>
+                    <div class="step-title">Envía tu Postulación</div>
+                    <div class="step-desc">Envía tu hoja de vida por email</div>
+                </div>
+            </div>
+
+            <!-- Formulario de Encuesta -->
+            <h3 class="subsection-title">📝 Encuesta de Preselección</h3>
+            <div class="form-container">
+                <p style="text-align: center; margin-bottom: 1rem; color: #666;">
+                    <strong>Complete esta encuesta antes de enviar su postulación formal</strong>
+                </p>
+                <iframe 
+                    class="form-iframe"
+                    src="https://docs.google.com/forms/d/e/1FAIpQLScK6D9UhIEMnHeh3mQV7sBpnWnjtwdwtSiwSLjkDEEbKc0TCw/viewform?embedded=true" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+                    Cargando…
+                </iframe>
+            </div>
+
+            <!-- Instrucciones -->
+            <h3 class="subsection-title">📧 Instrucciones para Envío de Hoja de Vida</h3>
+            <div class="info-box">
+                <ul class="info-list">
+                    <li>Hoja de vida en formato único actualizado</li>
+                    <li>Asunto del correo: <strong>"Aspirante [CARGO] - Yopal - [NOMBRE COMPLETO]"</strong></li>
+                    <li>Enviar a: <strong style="color: #667eea;">convocatoriaprosaludyvida@gmail.com</strong></li>
+                    <li>No se aceptarán postulaciones incompletas</li>
+                </ul>
+            </div>
+
+            <!-- Documentos Requeridos -->
+            <h3 class="subsection-title">📄 Documentos Requeridos</h3>
+            <div class="info-box">
+                <ul class="info-list">
+                    <li>Diplomas y actas de grado autenticados</li>
+                    <li>Tarjeta profesional (si aplica)</li>
+                    <li>Certificado RETHUS (psicólogos, nutricionistas, enfermeras)</li>
+                    <li>Certificados laborales en orden cronológico</li>
+                    <li>Cédula de ciudadanía legible</li>
+                    <li>RUT actualizado 2025-2026</li>
+                    <li>Antecedentes: Procuraduría, Contraloría, Policía Nacional (2026)</li>
+                    <li>Certificado RNMC 2026</li>
+                    <li>Consulta registro de inhabilidades por delitos sexuales</li>
+                </ul>
+            </div>
+
+            <!-- Conocimientos Técnicos -->
+            <h3 class="subsection-title">💻 Conocimientos Informáticos Requeridos</h3>
+            <div class="info-box">
+                <ul class="info-list">
+                    <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                    <li>Navegadores de internet</li>
+                    <li>Correo electrónico</li>
+                    <li>Herramientas digitales básicas</li>
+                </ul>
+            </div>
+
+            <!-- Alertas Importantes -->
+            <div class="alert-box">
+                <strong>⚠️ Aclaraciones Importantes:</strong><br>
+                • Si no cumple con el perfil, NO envíe hoja de vida<br>
+                • El envío no garantiza contratación<br>
+                • Verificación obligatoria de antecedentes cada 4 meses (Ley 2375 de 2024)<br>
+                • Documentos educativos serán verificados con las instituciones
+            </div>
+
+            <!-- Enlaces de Consulta -->
+            <h3 class="subsection-title">🔗 Enlaces de Consulta ICBF</h3>
+            <div class="link-item">
+                <a href="https://www.icbf.gov.co/system/files/procesos/go4.mt1_.pp_guia_operativa_del_servicio_centro_de_desarrollo_infantil_-_cdi_v1.pdf" target="_blank">
+                    📘 Guía Operativa CDI
+                </a>
+            </div>
+            <div class="link-item">
+                <a href="https://www.icbf.gov.co/system/files/procesos/a3.go4_.mt1_.pp_anexo_habilidades_y_acciones_del_talento_humano_contratado_v1.pdf" target="_blank">
+                    📙 Habilidades y Acciones del Talento Humano
+                </a>
+            </div>
+            <div class="link-item">
+                <a href="https://www.icbf.gov.co/system/files/procesos/go1.mt2_.pp_guia_operativa_del_servicio_educacion_inicial_en_el_hogar_v1.pdf" target="_blank">
+                    📗 Guía Educación Inicial en el Hogar
+                </a>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="action-buttons" style="margin-top: 2rem;">
+                <a href="mailto:convocatoriaprosaludyvida@gmail.com" class="btn btn-success">
+                    📧 Enviar Postulación por Email
+                </a>
+                <button onclick="showTab('roles')" class="btn btn-secondary">
+                    👥 Ver Cargos Disponibles
+                </button>
+            </div>
+        </div>
+
+        <!-- Botón para volver al inicio -->
+        <div class="action-buttons" style="margin-top: 3rem;">
+            <a href="index.html" class="btn btn-secondary">
+                ⬅️ Volver al Inicio
+            </a>
+        </div>
+    </div>
+
+    <!-- Cuenta Regresiva Flotante -->
+    <div class="countdown-floating">
+        <h4>⏰ Tiempo restante para postular</h4>
+        <div id="countdown-content"></div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const activeButton = Array.from(buttons).find(btn => 
+                (tabId === 'roles' && btn.textContent.includes('Cargos')) ||
+                (tabId === 'postular' && btn.textContent.includes('Información'))
+            );
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateCountdown() {
+            const deadline = new Date('2026-01-31T23:59:59').getTime();
+            const now = new Date().getTime();
+            const distance = deadline - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown-content').innerHTML = 
+                    '<div class="countdown-expired">⏰ Convocatoria Cerrada</div>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown-content').innerHTML = `
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <span class="countdown-number">${days}</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number">${hours}</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number">${minutes}</span>
+                        <span class="countdown-label">Min</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number">${seconds}</span>
+                        <span class="countdown-label">Seg</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.addEventListener('load', function() {
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>

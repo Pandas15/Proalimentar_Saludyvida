@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proalimentar Salud y Vida</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Mejorado */
+        header {
+            background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .parpadeo-color {
+            animation: parpadeoColor 2s infinite;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-weight: 600;
+            z-index: 10;
+            position: relative;
+        }
+
+        @keyframes parpadeoColor {
+            0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(102,126,234,0.5); }
+            50% { opacity: 0.7; box-shadow: 0 0 25px rgba(118,75,162,0.7); }
+        }
+
+        /* Hero Section Mejorado */
+        .hero {
+            background: linear-gradient(135deg, rgba(44,95,45,0.85) 0%, rgba(30,70,32,0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1588072432836-e10032774350?w=1600') center/cover;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(102,126,234,0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(118,75,162,0.2) 0%, transparent 50%);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(102,126,234,0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #2c5f2d;
+        }
+
+        /* Secciones Mejoradas */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 10%);
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c5f2d;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #2c5f2d, #667eea);
+            border-radius: 2px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2c5f2d, #667eea);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card h3 {
+            color: #2c5f2d;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3::before {
+            font-size: 1.8rem;
+        }
+
+        #nosotros .card h3::before { content: ''; }
+        #mision .card:nth-child(1) h3::before { content: ''; }
+        #mision .card:nth-child(2) h3::before { content: ''; }
+        #servicios .card:nth-child(1) h3::before { content: ''; }
+        #servicios .card:nth-child(2) h3::before { content: ''; }
+        #servicios .card:nth-child(3) h3::before { content: ''; }
+
+        .card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Secci¨®n Destacada */
+        .destacado {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(102,126,234,0.3);
+        }
+
+        .destacado h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .destacado p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer Mejorado */
+        footer {
+            background: linear-gradient(135deg, #1e4620 0%, #2c5f2d 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 0;
+        }
+
+        footer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        footer p {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .footer-icon {
+            font-size: 1.3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Animaciones adicionales */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .card {
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Proalimentar Salud y Vida</div>
+            <ul>
+                <li><a href="#nosotros">Quienes Somos</a></li>
+                <li><a href="#mision">Mision y Vision</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="postulacion1.html">Convocatoria 1</a></li>
+                <li><a href="postulacion2.html" class="parpadeo-color">Convocatoria 2</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content container">
+            <h1>Nutriendo el Futuro de la Primera Infancia</h1>
+            <p>Programas integrales de alimentacion y desarrollo infantil</p>
+            <div class="hero-buttons">
+                <a href="#convocatorias" class="hero-btn btn-primary">Ver Convocatorias</a>
+                <a href="#servicios" class="hero-btn btn-outline">Nuestros Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="convocatorias" class="section">
+        <div class="container">
+            <div class="destacado">
+                <h3>Unete a Nuestro Equipo!</h3>
+                <p>Tenemos convocatorias abiertas en multiples municipios</p>
+                <div class="hero-buttons">
+                    <a href="postulacion1.html" class="hero-btn btn-outline">Ver Yopal - Casanare</a>
+                    <a href="postulacion2.html" class="hero-btn btn-outline">Ver Multi-Municipio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="section">
+        <div class="container">
+            <h2>Quienes Somos</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Nuestra Empresa</h3>
+                    <p>Somos una compania colombiana especializada en servicios de alimentacion y suministros para empresas publicas y privadas. Contamos con un equipo profesional comprometido con la excelencia y satisfaccion de nuestros clientes, brindando soluciones integrales que marcan la diferencia en cada proyecto que emprendemos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mision" class="section">
+        <div class="container">
+            <h2>Mision y Vision</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Mision</h3>
+                    <p>Brindar servicios de alimentacion eficientes y de excelente calidad para instituciones educativas y empresas, garantizando nutricion balanceada y contribuyendo al desarrollo integral de las comunidades que atendemos.</p>
+                </div>
+                <div class="card">
+                    <h3>Vision</h3>
+                    <p>Ser reconocidos como lideres en servicios de alimentacion mediante innovacion, calidad excepcional y compromiso social, expandiendo nuestro impacto positivo en el sector educativo y empresarial a nivel nacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="section">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Alimentacion Infantil</h3>
+                    <p>Programas nutricionales especializados para la primera infancia, disenados por expertos en nutricion y desarrollo infantil, garantizando alimentos balanceados y de alta calidad.</p>
+                </div>
+                <div class="card">
+                    <h3>Capacitacion Educativa</h3>
+                    <p>Formacion continua en desarrollo infantil y nutricion para nuestro equipo y las comunidades, promoviendo las mejores practicas en atencion a la primera infancia.</p>
+                </div>
+                <div class="card">
+                    <h3>Apoyo Comunitario</h3>
+                    <p>Implementacion de proyectos sociales integrales que benefician a las familias y comunidades, generando impacto positivo y desarrollo sostenible en cada region donde operamos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <h3>Contacto</h3>
+            <p><span class="footer-icon">Tel:</span> +573164218351</p>
+            <p><span class="footer-icon">Email:</span> corporacionproalimentar2023@gmail.com</p>
+            <p><span class="footer-icon">Ubicacion:</span> Aguachica, Colombia</p>
+            <p style="margin-top: 2rem; opacity: 0.8;">2026 Corporacion Proalimentar Salud Y Vida - Todos los derechos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>

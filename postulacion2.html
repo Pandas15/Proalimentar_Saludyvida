@@ -22,7 +22,7 @@
         .municipio-modalidades{font-size:0.9rem;margin-top:0.8rem;opacity:0.9}
         .status-badge{display:inline-block;padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem;font-weight:600;margin-top:0.8rem}
         .status-active{background-color:#28a745;color:white}
-		.status-inactive{background-color:#dc3545;color:white} /* oooooojo*/
+        .status-inactive{background-color:#dc3545;color:white}
         .municipio-content{display:none;background-color:white;border-radius:15px;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.1);animation:fadeIn 0.5s}
         .municipio-content.active{display:block}
         @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -85,13 +85,11 @@
         <h2 style="text-align:center;color:white;margin-bottom:2rem">Seleccione su Municipio</h2>
 
         <div class="municipio-selector">
-		    <!--<div class="municipio-card" style="opacity:0.6;cursor:not-allowed" id="card-aguazul">--> <!--para cerrar por completo el uso del boton-->
             <div class="municipio-card" onclick="selectMunicipio('aguazul')" id="card-aguazul">
                 <div class="municipio-icon">🏘️</div>
                 <div class="municipio-name">Aguazul</div>
                 <div class="municipio-modalidades">📚 CDI<br>🏠 Educación Inicial</div>
-                <span class="status-badge status-active">✓ Activa</span> 
-			     <!--<span class="status-badge status-inactive">✗ Cerrada</span>-->  <!--ojo aqui para inacticar copias y comentas-->
+                <span class="status-badge status-active">✓ Activa</span>
             </div>
 
             <div class="municipio-card" onclick="selectMunicipio('chameza')" id="card-chameza">
@@ -157,6 +155,13 @@
     </div>
 
     <script>
+        // Configuración de correos por municipio
+        const CORREOS_MUNICIPIOS = {
+            'Aguazul': 'proalimentarsv+convocatoria.aguazul@gmail.com',
+            'Chameza': 'proalimentarsv+convocatoria.chameza@gmail.com',
+            'Recetor': 'proalimentarsv+convocatoria.recetor@gmail.com'
+        };
+
         const ROLES_CDI = [
             {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
             {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'12 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral'],e:'12 meses'}]},
@@ -177,54 +182,57 @@
             {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
         ];
 
-        const POSTULAR_HTML = `
-            <div class="form-container">
-                <p style="text-align:center;margin-bottom:1rem;font-size:1.2rem;font-weight:600;color:#667eea">📋 Encuesta de Preselección</p>
-                <iframe class="form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScK6D9UhIEMnHeh3mQV7sBpnWnjtwdwtSiwSLjkDEEbKc0TCw/viewform?embedded=true"></iframe>
-            </div>
-            <div class="info-box">
-                <h3>📧 Instrucciones para Envío de Hoja de Vida</h3>
-                <ul class="info-list">
-                    <li>Hoja de vida en formato único actualizado</li>
-                    <li>Asunto del correo: <strong>"Aspirante [CARGO] - [MUNICIPIO] - [NOMBRE COMPLETO]"</strong></li>
-                    <li>Enviar a: <strong style="color:#667eea">convocatoriaprosaludyvida@gmail.com</strong></li>
-                    <li>No se aceptarán postulaciones incompletas</li>
-                </ul>
-            </div>
-            <div class="doc-section">
-                <h4>📄 Documentos Requeridos</h4>
-                <ul class="info-list">
-                    <li>Diplomas y actas de grado autenticados</li>
-                    <li>Tarjeta profesional (si aplica)</li>
-                    <li>Certificado RETHUS (psicólogos, nutricionistas, enfermeras)</li>
-                    <li>Certificados laborales en orden cronológico</li>
-                    <li>Cédula de ciudadanía legible</li>
-                    <li>RUT actualizado 2025-2026</li>
-                    <li>Antecedentes: Procuraduría, Contraloría, Policía Nacional (2026)</li>
-                    <li>Certificado RNMC 2026</li>
-                    <li>Consulta registro de inhabilidades por delitos sexuales</li>
-                </ul>
-            </div>
-            <div class="doc-section">
-                <h4>💻 Conocimientos Informáticos Requeridos</h4>
-                <ul class="info-list">
-                    <li>Microsoft Office (Word, Excel, PowerPoint)</li>
-                    <li>Navegadores de internet</li>
-                    <li>Correo electrónico</li>
-                    <li>Herramientas digitales básicas</li>
-                </ul>
-            </div>
-            <div class="alert-box">
-                <strong>⚠️ Aclaraciones Importantes:</strong><br>
-                • Si no cumple con el perfil, NO envíe hoja de vida<br>
-                • El envío no garantiza contratación<br>
-                • Verificación obligatoria de antecedentes cada 4 meses (Ley 2375 de 2024)<br>
-                • Documentos educativos serán verificados con las instituciones
-            </div>
-            <div class="action-buttons">
-                <a href="mailto:convocatoriaprosaludyvida@gmail.com" class="btn btn-success">📧 Enviar Postulación</a>
-            </div>
-        `;
+        function generarPostularHTML(municipio) {
+            const correo = CORREOS_MUNICIPIOS[municipio];
+            return `
+                <div class="form-container">
+                    <p style="text-align:center;margin-bottom:1rem;font-size:1.2rem;font-weight:600;color:#667eea">📋 Encuesta de Preselección</p>
+                    <iframe class="form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScK6D9UhIEMnHeh3mQV7sBpnWnjtwdwtSiwSLjkDEEbKc0TCw/viewform?embedded=true"></iframe>
+                </div>
+                <div class="info-box">
+                    <h3>📧 Instrucciones para Envío de Hoja de Vida</h3>
+                    <ul class="info-list">
+                        <li>Hoja de vida en formato único actualizado</li>
+                        <li>Asunto del correo: <strong>"Aspirante [CARGO] - ${municipio} - [NOMBRE COMPLETO]"</strong></li>
+                        <li>Enviar a: <strong style="color:#667eea">${correo}</strong></li>
+                        <li>No se aceptarán postulaciones incompletas</li>
+                    </ul>
+                </div>
+                <div class="doc-section">
+                    <h4>📄 Documentos Requeridos</h4>
+                    <ul class="info-list">
+                        <li>Diplomas y actas de grado autenticados</li>
+                        <li>Tarjeta profesional (si aplica)</li>
+                        <li>Certificado RETHUS (psicólogos, nutricionistas, enfermeras)</li>
+                        <li>Certificados laborales en orden cronológico</li>
+                        <li>Cédula de ciudadanía legible</li>
+                        <li>RUT actualizado 2025-2026</li>
+                        <li>Antecedentes: Procuraduría, Contraloría, Policía Nacional (2026)</li>
+                        <li>Certificado RNMC 2026</li>
+                        <li>Consulta registro de inhabilidades por delitos sexuales</li>
+                    </ul>
+                </div>
+                <div class="doc-section">
+                    <h4>💻 Conocimientos Informáticos Requeridos</h4>
+                    <ul class="info-list">
+                        <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                        <li>Navegadores de internet</li>
+                        <li>Correo electrónico</li>
+                        <li>Herramientas digitales básicas</li>
+                    </ul>
+                </div>
+                <div class="alert-box">
+                    <strong>⚠️ Aclaraciones Importantes:</strong><br>
+                    • Si no cumple con el perfil, NO envíe hoja de vida<br>
+                    • El envío no garantiza contratación<br>
+                    • Verificación obligatoria de antecedentes cada 4 meses (Ley 2375 de 2024)<br>
+                    • Documentos educativos serán verificados con las instituciones
+                </div>
+                <div class="action-buttons">
+                    <a href="mailto:${correo}" class="btn btn-success">📧 Enviar Postulación</a>
+                </div>
+            `;
+        }
 
         function crearTarjetaRol(rol) {
             let html = `<div class="role-card"><h3>${rol.t}</h3>`;
@@ -243,14 +251,14 @@
             
             document.getElementById('aguazul-cdi').innerHTML = cdiHTML;
             document.getElementById('aguazul-hogar').innerHTML = hogarHTML;
-            document.getElementById('aguazul-postular').innerHTML = POSTULAR_HTML.replace('[MUNICIPIO]', 'Aguazul');
+            document.getElementById('aguazul-postular').innerHTML = generarPostularHTML('Aguazul');
             
             document.getElementById('chameza-cdi').innerHTML = cdiHTML;
             document.getElementById('chameza-hogar').innerHTML = hogarHTML;
-            document.getElementById('chameza-postular').innerHTML = POSTULAR_HTML.replace('[MUNICIPIO]', 'Chameza');
+            document.getElementById('chameza-postular').innerHTML = generarPostularHTML('Chameza');
             
             document.getElementById('recetor-hogar').innerHTML = hogarHTML;
-            document.getElementById('recetor-postular').innerHTML = POSTULAR_HTML.replace('[MUNICIPIO]', 'Recetor');
+            document.getElementById('recetor-postular').innerHTML = generarPostularHTML('Recetor');
         }
 
         function selectMunicipio(mun) {

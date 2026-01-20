@@ -77,17 +77,158 @@
             transform: translateY(-2px);
         }
 
-        .parpadeo-color {
-            animation: parpadeoColor 2s infinite;
+        /* Estilos para ambas convocatorias */
+        .parpadeo-color-1 {
+            animation: parpadeoColor1 2s infinite;
+            background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+            font-weight: 600;
+            z-index: 10;
+            position: relative;
+        }
+
+        .parpadeo-color-2 {
+            animation: parpadeoColor2 2s infinite;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-weight: 600;
             z-index: 10;
             position: relative;
         }
 
-        @keyframes parpadeoColor {
+        @keyframes parpadeoColor1 {
+            0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(243,156,18,0.5); }
+            50% { opacity: 0.7; box-shadow: 0 0 25px rgba(231,76,60,0.7); }
+        }
+
+        @keyframes parpadeoColor2 {
             0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(102,126,234,0.5); }
             50% { opacity: 0.7; box-shadow: 0 0 25px rgba(118,75,162,0.7); }
+        }
+
+        /* Banner Flotante de Convocatoria */
+        .banner-flotante {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(238,90,111,0.4);
+            z-index: 999;
+            max-width: 350px;
+            animation: slideInBounce 1s ease-out, pulse 3s ease-in-out 1s infinite;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .banner-flotante:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(238,90,111,0.6);
+        }
+
+        .banner-cerrar {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(255,255,255,0.3);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-cerrar:hover {
+            background: rgba(255,255,255,0.5);
+            transform: rotate(90deg);
+        }
+
+        .banner-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .banner-titulo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .banner-mensaje {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .banner-botones {
+            display: flex;
+            gap: 0.5rem;
+            flex-direction: column;
+        }
+
+        .banner-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .banner-btn:hover {
+            background: white;
+            color: #ff6b6b;
+            transform: scale(1.05);
+        }
+
+        @keyframes slideInBounce {
+            0% {
+                opacity: 0;
+                transform: translateX(400px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateX(-20px);
+            }
+            80% {
+                transform: translateX(10px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .banner-oculto {
+            display: none;
         }
 
         /* Hero Section Mejorado */
@@ -265,12 +406,12 @@
             font-size: 1.8rem;
         }
 
-        #nosotros .card h3::before { content: ''; }
-        #mision .card:nth-child(1) h3::before { content: ''; }
-        #mision .card:nth-child(2) h3::before { content: ''; }
-        #servicios .card:nth-child(1) h3::before { content: ''; }
-        #servicios .card:nth-child(2) h3::before { content: ''; }
-        #servicios .card:nth-child(3) h3::before { content: ''; }
+        #nosotros .card h3::before { content: '🏢'; }
+        #mision .card:nth-child(1) h3::before { content: '🎯'; }
+        #mision .card:nth-child(2) h3::before { content: '🔭'; }
+        #servicios .card:nth-child(1) h3::before { content: '🍎'; }
+        #servicios .card:nth-child(2) h3::before { content: '📚'; }
+        #servicios .card:nth-child(3) h3::before { content: '🤝'; }
 
         .card p {
             color: #555;
@@ -278,7 +419,7 @@
             font-size: 1.05rem;
         }
 
-        /* Secci��n Destacada */
+        /* Sección Destacada */
         .destacado {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -365,6 +506,14 @@
                 width: 100%;
                 max-width: 300px;
             }
+
+            .banner-flotante {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                max-width: none;
+            }
         }
 
         /* Animaciones adicionales */
@@ -393,15 +542,29 @@
     </style>
 </head>
 <body>
+    <!-- Banner Flotante de Convocatoria -->
+    <div class="banner-flotante" id="bannerFlotante">
+        <button class="banner-cerrar" onclick="cerrarBanner()">×</button>
+        <div class="banner-icon">🎉</div>
+        <div class="banner-titulo">¡Estamos de Convocatoria!</div>
+        <div class="banner-mensaje">
+            Revisa bien las oportunidades disponibles. ¡No dejes de participar! Únete a nuestro equipo y marca la diferencia.
+        </div>
+        <div class="banner-botones">
+            <a href="postulacion1.html" class="banner-btn">Ver Convocatoria 1</a>
+            <a href="postulacion2.html" class="banner-btn">Ver Convocatoria 2</a>
+        </div>
+    </div>
+
     <header>
         <nav class="container">
-            <div class="logo">Proalimentar Salud y Vida</div>
+            <div class="logo">🌱 Proalimentar Salud y Vida</div>
             <ul>
                 <li><a href="#nosotros">Quienes Somos</a></li>
-                <li><a href="#mision">Mision y Vision</a></li>
+                <li><a href="#mision">Misión y Visión</a></li>
                 <li><a href="#servicios">Servicios</a></li>
-                <li><a href="postulacion1.html">Convocatoria 1</a></li>
-                <li><a href="postulacion2.html" class="parpadeo-color">Convocatoria 2</a></li>
+                <li><a href="postulacion1.html" class="parpadeo-color-1">📋 Convocatoria 1</a></li>
+                <li><a href="postulacion2.html" class="parpadeo-color-2">📋 Convocatoria 2</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -410,7 +573,7 @@
     <section class="hero">
         <div class="hero-content container">
             <h1>Nutriendo el Futuro de la Primera Infancia</h1>
-            <p>Programas integrales de alimentacion y desarrollo infantil</p>
+            <p>Programas integrales de alimentación y desarrollo infantil</p>
             <div class="hero-buttons">
                 <a href="#convocatorias" class="hero-btn btn-primary">Ver Convocatorias</a>
                 <a href="#servicios" class="hero-btn btn-outline">Nuestros Servicios</a>
@@ -421,11 +584,11 @@
     <section id="convocatorias" class="section">
         <div class="container">
             <div class="destacado">
-                <h3>Unete a Nuestro Equipo!</h3>
-                <p>Tenemos convocatorias abiertas en multiples municipios</p>
+                <h3>¡Únete a Nuestro Equipo!</h3>
+                <p>Tenemos convocatorias abiertas en múltiples municipios</p>
                 <div class="hero-buttons">
-                    <a href="postulacion1.html" class="hero-btn btn-outline">Ver Yopal - Casanare</a>
-                    <a href="postulacion2.html" class="hero-btn btn-outline">Ver Multi-Municipio</a>
+                    <a href="postulacion1.html" class="hero-btn btn-outline">🏙️ Ver Yopal - Casanare</a>
+                    <a href="postulacion2.html" class="hero-btn btn-outline">🏘️ Ver Multi-Municipio</a>
                 </div>
             </div>
         </div>
@@ -437,7 +600,7 @@
             <div class="card-container">
                 <div class="card">
                     <h3>Nuestra Empresa</h3>
-                    <p>Somos una compania colombiana especializada en servicios de alimentacion y suministros para empresas publicas y privadas. Contamos con un equipo profesional comprometido con la excelencia y satisfaccion de nuestros clientes, brindando soluciones integrales que marcan la diferencia en cada proyecto que emprendemos.</p>
+                    <p>Somos una compañía colombiana especializada en servicios de alimentación y suministros para empresas públicas y privadas. Contamos con un equipo profesional comprometido con la excelencia y satisfacción de nuestros clientes, brindando soluciones integrales que marcan la diferencia en cada proyecto que emprendemos.</p>
                 </div>
             </div>
         </div>
@@ -445,15 +608,15 @@
 
     <section id="mision" class="section">
         <div class="container">
-            <h2>Mision y Vision</h2>
+            <h2>Misión y Visión</h2>
             <div class="card-container">
                 <div class="card">
-                    <h3>Mision</h3>
-                    <p>Brindar servicios de alimentacion eficientes y de excelente calidad para instituciones educativas y empresas, garantizando nutricion balanceada y contribuyendo al desarrollo integral de las comunidades que atendemos.</p>
+                    <h3>Misión</h3>
+                    <p>Brindar servicios de alimentación eficientes y de excelente calidad para instituciones educativas y empresas, garantizando nutrición balanceada y contribuyendo al desarrollo integral de las comunidades que atendemos.</p>
                 </div>
                 <div class="card">
-                    <h3>Vision</h3>
-                    <p>Ser reconocidos como lideres en servicios de alimentacion mediante innovacion, calidad excepcional y compromiso social, expandiendo nuestro impacto positivo en el sector educativo y empresarial a nivel nacional.</p>
+                    <h3>Visión</h3>
+                    <p>Ser reconocidos como líderes en servicios de alimentación mediante innovación, calidad excepcional y compromiso social, expandiendo nuestro impacto positivo en el sector educativo y empresarial a nivel nacional.</p>
                 </div>
             </div>
         </div>
@@ -464,16 +627,16 @@
             <h2>Nuestros Servicios</h2>
             <div class="card-container">
                 <div class="card">
-                    <h3>Alimentacion Infantil</h3>
-                    <p>Programas nutricionales especializados para la primera infancia, disenados por expertos en nutricion y desarrollo infantil, garantizando alimentos balanceados y de alta calidad.</p>
+                    <h3>Alimentación Infantil</h3>
+                    <p>Programas nutricionales especializados para la primera infancia, diseñados por expertos en nutrición y desarrollo infantil, garantizando alimentos balanceados y de alta calidad.</p>
                 </div>
                 <div class="card">
-                    <h3>Capacitacion Educativa</h3>
-                    <p>Formacion continua en desarrollo infantil y nutricion para nuestro equipo y las comunidades, promoviendo las mejores practicas en atencion a la primera infancia.</p>
+                    <h3>Capacitación Educativa</h3>
+                    <p>Formación continua en desarrollo infantil y nutrición para nuestro equipo y las comunidades, promoviendo las mejores prácticas en atención a la primera infancia.</p>
                 </div>
                 <div class="card">
                     <h3>Apoyo Comunitario</h3>
-                    <p>Implementacion de proyectos sociales integrales que benefician a las familias y comunidades, generando impacto positivo y desarrollo sostenible en cada region donde operamos.</p>
+                    <p>Implementación de proyectos sociales integrales que benefician a las familias y comunidades, generando impacto positivo y desarrollo sostenible en cada región donde operamos.</p>
                 </div>
             </div>
         </div>
@@ -482,11 +645,31 @@
     <footer id="contacto">
         <div class="container">
             <h3>Contacto</h3>
-            <p><span class="footer-icon">Tel:</span> +573164218351</p>
-            <p><span class="footer-icon">Email:</span> corporacionproalimentar2023@gmail.com</p>
-            <p><span class="footer-icon">Ubicacion:</span> Aguachica, Colombia</p>
-            <p style="margin-top: 2rem; opacity: 0.8;">2026 Corporacion Proalimentar Salud Y Vida - Todos los derechos reservados</p>
+            <p><span class="footer-icon">📞</span> Tel: +573164218351</p>
+            <p><span class="footer-icon">📧</span> Email: corporacionproalimentar2023@gmail.com</p>
+            <p><span class="footer-icon">📍</span> Ubicación: Aguachica, Colombia</p>
+            <p style="margin-top: 2rem; opacity: 0.8;">© 2026 Corporación Proalimentar Salud Y Vida - Todos los derechos reservados</p>
         </div>
     </footer>
+
+    <script>
+        function cerrarBanner() {
+            document.getElementById('bannerFlotante').classList.add('banner-oculto');
+            // Guardar en localStorage para que no aparezca nuevamente en esta sesión
+            localStorage.setItem('bannerCerrado', 'true');
+        }
+
+        // Verificar si el banner fue cerrado previamente
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('bannerCerrado') === 'true') {
+                document.getElementById('bannerFlotante').classList.add('banner-oculto');
+            }
+        });
+
+        // Opcional: Limpiar el localStorage después de 24 horas
+        setTimeout(function() {
+            localStorage.removeItem('bannerCerrado');
+        }, 24 * 60 * 60 * 1000);
+    </script>
 </body>
 </html>

@@ -22,7 +22,7 @@
         header {
             background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%);
             color: white;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             position: sticky;
             top: 0;
@@ -47,7 +47,13 @@
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
 
         nav ul {
@@ -64,12 +70,13 @@
         nav ul li a {
             color: white;
             text-decoration: none;
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 1.2rem;
             border-radius: 25px;
             transition: all 0.3s;
             font-weight: 500;
             display: inline-block;
             white-space: nowrap;
+            font-size: 0.95rem;
         }
 
         nav ul li a:hover {
@@ -107,7 +114,7 @@
         /* Banner Flotante de Convocatoria */
         .banner-flotante {
             position: fixed;
-            top: 80px;
+            top: 100px;
             right: 20px;
             background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
             color: white;
@@ -356,145 +363,127 @@
 
         .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
 
         .card {
             background: white;
             padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.4s;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #2c5f2d, #667eea);
-            transform: scaleX(0);
-            transition: transform 0.4s;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-            border-color: #667eea;
-        }
-
-        .card:hover::before {
-            transform: scaleX(1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #2c5f2d;
         }
 
         .card h3 {
             color: #2c5f2d;
+            margin-bottom: 1.2rem;
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .card h3::before {
-            font-size: 1.8rem;
-        }
-
-        #nosotros .card h3::before { content: '🏢'; }
-        #mision .card:nth-child(1) h3::before { content: '🎯'; }
-        #mision .card:nth-child(2) h3::before { content: '🔭'; }
-        #servicios .card:nth-child(1) h3::before { content: '🍎'; }
-        #servicios .card:nth-child(2) h3::before { content: '📚'; }
-        #servicios .card:nth-child(3) h3::before { content: '🤝'; }
-
-        .card p {
-            color: #555;
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        /* Sección Destacada */
         .destacado {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%);
             color: white;
+            padding: 4rem;
+            border-radius: 30px;
             text-align: center;
-            padding: 4rem 2rem;
-            margin: 3rem 0;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(102,126,234,0.3);
+            margin-top: 3rem;
+            box-shadow: 0 20px 50px rgba(44,95,45,0.3);
         }
 
         .destacado h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .destacado p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+        /* Galería de Fotos */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
 
         /* Footer Mejorado */
         footer {
-            background: linear-gradient(135deg, #1e4620 0%, #2c5f2d 100%);
+            background: #1a1a1a;
             color: white;
+            padding: 4rem 0 2rem;
             text-align: center;
-            padding: 3rem 0;
-            margin-top: 0;
-        }
-
-        footer h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        footer p {
-            margin: 0.8rem 0;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
         }
 
         .footer-icon {
-            font-size: 1.3rem;
+            margin-right: 10px;
+            color: #667eea;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             nav {
                 flex-direction: column;
-                text-align: center;
-                gap: 1rem;
+                gap: 1.5rem;
             }
-
+            
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
+        }
 
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-
-            .card-container {
-                grid-template-columns: 1fr;
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
             }
 
             .hero-buttons {
@@ -558,11 +547,15 @@
 
     <header>
         <nav class="container">
-            <div class="logo">🌱 Proalimentar Salud y Vida</div>
+            <div class="logo">
+                <img src="logo_proalimentar.png" alt="Logo Proalimentar">
+                <span>Proalimentar Salud y Vida</span>
+            </div>
             <ul>
-                <li><a href="#nosotros">Quienes Somos</a></li>
-                <li><a href="#mision">Misión y Visión</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#mision">Misión</a></li>
                 <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
                 <li><a href="postulacion1.html" class="parpadeo-color-1">📋 Convocatoria 1</a></li>
                 <li><a href="postulacion2.html" class="parpadeo-color-2">📋 Convocatoria 2</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -642,6 +635,38 @@
         </div>
     </section>
 
+    <section id="galeria" class="section">
+        <div class="container">
+            <h2>Nuestra Galería</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800" alt="Niños felices">
+                    <div class="gallery-overlay"><span>Compromiso con la infancia</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800" alt="Alimentación saludable">
+                    <div class="gallery-overlay"><span>Nutrición balanceada</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?w=800" alt="Equipo de trabajo">
+                    <div class="gallery-overlay"><span>Nuestro equipo profesional</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800" alt="Capacitación">
+                    <div class="gallery-overlay"><span>Capacitación constante</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800" alt="Comunidad">
+                    <div class="gallery-overlay"><span>Impacto comunitario</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800" alt="Desarrollo">
+                    <div class="gallery-overlay"><span>Desarrollo integral</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer id="contacto">
         <div class="container">
             <h3>Contacto</h3>
@@ -655,18 +680,15 @@
     <script>
         function cerrarBanner() {
             document.getElementById('bannerFlotante').classList.add('banner-oculto');
-            // Guardar en localStorage para que no aparezca nuevamente en esta sesión
             localStorage.setItem('bannerCerrado', 'true');
         }
 
-        // Verificar si el banner fue cerrado previamente
         window.addEventListener('load', function() {
             if (localStorage.getItem('bannerCerrado') === 'true') {
                 document.getElementById('bannerFlotante').classList.add('banner-oculto');
             }
         });
 
-        // Opcional: Limpiar el localStorage después de 24 horas
         setTimeout(function() {
             localStorage.removeItem('bannerCerrado');
         }, 24 * 60 * 60 * 1000);

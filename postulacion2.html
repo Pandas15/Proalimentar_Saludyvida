@@ -49,8 +49,6 @@
         .info-list{list-style:none}
         .info-list li{padding:0.5rem 0;padding-left:1.5rem;position:relative;line-height:1.6}
         .info-list li::before{content:'✓';position:absolute;left:0;color:#667eea;font-weight:bold}
-        .doc-section{background-color:#fff;border:2px solid #e0e0e0;border-radius:10px;padding:1.5rem;margin:1.5rem 0}
-        .doc-section h4{color:#667eea;margin-bottom:1rem;font-size:1.1rem}
         .form-container{margin:2rem 0;padding:1.5rem;background-color:#f8f9fa;border-radius:10px}
         .form-iframe{width:100%;height:1200px;border:none;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1);margin-top:1rem}
         .action-buttons{display:flex;gap:1rem;justify-content:center;margin:2rem 0;flex-wrap:wrap}
@@ -166,6 +164,132 @@
             z-index: 1;
         }
 
+        /* NUEVOS ESTILOS: Secciones con línea vertical (como en la imagen) */
+        .email-header {
+            background-color: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .email-header p {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            word-break: break-all;
+        }
+
+        .email-header-note {
+            color: #667eea;
+            font-size: 0.95rem;
+            margin-top: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .email-header-note::before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .doc-section-new {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .doc-section-header {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .doc-section-header h4 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .doc-section-header-icon {
+            font-size: 1.8rem;
+        }
+
+        .doc-section-content {
+            padding: 1.5rem;
+            border-left: 5px solid #667eea;
+        }
+
+        .doc-item-new {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            align-items: flex-start;
+        }
+
+        .doc-item-check {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .doc-item-text {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .doc-item-text strong {
+            color: #667eea;
+        }
+
+        .doc-link-new {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .doc-link-new:hover {
+            text-decoration: underline;
+        }
+
+        .incomplete-warning {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            color: #856404;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .incomplete-warning::before {
+            content: '⚠️';
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
         @media (max-width:768px){
             .municipio-selector{grid-template-columns:1fr}
             .roles-grid{grid-template-columns:1fr}
@@ -176,6 +300,10 @@
             .step { display: flex; align-items: center; gap: 1rem; }
             .step-number { margin: 0; }
             .floating-mascot { display: none; }
+            .doc-section-header {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -202,22 +330,22 @@
             <h2 style="text-align:center;color:white;margin-bottom:2rem">Seleccione su Municipio</h2>
             <div class="municipio-selector">
                 <div class="municipio-card" onclick="selectMunicipio('aguazul')" id="card-aguazul">
-                    <div class="municipio-icon">🏘️</div>
+                    <div class="municipio-icon">🏛️</div>
                     <div class="municipio-name">Aguazul</div>
-                    <div class="municipio-modalidades">📚 CDI<br>🏠 Educación Inicial</div>
-                    <span class="status-badge status-active">✓ Activa</span>
+                    <div class="municipio-modalidades">CDI - Educación Inicial</div>
+                    <span class="status-badge status-active">✅ Abierta</span>
                 </div>
                 <div class="municipio-card" onclick="selectMunicipio('chameza')" id="card-chameza">
                     <div class="municipio-icon">🏘️</div>
                     <div class="municipio-name">Chameza</div>
-                    <div class="municipio-modalidades">📚 CDI<br>🏠 Educación Inicial</div>
-                    <span class="status-badge status-active">✓ Activa</span>
+                    <div class="municipio-modalidades">CDI - Educación Inicial</div>
+                    <span class="status-badge status-active">✅ Abierta</span>
                 </div>
                 <div class="municipio-card" onclick="selectMunicipio('recetor')" id="card-recetor">
-                    <div class="municipio-icon">🏘️</div>
+                    <div class="municipio-icon">🏞️</div>
                     <div class="municipio-name">Recetor</div>
-                    <div class="municipio-modalidades">🏠 Educación Inicial</div>
-                    <span class="status-badge status-active">✓ Activa</span>
+                    <div class="municipio-modalidades">Educación Inicial</div>
+                    <span class="status-badge status-active">✅ Abierta</span>
                 </div>
             </div>
         </div>
@@ -229,7 +357,7 @@
             </div>
             <h2 class="section-title">Convocatoria Aguazul</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('aguazul','cdi')">📚 CDI</button>
+                <button class="modalidad-tab active" onclick="showModalidad('aguazul','cdi')">🏫 CDI</button>
                 <button class="modalidad-tab" onclick="showModalidad('aguazul','hogar')">🏠 Educación Inicial</button>
                 <button class="modalidad-tab" onclick="showModalidad('aguazul','postular')">📝 Postular</button>
             </div>
@@ -245,7 +373,7 @@
             </div>
             <h2 class="section-title">Convocatoria Chameza</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('chameza','cdi')">📚 CDI</button>
+                <button class="modalidad-tab active" onclick="showModalidad('chameza','cdi')">🏫 CDI</button>
                 <button class="modalidad-tab" onclick="showModalidad('chameza','hogar')">🏠 Educación Inicial</button>
                 <button class="modalidad-tab" onclick="showModalidad('chameza','postular')">📝 Postular</button>
             </div>
@@ -327,8 +455,177 @@
                 <div class="warning-banner">
                     <span class="warning-icon">⚠️</span>
                     <div>
-                        REQUISITO OBLIGATORIO: Para que su postulación sea válida, debe completar la ENCUESTA y enviar su HOJA DE VIDA al correo. Una acción depende de la otra.
+                        REQUISITO OBLIGATORIO: Para que su postulación sea válida, debe completar la ENCUESTA y enviar su HOJA DE VIDA con TODOS los documentos requeridos al correo. Una acción depende de la otra.
                     </div>
+                </div>
+            `;
+        }
+
+        function getDocumentosRequeridosHTML() {
+            return `
+                <div class="doc-section-new">
+                    <div class="doc-section-header">
+                        <div class="doc-section-header-icon">📋</div>
+                        <h4>Documentos Requeridos</h4>
+                    </div>
+                    <div class="doc-section-content">
+                        <div class="incomplete-warning">No se aceptarán postulaciones incompletas</div>
+
+                        <h5 style="color:#667eea;font-size:1.1rem;margin:1.5rem 0 1rem 0;font-weight:600">🏛️ Certificados de Antecedentes (OBLIGATORIOS)</h5>
+                        
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text">
+                                <strong>Antecedentes Judiciales</strong> - Policía Nacional de Colombia
+                                <a href="https://antecedentes.policia.gov.co" target="_blank" class="doc-link-new">🔗 Descargar</a>
+                            </div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text">
+                                <strong>Antecedentes Disciplinarios</strong> - Procuraduría General de la Nación
+                                <a href="https://www.procuraduria.gov.co/portal/antecedentes.html" target="_blank" class="doc-link-new">🔗 Descargar</a>
+                            </div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text">
+                                <strong>Antecedentes Fiscales</strong> - Contraloría General de la República
+                                <a href="https://www.contraloria.gov.co/" target="_blank" class="doc-link-new">🔗 Descargar</a>
+                            </div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text">
+                                <strong>Responsabilidad Fiscal</strong> - Contraloría General de la República
+                                <a href="https://www.contraloria.gov.co/" target="_blank" class="doc-link-new">🔗 Descargar</a>
+                            </div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text">
+                                <strong>Medidas Correctivas</strong> - Policía Nacional
+                                <a href="https://antecedentes.policia.gov.co" target="_blank" class="doc-link-new">🔗 Descargar</a>
+                            </div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text">
+                                <strong>Registro de Inhabilidades por Delitos Sexuales</strong> - ICBF
+                                <a href="https://www.icbf.gov.co/" target="_blank" class="doc-link-new">🔗 Consultar</a>
+                            </div>
+                        </div>
+
+                        <h5 style="color:#667eea;font-size:1.1rem;margin:1.5rem 0 1rem 0;font-weight:600">👤 Documentos Personales (OBLIGATORIOS)</h5>
+                        
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Cédula de ciudadanía</strong> legible (ambas caras)</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Libreta militar</strong> (hombres menores de 50 años)</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Certificado de afiliación EPS</strong> vigente</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Certificado de afiliación AFP</strong> vigente</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>RUT actualizado</strong> 2025-2026</div>
+                        </div>
+
+                        <h5 style="color:#667eea;font-size:1.1rem;margin:1.5rem 0 1rem 0;font-weight:600">🎓 Documentos Académicos (OBLIGATORIOS)</h5>
+                        
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text">
+                                <strong>Hoja de vida formato único</strong> actualizada
+                                <a href="https://www.funcionpublica.gov.co/formato-unico-hoja-de-vida" target="_blank" class="doc-link-new">🔗 Descargar</a>
+                            </div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Diplomas y actas de grado</strong></div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Tarjeta profesional</strong> (si aplica)</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Certificados laborales</strong> en orden cronológico</div>
+                        </div>
+
+                        <h5 style="color:#667eea;font-size:1.1rem;margin:1.5rem 0 1rem 0;font-weight:600">🏥 Certificados Especiales (SEGÚN CARGO)</h5>
+                        
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Certificado RETHUS</strong> (psicólogos, nutricionistas, enfermeras)</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Certificado de manipulación de alimentos</strong> vigente</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Certificado médico de aptitud laboral</strong> expedido por médico ocupacional</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Esquema de vacunación completo</strong> (incluir COVID-19)</div>
+                        </div>
+
+                        <h5 style="color:#667eea;font-size:1.1rem;margin:1.5rem 0 1rem 0;font-weight:600">📝 Otros Documentos (OBLIGATORIOS)</h5>
+                        
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Declaración juramentada</strong> de no tener inhabilidades o incompatibilidades</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text">
+                                <strong>Consulta SIMIT</strong> (sin multas de tránsito)
+                                <a href="https://www.simit.org.co/" target="_blank" class="doc-link-new">🔗 Consultar</a>
+                            </div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Autorización de tratamiento de datos</strong> personales firmada</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background-color:#e3f2fd;border-left:5px solid #2196f3;padding:1.5rem;border-radius:8px;margin:1.5rem 0">
+                    <p style="color:#1565c0;font-weight:600;margin-bottom:0.8rem;font-size:1rem">💡 Recomendaciones Importantes:</p>
+                    <ul style="list-style:none;color:#555;font-size:0.95rem;line-height:1.8">
+                        <li style="margin-bottom:0.5rem">✓ Todos los documentos en formato PDF</li>
+                        <li style="margin-bottom:0.5rem">✓ Copias legibles y de buena calidad</li>
+                        <li style="margin-bottom:0.5rem">✓ Vigencia máxima de 3 meses desde expedición</li>
+                        <li style="margin-bottom:0.5rem">✓ Nombres de archivos claros y descriptivos</li>
+                        <li style="margin-bottom:0.5rem">✓ Puede comprimir en archivo .ZIP si son muchos</li>
+                    </ul>
                 </div>
             `;
         }
@@ -338,21 +635,32 @@
             return `
                 ${getTimelineHTML(2)}
                 ${getWarningHTML()}
+                
+                <div class="email-header">
+                    <p>${correo}</p>
+                    <div class="email-header-note">No se aceptarán postulaciones incompletas</div>
+                </div>
+
                 <div class="form-container">
                     <p style="text-align:center;margin-bottom:1rem;font-size:1.2rem;font-weight:600;color:#667eea">📋 PASO 1: Encuesta de Preselección</p>
                     <iframe class="form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScK6D9UhIEMnHeh3mQV7sBpnWnjtwdwtSiwSLjkDEEbKc0TCw/viewform?embedded=true"></iframe>
                 </div>
+                
+                ${getDocumentosRequeridosHTML()}
+                
                 <div class="info-box">
-                    <h3>📧 PASO 2: Envío de Hoja de Vida (Obligatorio)</h3>
-                    <p style="color:#d32f2f; font-weight:bold; margin-bottom:10px;">⚠️ No olvide este paso. Si solo llena la encuesta, su postulación NO será tenida en cuenta.</p>
+                    <h3>📧 PASO 2: Envío de Documentos (OBLIGATORIO)</h3>
+                    <p style="color:#d32f2f; font-weight:bold; margin-bottom:15px;">⚠️ Si solo llena la encuesta, su postulación NO será tenida en cuenta.</p>
                     <ul class="info-list">
-                        <li>Hoja de vida en formato único actualizado</li>
-                        <li>Asunto del correo: <strong>"Aspirante [CARGO] - ${municipio} - [NOMBRE COMPLETO]_Modalidad"</strong></li>
+                        <li>Adjunte TODOS los documentos listados anteriormente</li>
+                        <li>Asunto: <strong>"Aspirante [CARGO] - ${municipio} - [NOMBRE]_Modalidad"</strong></li>
+                        <li>Ejemplo: "Aspirante Coordinador - Aguazul - María López_CDI"</li>
                         <li>Enviar a: <strong style="color:#667eea">${correo}</strong></li>
+                        <li>En el cuerpo: Nombre completo, cédula, teléfono y cargo</li>
                     </ul>
                 </div>
                 <div class="action-buttons">
-                    <a href="mailto:${correo}" class="btn btn-success">📧 Enviar Hoja de Vida Ahora (Finalizar)</a>
+                    <a href="mailto:${correo}" class="btn btn-success">📧 Enviar Documentos Ahora (Finalizar)</a>
                 </div>
             `;
         }
@@ -427,4 +735,3 @@
     </script>
 </body>
 </html>
-

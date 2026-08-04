@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convocatoria Aguazul, Chameza y Recetor</title>
+    <title>Convocatoria Maní, Nunchía, Orocué y San Luis de Palenque</title>
     <style>
         * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
         body{line-height:1.6;color:#333;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding-bottom:150px;overflow-x:hidden}
@@ -23,6 +23,11 @@
         .status-badge{display:inline-block;padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem;font-weight:600;margin-top:0.8rem}
         .status-active{background-color:#28a745;color:white}
         .status-inactive{background-color:#dc3545;color:white}
+        .read-guide{background:rgba(255,255,255,0.96);border-left:5px solid #28a745;border-radius:12px;padding:1rem 1.2rem;margin:0 auto 2rem;max-width:900px;display:flex;align-items:center;gap:1rem;box-shadow:0 8px 22px rgba(0,0,0,0.12)}
+        .read-guide-icon{font-size:2rem;color:#28a745;animation:arrowBounce 1.2s infinite;line-height:1}
+        .read-guide-text{color:#2c3e50;font-weight:600;font-size:1rem;line-height:1.5}
+        .read-guide-text span{display:block;color:#667eea;font-size:0.92rem;font-weight:500;margin-top:0.2rem}
+        @keyframes arrowBounce{0%,100%{transform:translateY(-4px)}50%{transform:translateY(7px)}}
         .municipio-content{display:none;background-color:white;border-radius:15px;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.1);animation:fadeIn 0.5s}
         .municipio-content.active{display:block}
         @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -300,6 +305,8 @@
             .step { display: flex; align-items: center; gap: 1rem; }
             .step-number { margin: 0; }
             .floating-mascot { display: none; }
+            .read-guide{align-items:flex-start;margin-bottom:1.5rem}
+            .read-guide-icon{font-size:1.8rem}
             .doc-section-header {
                 flex-direction: column;
                 text-align: center;
@@ -316,84 +323,118 @@
     <header class="header">
         <div class="child-decoration" style="top:10px; left:10px">🎨</div>
         <div class="child-decoration" style="top:10px; right:10px">🧩</div>
-        <h1>Convocatoria Multi-Municipio</h1>
+        <h1>Convocatoria Multi-Municipio 3</h1>
         <p class="subtitle">Corporación Proalimentar Salud Y Vida</p>
         <div class="location-badges">
-            <span class="location-badge">📍 Aguazul</span>
-            <span class="location-badge">📍 Chameza</span>
-            <span class="location-badge">📍 Recetor</span>
+            <span class="location-badge">📍 Maní</span>
+            <span class="location-badge">📍 Nunchía</span>
+            <span class="location-badge">📍 Orocué</span>
+            <span class="location-badge">📍 San Luis de Palenque</span>
         </div>
     </header>
 
     <div class="container">
         <div id="selector-principal">
             <h2 style="text-align:center;color:white;margin-bottom:2rem">Seleccione su Municipio</h2>
+            <div class="read-guide">
+                <div class="read-guide-icon">↓</div>
+                <div class="read-guide-text">
+                    Lea toda la información antes de postularse.
+                    <span>Primero seleccione el municipio, luego revise cargos, modalidad, documentos y correo de envío.</span>
+                </div>
+            </div>
             <div class="municipio-selector">
-                <div class="municipio-card" onclick="selectMunicipio('aguazul')" id="card-aguazul">
+                <div class="municipio-card" onclick="selectMunicipio('mani')" id="card-mani">
                     <div class="municipio-icon">🏛️</div>
-                    <div class="municipio-name">Aguazul</div>
+                    <div class="municipio-name">Maní</div>
                     <div class="municipio-modalidades">CDI - Educación Inicial</div>
-                    <span class="status-badge status-inactive">⏰ Cerrada</span>
+                    <span class="status-badge status-active">✅ Abierta</span>
                 </div>
-                <div class="municipio-card" onclick="selectMunicipio('chameza')" id="card-chameza">
+                <div class="municipio-card" onclick="selectMunicipio('nunchia')" id="card-nunchia">
                     <div class="municipio-icon">🏘️</div>
-                    <div class="municipio-name">Chameza</div>
-                    <div class="municipio-modalidades">CDI - Educación Inicial</div>
-                    <span class="status-badge status-inactive">⏰ Cerrada</span>
+                    <div class="municipio-name">Nunchía</div>
+                    <div class="municipio-modalidades">CDI - Educación Inicial - Campesina</div>
+                    <span class="status-badge status-active">✅ Abierta</span>
                 </div>
-                <div class="municipio-card" onclick="selectMunicipio('recetor')" id="card-recetor">
+                <div class="municipio-card" onclick="selectMunicipio('orocue')" id="card-orocue">
                     <div class="municipio-icon">🏞️</div>
-                    <div class="municipio-name">Recetor</div>
-                    <div class="municipio-modalidades">Educación Inicial</div>
-                    <span class="status-badge status-inactive">⏰ Cerrada</span>
+                    <div class="municipio-name">Orocué</div>
+                    <div class="municipio-modalidades">CDI - Educación Inicial</div>
+                    <span class="status-badge status-active">✅ Abierta</span>
+                </div>
+                <div class="municipio-card" onclick="selectMunicipio('sanluis')" id="card-sanluis">
+                    <div class="municipio-icon">🌾</div>
+                    <div class="municipio-name">San Luis de Palenque</div>
+                    <div class="municipio-modalidades">CDI - Educación Inicial</div>
+                    <span class="status-badge status-active">✅ Abierta</span>
                 </div>
             </div>
         </div>
 
-        <div id="content-aguazul" class="municipio-content">
+        <div id="content-mani" class="municipio-content">
             <div class="nav-top">
                 <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 Aguazul</span>
+                <span style="font-weight:bold; color:#667eea">📍 Maní</span>
             </div>
-            <h2 class="section-title">Convocatoria Aguazul</h2>
+            <h2 class="section-title">Convocatoria Maní</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('aguazul','cdi')">🏫 CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('aguazul','hogar')">🏠 Educación Inicial</button>
-                <button class="modalidad-tab" onclick="showModalidad('aguazul','postular')">📝 Postular</button>
+                <button class="modalidad-tab active" onclick="showModalidad('mani','cdi')">🏫 CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('mani','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab" onclick="showModalidad('mani','postular')">📝 Postular</button>
             </div>
-            <div id="aguazul-cdi" class="modalidad-content active"></div>
-            <div id="aguazul-hogar" class="modalidad-content"></div>
-            <div id="aguazul-postular" class="modalidad-content"></div>
+            <div id="mani-cdi" class="modalidad-content active"></div>
+            <div id="mani-hogar" class="modalidad-content"></div>
+            <div id="mani-postular" class="modalidad-content"></div>
         </div>
 
-        <div id="content-chameza" class="municipio-content">
+        <div id="content-nunchia" class="municipio-content">
             <div class="nav-top">
                 <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 Chameza</span>
+                <span style="font-weight:bold; color:#667eea">📍 Nunchía</span>
             </div>
-            <h2 class="section-title">Convocatoria Chameza</h2>
+            <h2 class="section-title">Convocatoria Nunchía</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('chameza','cdi')">🏫 CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('chameza','hogar')">🏠 Educación Inicial</button>
-                <button class="modalidad-tab" onclick="showModalidad('chameza','postular')">📝 Postular</button>
+                <button class="modalidad-tab active" onclick="showModalidad('nunchia','cdi')">🏫 CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('nunchia','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab" onclick="showModalidad('nunchia','campesina')">🌾 Campesina</button>
+                <button class="modalidad-tab" onclick="showModalidad('nunchia','postular')">📝 Postular</button>
             </div>
-            <div id="chameza-cdi" class="modalidad-content active"></div>
-            <div id="chameza-hogar" class="modalidad-content"></div>
-            <div id="chameza-postular" class="modalidad-content"></div>
+            <div id="nunchia-cdi" class="modalidad-content active"></div>
+            <div id="nunchia-hogar" class="modalidad-content"></div>
+            <div id="nunchia-campesina" class="modalidad-content"></div>
+            <div id="nunchia-postular" class="modalidad-content"></div>
         </div>
 
-        <div id="content-recetor" class="municipio-content">
+        <div id="content-orocue" class="municipio-content">
             <div class="nav-top">
                 <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 Recetor</span>
+                <span style="font-weight:bold; color:#667eea">📍 Orocué</span>
             </div>
-            <h2 class="section-title">Convocatoria Recetor</h2>
+            <h2 class="section-title">Convocatoria Orocué</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('recetor','hogar')">🏠 Educación Inicial</button>
-                <button class="modalidad-tab" onclick="showModalidad('recetor','postular')">📝 Postular</button>
+                <button class="modalidad-tab active" onclick="showModalidad('orocue','cdi')">🏫 CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('orocue','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab" onclick="showModalidad('orocue','postular')">📝 Postular</button>
             </div>
-            <div id="recetor-hogar" class="modalidad-content active"></div>
-            <div id="recetor-postular" class="modalidad-content"></div>
+            <div id="orocue-cdi" class="modalidad-content active"></div>
+            <div id="orocue-hogar" class="modalidad-content"></div>
+            <div id="orocue-postular" class="modalidad-content"></div>
+        </div>
+
+        <div id="content-sanluis" class="municipio-content">
+            <div class="nav-top">
+                <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
+                <span style="font-weight:bold; color:#667eea">📍 San Luis de Palenque</span>
+            </div>
+            <h2 class="section-title">Convocatoria San Luis de Palenque</h2>
+            <div class="modalidad-tabs">
+                <button class="modalidad-tab active" onclick="showModalidad('sanluis','cdi')">🏫 CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('sanluis','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab" onclick="showModalidad('sanluis','postular')">📝 Postular</button>
+            </div>
+            <div id="sanluis-cdi" class="modalidad-content active"></div>
+            <div id="sanluis-hogar" class="modalidad-content"></div>
+            <div id="sanluis-postular" class="modalidad-content"></div>
         </div>
 
         <div class="action-buttons" style="margin-top:3rem">
@@ -402,23 +443,38 @@
     </div>
 
     <div class="countdown-floating">
-        <h4>⏰ Convocatoria 2 Cerrada</h4>
+        <h4>⏰ Cierre: 05/08/2026 - 11:59 a. m.</h4>
         <div id="countdown-content"></div>
     </div>
 
     <script>
         const CORREOS_MUNICIPIOS = {
-            'Aguazul': 'proalimentarsv+convocatoria.aguazul@gmail.com',
-            'Chameza': 'proalimentarsv+convocatoria.chameza@gmail.com',
-            'Recetor': 'proalimentarsv+convocatoria.recetor@gmail.com'
+            'Maní': 'proalimentarsv+convocatoria.mani@gmail.com',
+            'Nunchía': 'proalimentarsv+convocatoria.nunchia@gmail.com',
+            'Orocué': 'proalimentarsv+convocatoria.orocue@gmail.com',
+            'San Luis de Palenque': 'proalimentarsv+convocatoria.sanluisdepalenque@gmail.com'
         };
 
         const ROLES_CDI = [
             {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
             {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'12 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral'],e:'12 meses'}]},
             {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'12 meses'}]},
+            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación de culminación de estudios en nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar de enfermería'],e:'12 meses'}]},
+            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años de experiencia','Compromiso de continuar formación hasta 9° grado'],e:'6 años'}]},
             {t:'Gestor de Alimentos',p:[{n:'',r:['Básica primaria completa','Certificación médica manipulación alimentos'],e:'6 meses'}]},
             {t:'Auxiliar Servicios Generales',p:[{n:'',r:['Certificado manipulación alimentos vigente'],e:'6 meses'}]},
+            {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
+        ];
+
+        const ROLES_CAMPESINA = [
+            {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
+            {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'6 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'12 meses'}]},
+            {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'6 meses'}]},
+            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación de culminación de estudios en nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar de enfermería'],e:'12 meses'}]},
+            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años de experiencia','Compromiso de continuar formación hasta 9° grado'],e:'6 años'}]},
+            {t:'Gestor/a Comunitario/a',p:[{n:'',r:['Bachiller o técnico con experiencia comunitaria','Conocimiento del territorio, dinámicas familiares y comunitarias'],e:'6 meses'}]},
+            {t:'Gestor de Alimentos',p:[{n:'',r:['Básica primaria completa','Certificación médica para manipulación de alimentos vigente'],e:'6 meses'}]},
+            {t:'Auxiliar Servicios Generales',p:[{n:'',r:['Certificado de manipulación de alimentos vigente'],e:'6 meses'}]},
             {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
         ];
 
@@ -645,6 +701,14 @@
                     <p style="text-align:center;margin-bottom:1rem;font-size:1.2rem;font-weight:600;color:#667eea">📋 PASO 1: Encuesta de Preselección</p>
                     <iframe class="form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScK6D9UhIEMnHeh3mQV7sBpnWnjtwdwtSiwSLjkDEEbKc0TCw/viewform?embedded=true"></iframe>
                 </div>
+
+                <div class="read-guide">
+                    <div class="read-guide-icon">↓</div>
+                    <div class="read-guide-text">
+                        Antes de enviar el correo, revise todos los documentos requeridos.
+                        <span>La postulación solo será válida si completa la encuesta y envía la hoja de vida con soportes al correo indicado.</span>
+                    </div>
+                </div>
                 
                 ${getDocumentosRequeridosHTML()}
                 
@@ -654,7 +718,7 @@
                     <ul class="info-list">
                         <li>Adjunte TODOS los documentos listados anteriormente</li>
                         <li>Asunto: <strong>"Aspirante [CARGO] - ${municipio} - [NOMBRE]_Modalidad"</strong></li>
-                        <li>Ejemplo: "Aspirante Coordinador - Aguazul - María López_CDI"</li>
+                        <li>Ejemplo: <strong>"Aspirante Coordinador - ${municipio} - María López_CDI"</strong></li>
                         <li>Enviar a: <strong style="color:#667eea">${correo}</strong></li>
                         <li>En el cuerpo: Nombre completo, cédula, teléfono y cargo</li>
                     </ul>
@@ -681,17 +745,24 @@
             const warning = getWarningHTML();
             const cdiHTML = timeline + warning + '<div class="roles-grid">' + ROLES_CDI.map(crearTarjetaRol).join('') + '</div>';
             const hogarHTML = timeline + warning + '<div class="roles-grid">' + ROLES_HOGAR.map(crearTarjetaRol).join('') + '</div>';
+            const campesinaHTML = timeline + warning + '<div class="roles-grid">' + ROLES_CAMPESINA.map(crearTarjetaRol).join('') + '</div>';
             
-            document.getElementById('aguazul-cdi').innerHTML = cdiHTML;
-            document.getElementById('aguazul-hogar').innerHTML = hogarHTML;
-            document.getElementById('aguazul-postular').innerHTML = generarPostularHTML('Aguazul');
+            document.getElementById('mani-cdi').innerHTML = cdiHTML;
+            document.getElementById('mani-hogar').innerHTML = hogarHTML;
+            document.getElementById('mani-postular').innerHTML = generarPostularHTML('Maní');
             
-            document.getElementById('chameza-cdi').innerHTML = cdiHTML;
-            document.getElementById('chameza-hogar').innerHTML = hogarHTML;
-            document.getElementById('chameza-postular').innerHTML = generarPostularHTML('Chameza');
+            document.getElementById('nunchia-cdi').innerHTML = cdiHTML;
+            document.getElementById('nunchia-hogar').innerHTML = hogarHTML;
+            document.getElementById('nunchia-campesina').innerHTML = campesinaHTML;
+            document.getElementById('nunchia-postular').innerHTML = generarPostularHTML('Nunchía');
             
-            document.getElementById('recetor-hogar').innerHTML = hogarHTML;
-            document.getElementById('recetor-postular').innerHTML = generarPostularHTML('Recetor');
+            document.getElementById('orocue-cdi').innerHTML = cdiHTML;
+            document.getElementById('orocue-hogar').innerHTML = hogarHTML;
+            document.getElementById('orocue-postular').innerHTML = generarPostularHTML('Orocué');
+
+            document.getElementById('sanluis-cdi').innerHTML = cdiHTML;
+            document.getElementById('sanluis-hogar').innerHTML = hogarHTML;
+            document.getElementById('sanluis-postular').innerHTML = generarPostularHTML('San Luis de Palenque');
         }
 
         function selectMunicipio(mun) {
@@ -715,7 +786,7 @@
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-08-04T00:00:00').getTime();
+            const deadline = new Date('2026-08-05T11:59:00').getTime();
             const now = new Date().getTime();
             const distance = deadline - now;
             if (distance < 0) {

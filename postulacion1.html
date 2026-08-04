@@ -526,7 +526,7 @@
     <div class="container">
         <div class="nav-top">
             <a href="index.html" class="btn btn-secondary btn-sm">⬅️ Volver al Inicio</a>
-            <span style="font-weight:bold; color:#667eea">📍 Convocatoria Activa</span>
+            <span style="font-weight:bold; color:#d32f2f">⏰ Convocatoria Cerrada</span>
         </div>
 
         <div class="nav-tabs">
@@ -762,7 +762,7 @@
 
     <!-- Cuenta Regresiva Flotante -->
     <div class="countdown-floating">
-        <h4>⏰ Tiempo restante para postular</h4>
+        <h4>⏰ Convocatoria 1 Cerrada</h4>
         <div id="countdown-content"></div>
     </div>
 
@@ -788,7 +788,7 @@
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-01-23T23:59:59').getTime();
+            const deadline = new Date('2026-08-04T00:00:00').getTime();
             const now = new Date().getTime();
             const distance = deadline - now;
 

@@ -27,6 +27,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            overflow: visible;
         }
 
         .container {
@@ -40,6 +41,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            overflow: visible;
         }
 
         .logo {
@@ -61,6 +63,9 @@
             list-style: none;
             gap: 0.5rem;
             align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            overflow: visible;
         }
 
         nav ul li {
@@ -70,13 +75,13 @@
         nav ul li a {
             color: white;
             text-decoration: none;
-            padding: 0.8rem 1.2rem;
+            padding: 0.75rem 1rem;
             border-radius: 25px;
             transition: all 0.3s;
             font-weight: 500;
             display: inline-block;
             white-space: nowrap;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         nav ul li a:hover {
@@ -84,31 +89,23 @@
             transform: translateY(-2px);
         }
 
-        /* Estilos para ambas convocatorias */
-        .parpadeo-color-1 {
-            animation: parpadeoColor1 2s infinite;
-            background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+        .convocatoria-cerrada {
+            background: rgba(255,255,255,0.14);
+            color: rgba(255,255,255,0.75);
+            font-weight: 600;
+        }
+
+        .parpadeo-color-3 {
+            animation: parpadeoColor3 2s infinite;
+            background: linear-gradient(135deg, #27ae60 0%, #16a085 100%);
             font-weight: 600;
             z-index: 10;
             position: relative;
         }
 
-        .parpadeo-color-2 {
-            animation: parpadeoColor2 2s infinite;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-weight: 600;
-            z-index: 10;
-            position: relative;
-        }
-
-        @keyframes parpadeoColor1 {
-            0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(243,156,18,0.5); }
-            50% { opacity: 0.7; box-shadow: 0 0 25px rgba(231,76,60,0.7); }
-        }
-
-        @keyframes parpadeoColor2 {
-            0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(102,126,234,0.5); }
-            50% { opacity: 0.7; box-shadow: 0 0 25px rgba(118,75,162,0.7); }
+        @keyframes parpadeoColor3 {
+            0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(39,174,96,0.5); }
+            50% { opacity: 0.7; box-shadow: 0 0 25px rgba(22,160,133,0.7); }
         }
 
         /* Banner Flotante de Convocatoria */
@@ -468,12 +465,24 @@
         @media (max-width: 992px) {
             nav {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1rem;
             }
             
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
+                width: 100%;
+                gap: 0.6rem;
+            }
+
+            nav.container {
+                width: 96%;
+                overflow: visible;
+            }
+
+            nav ul li a {
+                padding: 0.75rem 0.95rem;
+                font-size: 0.88rem;
             }
 
             .hero h1 {
@@ -484,6 +493,15 @@
         @media (max-width: 768px) {
             .container {
                 width: 90%;
+            }
+
+            nav.container {
+                width: 96%;
+            }
+
+            nav ul li a {
+                width: 100%;
+                text-align: center;
             }
 
             .hero-buttons {
@@ -535,13 +553,12 @@
     <div class="banner-flotante" id="bannerFlotante">
         <button class="banner-cerrar" onclick="cerrarBanner()">×</button>
         <div class="banner-icon">🎉</div>
-        <div class="banner-titulo">¡Estamos de Convocatoria!</div>
+        <div class="banner-titulo">¡Convocatoria 3 Activa!</div>
         <div class="banner-mensaje">
-            Revisa bien las oportunidades disponibles. ¡No dejes de participar! Únete a nuestro equipo y marca la diferencia.
+            Postulaciones abiertas para Maní, Nunchía, Orocué y San Luis de Palenque hasta el 05/08/2026 a las 11:59 a. m.
         </div>
         <div class="banner-botones">
-            <a href="postulacion1.html" class="banner-btn">Ver Convocatoria 1</a>
-            <a href="postulacion2.html" class="banner-btn">Ver Convocatoria 2</a>
+            <a href="postulacion3.html" class="banner-btn">Ver Convocatoria 3 Activa</a>
         </div>
     </div>
 
@@ -556,8 +573,9 @@
                 <li><a href="#mision">Misión</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#galeria">Galería</a></li>
-                <li><a href="postulacion1.html" class="parpadeo-color-1">📋 Convocatoria 1</a></li>
-                <li><a href="postulacion2.html" class="parpadeo-color-2">📋 Convocatoria 2</a></li>
+                <li><a href="postulacion1.html" class="convocatoria-cerrada">📋 Convocatoria 1 Cerrada</a></li>
+                <li><a href="postulacion2.html" class="convocatoria-cerrada">📋 Convocatoria 2 Cerrada</a></li>
+                <li><a href="postulacion3.html" class="parpadeo-color-3">📋 Convocatoria 3 Activa</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -577,11 +595,10 @@
     <section id="convocatorias" class="section">
         <div class="container">
             <div class="destacado">
-                <h3>¡Únete a Nuestro Equipo!</h3>
-                <p>Tenemos convocatorias abiertas en múltiples municipios</p>
+                <h3>¡Convocatoria 3 Abierta!</h3>
+                <p>Postulaciones disponibles para Maní, Nunchía, Orocué y San Luis de Palenque</p>
                 <div class="hero-buttons">
-                    <a href="postulacion1.html" class="hero-btn btn-outline">🏙️ Ver Yopal - Casanare</a>
-                    <a href="postulacion2.html" class="hero-btn btn-outline">🏘️ Ver Multi-Municipio</a>
+                    <a href="postulacion3.html" class="hero-btn btn-outline">🌾 Ver Convocatoria 3 Activa</a>
                 </div>
             </div>
         </div>

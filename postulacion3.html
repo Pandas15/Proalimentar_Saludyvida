@@ -34,7 +34,7 @@
         .section-title{color:#667eea;font-size:1.8rem;margin-bottom:1.5rem;text-align:center;position:relative;padding-bottom:0.5rem}
         .section-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:3px;background:linear-gradient(90deg,#667eea,#764ba2)}
         .modalidad-tabs{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;justify-content:center}
-        .modalidad-tab{background-color:white;color:#667eea;border:2px solid #667eea;padding:0.8rem 2rem;border-radius:25px;cursor:pointer;font-size:1rem;font-weight:600;transition:all 0.3s}
+        .modalidad-tab{background-color:white;color:#667eea;border:2px solid #667eea;padding:0.8rem 1.4rem;border-radius:25px;cursor:pointer;font-size:0.92rem;font-weight:600;transition:all 0.3s;white-space:normal;line-height:1.25;max-width:360px}
         .modalidad-tab:hover{background-color:#667eea;color:white}
         .modalidad-tab.active{background-color:#667eea;color:white}
         .modalidad-content{display:none}
@@ -347,25 +347,25 @@
                 <div class="municipio-card" onclick="selectMunicipio('mani')" id="card-mani">
                     <div class="municipio-icon">🏛️</div>
                     <div class="municipio-name">Maní</div>
-                    <div class="municipio-modalidades">CDI - Educación Inicial</div>
+                    <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar Familiar y Comunitaria</div>
                     <span class="status-badge status-active">✅ Abierta</span>
                 </div>
                 <div class="municipio-card" onclick="selectMunicipio('nunchia')" id="card-nunchia">
                     <div class="municipio-icon">🏘️</div>
                     <div class="municipio-name">Nunchía</div>
-                    <div class="municipio-modalidades">CDI - Educación Inicial - Campesina</div>
+                    <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar A Familiar y Comunitaria - Educación Inicial Campesina</div>
                     <span class="status-badge status-active">✅ Abierta</span>
                 </div>
                 <div class="municipio-card" onclick="selectMunicipio('orocue')" id="card-orocue">
                     <div class="municipio-icon">🏞️</div>
                     <div class="municipio-name">Orocué</div>
-                    <div class="municipio-modalidades">CDI - Educación Inicial</div>
+                    <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar Familiar y Comunitaria</div>
                     <span class="status-badge status-active">✅ Abierta</span>
                 </div>
                 <div class="municipio-card" onclick="selectMunicipio('sanluis')" id="card-sanluis">
                     <div class="municipio-icon">🌾</div>
                     <div class="municipio-name">San Luis de Palenque</div>
-                    <div class="municipio-modalidades">CDI - Educación Inicial</div>
+                    <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar Familiar y Comunitaria</div>
                     <span class="status-badge status-active">✅ Abierta</span>
                 </div>
             </div>
@@ -378,8 +378,8 @@
             </div>
             <h2 class="section-title">Convocatoria Maní</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('mani','cdi')">🏫 CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('mani','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab active" onclick="showModalidad('mani','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('mani','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
                 <button class="modalidad-tab" onclick="showModalidad('mani','postular')">📝 Postular</button>
             </div>
             <div id="mani-cdi" class="modalidad-content active"></div>
@@ -394,9 +394,9 @@
             </div>
             <h2 class="section-title">Convocatoria Nunchía</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('nunchia','cdi')">🏫 CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('nunchia','hogar')">🏠 Educación Inicial</button>
-                <button class="modalidad-tab" onclick="showModalidad('nunchia','campesina')">🌾 Campesina</button>
+                <button class="modalidad-tab active" onclick="showModalidad('nunchia','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('nunchia','hogar')">🏠 Educación Inicial en el Hogar - A - Familiar y Comunitaria</button>
+                <button class="modalidad-tab" onclick="showModalidad('nunchia','campesina')">🌾 Educación Inicial Campesina</button>
                 <button class="modalidad-tab" onclick="showModalidad('nunchia','postular')">📝 Postular</button>
             </div>
             <div id="nunchia-cdi" class="modalidad-content active"></div>
@@ -412,8 +412,8 @@
             </div>
             <h2 class="section-title">Convocatoria Orocué</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('orocue','cdi')">🏫 CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('orocue','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab active" onclick="showModalidad('orocue','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('orocue','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
                 <button class="modalidad-tab" onclick="showModalidad('orocue','postular')">📝 Postular</button>
             </div>
             <div id="orocue-cdi" class="modalidad-content active"></div>
@@ -428,8 +428,8 @@
             </div>
             <h2 class="section-title">Convocatoria San Luis de Palenque</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('sanluis','cdi')">🏫 CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('sanluis','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab active" onclick="showModalidad('sanluis','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('sanluis','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
                 <button class="modalidad-tab" onclick="showModalidad('sanluis','postular')">📝 Postular</button>
             </div>
             <div id="sanluis-cdi" class="modalidad-content active"></div>

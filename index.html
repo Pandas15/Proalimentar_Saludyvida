@@ -108,6 +108,19 @@
             50% { opacity: 0.7; box-shadow: 0 0 25px rgba(22,160,133,0.7); }
         }
 
+        .parpadeo-color-4 {
+            animation: parpadeoColor4 2s infinite;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-weight: 600;
+            z-index: 10;
+            position: relative;
+        }
+
+        @keyframes parpadeoColor4 {
+            0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(102,126,234,0.5); }
+            50% { opacity: 0.7; box-shadow: 0 0 25px rgba(118,75,162,0.7); }
+        }
+
         /* Banner Flotante de Convocatoria */
         .banner-flotante {
             position: fixed;
@@ -553,12 +566,12 @@
     <div class="banner-flotante" id="bannerFlotante">
         <button class="banner-cerrar" onclick="cerrarBanner()">×</button>
         <div class="banner-icon">🎉</div>
-        <div class="banner-titulo">¡Convocatoria 3 Activa!</div>
+        <div class="banner-titulo">¡Convocatoria Activa - Maní!</div>
         <div class="banner-mensaje">
-            Postulaciones abiertas para Maní, Nunchía, Orocué y San Luis de Palenque hasta el 05/08/2026 a las 11:59 a. m.
+            Agente Educativo/a (Perfil 1 y 2) para el CDI Jugando y Aprendiendo Mis Primeros Pasos. Cierra el 13/08/2026 a las 11:59 p. m.
         </div>
         <div class="banner-botones">
-            <a href="postulacion3.html" class="banner-btn">Ver Convocatoria 3 Activa</a>
+            <a href="convocatoria-mani-cdi-agente-educativo.html" class="banner-btn">Ver Convocatoria</a>
         </div>
     </div>
 
@@ -575,7 +588,8 @@
                 <li><a href="#galeria">Galería</a></li>
                 <li><a href="postulacion1.html" class="convocatoria-cerrada">📋 Convocatoria 1 Cerrada</a></li>
                 <li><a href="postulacion2.html" class="convocatoria-cerrada">📋 Convocatoria 2 Cerrada</a></li>
-                <li><a href="postulacion3.html" class="parpadeo-color-3">📋 Convocatoria 3 Activa</a></li>
+                <li><a href="postulacion3.html" class="convocatoria-cerrada">📋 Convocatoria 3 Cerrada</a></li>
+                <li><a href="convocatoria-mani-cdi-agente-educativo.html" class="parpadeo-color-4">📋 Agente Educativo - Maní</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -595,11 +609,19 @@
     <section id="convocatorias" class="section">
         <div class="container">
             <div class="destacado">
-                <h3>¡Convocatoria 3 Abierta!</h3>
-                <p>Postulaciones disponibles para Maní, Nunchía, Orocué y San Luis de Palenque</p>
+                <h3>¡Convocatoria Abierta - Maní!</h3>
+                <p>Agente Educativo/a (Perfil 1 y Perfil 2) · CDI Jugando y Aprendiendo Mis Primeros Pasos · Cierra el 13/08/2026 a las 11:59 p. m.</p>
                 <div class="hero-buttons">
-                    <a href="postulacion3.html" class="hero-btn btn-outline">🌾 Ver Convocatoria 3 Activa</a>
+                    <a href="convocatoria-mani-cdi-agente-educativo.html" class="hero-btn btn-outline">🏫 Ver Convocatoria Agente Educativo - Maní</a>
                 </div>
+            </div>
+            <div style="text-align:center;margin-top:1.5rem;opacity:0.85">
+                <p style="font-size:0.95rem">Convocatorias anteriores:
+                    <a href="postulacion1.html" style="margin:0 0.4rem">Convocatoria 1</a>·
+                    <a href="postulacion2.html" style="margin:0 0.4rem">Convocatoria 2</a>·
+                    <a href="postulacion3.html" style="margin:0 0.4rem">Convocatoria 3</a>
+                    <span style="display:block;font-size:0.85rem;margin-top:0.3rem">(cerradas)</span>
+                </p>
             </div>
         </div>
     </section>

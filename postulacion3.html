@@ -333,6 +333,19 @@
         </div>
     </header>
 
+
+    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#fff3cd;border:2px solid #ffc107;border-left:6px solid #ffc107;border-radius:12px;color:#856404;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Reapertura parcial por renuncias</strong>
+        Solo están abiertos <strong>3 cargos</strong>, todos en modalidad <strong>CDI</strong>:
+        <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
+            <li><strong>Agente Educativo/a Perfil 2</strong> — Maní</li>
+            <li><strong>Coordinador/a</strong> — San Luis de Palenque</li>
+            <li><strong>Profesional Psicosocial</strong> — San Luis de Palenque</li>
+        </ul>
+        Los demás municipios (Nunchía, Orocué) y los demás cargos están <strong>cerrados</strong>.
+        Cierre: <strong>lunes 31/08/2026, 12:00 m.</strong>
+    </div>
+
     <div class="container">
         <div id="selector-principal">
             <h2 style="text-align:center;color:white;margin-bottom:2rem">Seleccione su Municipio</h2>
@@ -347,26 +360,26 @@
                 <div class="municipio-card" onclick="selectMunicipio('mani')" id="card-mani">
                     <div class="municipio-icon">🏛️</div>
                     <div class="municipio-name">Maní</div>
-                    <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar Familiar y Comunitaria</div>
-                    <span class="status-badge status-active">✅ Abierta</span>
+                    <div class="municipio-modalidades">CDI - Solo Agente Educativo/a Perfil 2</div>
+                    <span class="status-badge status-active">✅ Abierta · 1 cargo (CDI)</span>
                 </div>
-                <div class="municipio-card" onclick="selectMunicipio('nunchia')" id="card-nunchia">
+                <div class="municipio-card" id="card-nunchia" style="opacity:0.55;pointer-events:none">
                     <div class="municipio-icon">🏘️</div>
                     <div class="municipio-name">Nunchía</div>
                     <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar A Familiar y Comunitaria - Educación Inicial Campesina</div>
-                    <span class="status-badge status-active">✅ Abierta</span>
+                    <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
-                <div class="municipio-card" onclick="selectMunicipio('orocue')" id="card-orocue">
+                <div class="municipio-card" id="card-orocue" style="opacity:0.55;pointer-events:none">
                     <div class="municipio-icon">🏞️</div>
                     <div class="municipio-name">Orocué</div>
                     <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar Familiar y Comunitaria</div>
-                    <span class="status-badge status-active">✅ Abierta</span>
+                    <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
                 <div class="municipio-card" onclick="selectMunicipio('sanluis')" id="card-sanluis">
                     <div class="municipio-icon">🌾</div>
                     <div class="municipio-name">San Luis de Palenque</div>
-                    <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar Familiar y Comunitaria</div>
-                    <span class="status-badge status-active">✅ Abierta</span>
+                    <div class="municipio-modalidades">CDI - Solo Coordinador/a y Profesional Psicosocial</div>
+                    <span class="status-badge status-active">✅ Abierta · 2 cargos (CDI)</span>
                 </div>
             </div>
         </div>
@@ -443,7 +456,7 @@
     </div>
 
     <div class="countdown-floating">
-        <h4>⏰ Cierre: 05/08/2026 - 11:59 a. m.</h4>
+        <h4>⏰ Cierre: lunes 31/08/2026 - 12:00 m.</h4>
         <div id="countdown-content"></div>
     </div>
 
@@ -786,7 +799,7 @@
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-08-05T11:59:00').getTime();
+            const deadline = new Date('2026-08-31T12:00:00').getTime();
             const now = new Date().getTime();
             const distance = deadline - now;
             if (distance < 0) {

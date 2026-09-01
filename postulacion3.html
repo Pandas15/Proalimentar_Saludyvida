@@ -49,6 +49,9 @@
         .requirement{font-size:0.88rem;color:#555;margin:0.4rem 0;padding-left:1.2rem;position:relative;line-height:1.5}
         .requirement::before{content:'•';position:absolute;left:0;color:#667eea;font-weight:bold}
         .experience{background-color:rgba(102,126,234,0.15);padding:0.6rem;border-radius:6px;margin-top:0.5rem;font-size:0.85rem;color:#667eea;font-weight:600}
+        .rol-status{display:inline-block;padding:0.2rem 0.75rem;border-radius:15px;font-size:0.72rem;font-weight:700;margin-bottom:0.6rem}
+        .role-card.cerrada{opacity:0.5;filter:grayscale(0.5)}
+        .perfil-section.cerrada{opacity:0.45}
         .info-box{background-color:#f8f9fa;border-left:4px solid #667eea;padding:1.5rem;margin:1.5rem 0;border-radius:8px}
         .info-box h3{color:#667eea;margin-bottom:1rem;font-size:1.2rem}
         .info-list{list-style:none}
@@ -744,11 +747,36 @@
             `;
         }
 
-        function crearTarjetaRol(rol) {
-            let html = `<div class="role-card"><h3>${rol.t}</h3>`;
+        const VACANTES_ABIERTAS = {
+            mani: {
+                cdi: [{ t: 'Agente Educativo/a', perfiles: ['Perfil 2'] }],
+                hogar: []
+            },
+            sanluis: {
+                cdi: [
+                    { t: 'Coordinador/a' },
+                    { t: 'Profesional Psicosocial' },
+                    { t: 'Auxiliar Pedagógico/a' },
+                    { t: 'Auxiliar Servicios Generales' }
+                ],
+                hogar: []
+            },
+            nunchia: { cdi: [], hogar: [], campesina: [] },
+            orocue: { cdi: [], hogar: [] }
+        };
+
+        function crearTarjetaRol(rol, abiertos) {
+            let html = `<div class="role-card${abiertos.length === 0 ? ' cerrada' : ''}">`;
+            if (abiertos.length === 0) {
+                html += `<span class="rol-status status-inactive">🔒 Cerrada</span>`;
+            } else {
+                html += `<span class="rol-status status-active">✅ Abierta</span>`;
+            }
+            html += `<h3>${rol.t}</h3>`;
             rol.p.forEach(perfil => {
-                html += '<div class="perfil-section">';
-                if(perfil.n) html += `<span class="perfil-badge">${perfil.n}</span>`;
+                const abierto = abiertos.includes(perfil.n);
+                html += `<div class="perfil-section${abierto ? '' : ' cerrada'}">`;
+                if (perfil.n) html += `<span class="perfil-badge">${perfil.n}</span>`;
                 perfil.r.forEach(req => html += `<div class="requirement">${req}</div>`);
                 html += `<div class="experience">⏱️ ${perfil.e}</div></div>`;
             });
@@ -758,25 +786,32 @@
         function renderizarRoles() {
             const timeline = getTimelineHTML(1);
             const warning = getWarningHTML();
-            const cdiHTML = timeline + warning + '<div class="roles-grid">' + ROLES_CDI.map(crearTarjetaRol).join('') + '</div>';
-            const hogarHTML = timeline + warning + '<div class="roles-grid">' + ROLES_HOGAR.map(crearTarjetaRol).join('') + '</div>';
-            const campesinaHTML = timeline + warning + '<div class="roles-grid">' + ROLES_CAMPESINA.map(crearTarjetaRol).join('') + '</div>';
-            
-            document.getElementById('mani-cdi').innerHTML = cdiHTML;
-            document.getElementById('mani-hogar').innerHTML = hogarHTML;
+
+            function rolesHTML(municipio, modalidad, master) {
+                const vacantes = (VACANTES_ABIERTAS[municipio] || {})[modalidad] || [];
+                const cards = master.map(rol => {
+                    const v = vacantes.find(x => x.t === rol.t);
+                    const abiertos = !v ? [] : (v.perfiles || rol.p.map(p => p.n));
+                    return crearTarjetaRol(rol, abiertos);
+                }).join('');
+                return timeline + warning + '<div class="roles-grid">' + cards + '</div>';
+            }
+
+            document.getElementById('mani-cdi').innerHTML = rolesHTML('mani', 'cdi', ROLES_CDI);
+            document.getElementById('mani-hogar').innerHTML = rolesHTML('mani', 'hogar', ROLES_HOGAR);
             document.getElementById('mani-postular').innerHTML = generarPostularHTML('Maní');
-            
-            document.getElementById('nunchia-cdi').innerHTML = cdiHTML;
-            document.getElementById('nunchia-hogar').innerHTML = hogarHTML;
-            document.getElementById('nunchia-campesina').innerHTML = campesinaHTML;
+
+            document.getElementById('nunchia-cdi').innerHTML = rolesHTML('nunchia', 'cdi', ROLES_CDI);
+            document.getElementById('nunchia-hogar').innerHTML = rolesHTML('nunchia', 'hogar', ROLES_HOGAR);
+            document.getElementById('nunchia-campesina').innerHTML = rolesHTML('nunchia', 'campesina', ROLES_CAMPESINA);
             document.getElementById('nunchia-postular').innerHTML = generarPostularHTML('Nunchía');
-            
-            document.getElementById('orocue-cdi').innerHTML = cdiHTML;
-            document.getElementById('orocue-hogar').innerHTML = hogarHTML;
+
+            document.getElementById('orocue-cdi').innerHTML = rolesHTML('orocue', 'cdi', ROLES_CDI);
+            document.getElementById('orocue-hogar').innerHTML = rolesHTML('orocue', 'hogar', ROLES_HOGAR);
             document.getElementById('orocue-postular').innerHTML = generarPostularHTML('Orocué');
 
-            document.getElementById('sanluis-cdi').innerHTML = cdiHTML;
-            document.getElementById('sanluis-hogar').innerHTML = hogarHTML;
+            document.getElementById('sanluis-cdi').innerHTML = rolesHTML('sanluis', 'cdi', ROLES_CDI);
+            document.getElementById('sanluis-hogar').innerHTML = rolesHTML('sanluis', 'hogar', ROLES_HOGAR);
             document.getElementById('sanluis-postular').innerHTML = generarPostularHTML('San Luis de Palenque');
         }
 

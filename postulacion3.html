@@ -338,17 +338,12 @@
 
 
     <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#fff3cd;border:2px solid #ffc107;border-left:6px solid #ffc107;border-radius:12px;color:#856404;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
-        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — 6 cargos</strong>
-        Solo están abiertos <strong>6 cargos</strong>, todos en modalidad <strong>CDI</strong>:
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — 1 cargo</strong>
+        Solo está abierto <strong>1 cargo</strong> en modalidad <strong>CDI</strong>:
         <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
-            <li><strong>Agente Educativo/a Perfil 2</strong> — Maní</li>
-            <li><strong>Coordinador/a</strong> — San Luis de Palenque</li>
-            <li><strong>Agente Educativo/a</strong> — San Luis de Palenque</li>
-            <li><strong>Profesional Psicosocial</strong> — San Luis de Palenque</li>
             <li><strong>Auxiliar Pedagógico/a</strong> — San Luis de Palenque</li>
-            <li><strong>Auxiliar Servicios Generales</strong> — San Luis de Palenque</li>
         </ul>
-        Los demás municipios (Nunchía, Orocué) y los demás cargos están <strong>cerrados</strong>.
+        Los demás municipios (Maní, Nunchía, Orocué) y los demás cargos están <strong>cerrados</strong>.
         Cierre: <strong>miércoles 02/09/2026, 12:00 m.</strong>
     </div>
 
@@ -363,11 +358,11 @@
                 </div>
             </div>
             <div class="municipio-selector">
-                <div class="municipio-card" onclick="selectMunicipio('mani')" id="card-mani">
+                <div class="municipio-card" id="card-mani" style="opacity:0.55;pointer-events:none">
                     <div class="municipio-icon">🏛️</div>
                     <div class="municipio-name">Maní</div>
                     <div class="municipio-modalidades">CDI - Solo Agente Educativo/a Perfil 2</div>
-                    <span class="status-badge status-active">✅ Abierta · 1 cargo (CDI)</span>
+                    <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
                 <div class="municipio-card" id="card-nunchia" style="opacity:0.55;pointer-events:none">
                     <div class="municipio-icon">🏘️</div>
@@ -384,8 +379,8 @@
                 <div class="municipio-card" onclick="selectMunicipio('sanluis')" id="card-sanluis">
                     <div class="municipio-icon">🌾</div>
                     <div class="municipio-name">San Luis de Palenque</div>
-                    <div class="municipio-modalidades">CDI - Coordinador/a, Agente Educativo/a, Profesional Psicosocial, Auxiliar Pedagógico/a y Auxiliar Servicios Generales</div>
-                    <span class="status-badge status-active">✅ Abierta · 5 cargos (CDI)</span>
+                    <div class="municipio-modalidades">CDI - Auxiliar Pedagógico/a</div>
+                    <span class="status-badge status-active">✅ Abierta · 1 cargo (CDI)</span>
                 </div>
             </div>
         </div>
@@ -750,16 +745,12 @@
 
         const VACANTES_ABIERTAS = {
             mani: {
-                cdi: [{ t: 'Agente Educativo/a', perfiles: ['Perfil 2'] }],
+                cdi: [],
                 hogar: []
             },
             sanluis: {
                 cdi: [
-                    { t: 'Coordinador/a' },
-                    { t: 'Agente Educativo/a' },
-                    { t: 'Profesional Psicosocial' },
-                    { t: 'Auxiliar Pedagógico/a' },
-                    { t: 'Auxiliar Servicios Generales' }
+                    { t: 'Auxiliar Pedagógico/a' }
                 ],
                 hogar: []
             },

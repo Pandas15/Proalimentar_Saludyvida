@@ -338,14 +338,13 @@
 
 
     <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#fff3cd;border:2px solid #ffc107;border-left:6px solid #ffc107;border-radius:12px;color:#856404;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
-        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — 2 cargos</strong>
-        Están abiertos <strong>2 cargos</strong> en dos modalidades:
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — 1 cargo</strong>
+        Está abierto <strong>1 cargo</strong>:
         <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
-            <li><strong>Auxiliar Pedagógico/a</strong> — San Luis de Palenque (CDI)</li>
             <li><strong>Agente Educativo/a Perfil 2</strong> — Maní (CDI)</li>
         </ul>
-        Los demás municipios (Nunchía, Orocué) y los demás cargos están <strong>cerrados</strong>.
-        Cierre: <strong>viernes 11/09/2026, 12:00 a.m.</strong>
+        Los demás municipios (Nunchía, Orocué, San Luis de Palenque) y los demás cargos están <strong>cerrados</strong>.
+        Cierre: <strong>viernes 11/09/2026, 12:00 m.</strong>
     </div>
 
     <div class="container">
@@ -377,11 +376,11 @@
                     <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar Familiar y Comunitaria</div>
                     <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
-                <div class="municipio-card" onclick="selectMunicipio('sanluis')" id="card-sanluis">
+                <div class="municipio-card" id="card-sanluis" style="opacity:0.55;pointer-events:none">
                     <div class="municipio-icon">🌾</div>
                     <div class="municipio-name">San Luis de Palenque</div>
                     <div class="municipio-modalidades">CDI - Auxiliar Pedagógico/a</div>
-                    <span class="status-badge status-active">✅ Abierta · 1 cargo (CDI)</span>
+                    <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
             </div>
         </div>
@@ -458,7 +457,7 @@
     </div>
 
     <div class="countdown-floating">
-        <h4>⏰ Cierre: viernes 11/09/2026 - 12:00 a.m.</h4>
+        <h4>⏰ Cierre: viernes 11/09/2026 - 12:00 m.</h4>
         <div id="countdown-content"></div>
     </div>
 
@@ -750,9 +749,7 @@
                 hogar: []
             },
             sanluis: {
-                cdi: [
-                    { t: 'Auxiliar Pedagógico/a' }
-                ],
+                cdi: [],
                 hogar: []
             },
             nunchia: { cdi: [], hogar: [], campesina: [] },
@@ -830,7 +827,7 @@
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-09-11T00:00:00').getTime();
+            const deadline = new Date('2026-09-11T12:00:00').getTime();
             const now = new Date().getTime();
             const distance = deadline - now;
             if (distance < 0) {

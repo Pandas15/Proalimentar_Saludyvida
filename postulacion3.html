@@ -342,7 +342,7 @@
         Están abiertos <strong>2 cargos</strong> en dos modalidades:
         <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
             <li><strong>Auxiliar Pedagógico/a</strong> — San Luis de Palenque (CDI)</li>
-            <li><strong>Agente Educativo/a Perfil 2</strong> — Maní (Educación Inicial en el Hogar)</li>
+            <li><strong>Agente Educativo/a Perfil 2</strong> — Maní (CDI)</li>
         </ul>
         Los demás municipios (Nunchía, Orocué) y los demás cargos están <strong>cerrados</strong>.
         Cierre: <strong>viernes 11/09/2026, 12:00 a.m.</strong>
@@ -362,8 +362,8 @@
                 <div class="municipio-card" onclick="selectMunicipio('mani')" id="card-mani">
                     <div class="municipio-icon">🏛️</div>
                     <div class="municipio-name">Maní</div>
-                    <div class="municipio-modalidades">Educación Inicial en el Hogar - Agente Educativo/a Perfil 2</div>
-                    <span class="status-badge status-active">✅ Abierta · 1 cargo (Hogar)</span>
+                    <div class="municipio-modalidades">Centro de Desarrollo Infantil (CDI) - Agente Educativo/a Perfil 2</div>
+                    <span class="status-badge status-active">✅ Abierta · 1 cargo (CDI)</span>
                 </div>
                 <div class="municipio-card" id="card-nunchia" style="opacity:0.55;pointer-events:none">
                     <div class="municipio-icon">🏘️</div>
@@ -746,8 +746,8 @@
 
         const VACANTES_ABIERTAS = {
             mani: {
-                cdi: [],
-                hogar: [{ t: 'Agente Educativo/a', perfiles: ['Perfil 2'] }]
+                cdi: [{ t: 'Agente Educativo/a', perfiles: ['Perfil 2'] }],
+                hogar: []
             },
             sanluis: {
                 cdi: [

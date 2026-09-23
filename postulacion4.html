@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convocatoria Maní, Nunchía, Orocué y San Luis de Palenque</title>
+    <title>Convocatoria Amazonas - La Pedrera, Miriti-Paraná y Puerto Santander</title>
     <style>
         * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
         body{line-height:1.6;color:#333;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding-bottom:150px;overflow-x:hidden}
@@ -326,21 +326,25 @@
     <header class="header">
         <div class="child-decoration" style="top:10px; left:10px">🎨</div>
         <div class="child-decoration" style="top:10px; right:10px">🧩</div>
-        <h1>Convocatoria Multi-Municipio 3</h1>
+        <h1>Convocatoria Multi-Municipio 4</h1>
         <p class="subtitle">Corporación Proalimentar Salud Y Vida</p>
         <div class="location-badges">
-            <span class="location-badge">📍 Maní</span>
-            <span class="location-badge">📍 Nunchía</span>
-            <span class="location-badge">📍 Orocué</span>
-            <span class="location-badge">📍 San Luis de Palenque</span>
+            <span class="location-badge">📍 La Pedrera (Amazonas)</span>
+            <span class="location-badge">📍 Miriti-Paraná (Amazonas)</span>
+            <span class="location-badge">📍 Puerto Santander (Amazonas)</span>
         </div>
     </header>
 
 
-    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#f8d7da;border:2px solid #dc3545;border-left:6px solid #dc3545;border-radius:12px;color:#721c24;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
-        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">🔒 Convocatoria cerrada</strong>
-        La Convocatoria 3 cerró el <strong>viernes 11/09/2026 a las 12:00 m.</strong> Ya no se reciben postulaciones para Maní, Nunchía, Orocué ni San Luis de Palenque.
-        <span style="display:block;margin-top:0.6rem">La convocatoria vigente es la <strong>Convocatoria 4 - Amazonas (Zona 3)</strong>: <a href="postulacion4.html" style="color:#721c24;font-weight:600">ver convocatoria abierta</a>.</span>
+    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#fff3cd;border:2px solid #ffc107;border-left:6px solid #ffc107;border-radius:12px;color:#856404;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — Zona 3 Amazonas (270 cupos)</strong>
+        Está abierta la convocatoria de talento humano para los tres municipios de la Zona 3:
+        <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
+            <li><strong>La Pedrera</strong> — Educación Inicial Propia e Intercultural (diaria) y Educación Inicial en el Hogar · 187 cupos (11 UDS)</li>
+            <li><strong>Miriti-Paraná</strong> — Educación Inicial Propia e Intercultural (diaria) · 32 cupos (1 UDS)</li>
+            <li><strong>Puerto Santander</strong> — Educación Inicial Propia e Intercultural (diaria) y Educación Inicial en el Hogar · 51 cupos (3 UDS)</li>
+        </ul>
+        Cierre: <strong>jueves 24/09/2026, 12:00 m.</strong>
     </div>
 
     <div class="container">
@@ -354,97 +358,71 @@
                 </div>
             </div>
             <div class="municipio-selector">
-                <div class="municipio-card" id="card-mani" style="opacity:0.55;pointer-events:none">
-                    <div class="municipio-icon">🏛️</div>
-                    <div class="municipio-name">Maní</div>
-                    <div class="municipio-modalidades">Centro de Desarrollo Infantil (CDI) - Agente Educativo/a Perfil 2</div>
-                    <span class="status-badge status-inactive">🔒 Cerrada</span>
+                <div class="municipio-card" onclick="selectMunicipio('lapedrera')" id="card-lapedrera">
+                    <div class="municipio-icon">🌳</div>
+                    <div class="municipio-name">La Pedrera</div>
+                    <div class="municipio-modalidades">Educación Inicial Propia e Intercultural (diaria) · Educación Inicial en el Hogar</div>
+                    <span class="status-badge status-active">✅ Abierta · 187 cupos</span>
                 </div>
-                <div class="municipio-card" id="card-nunchia" style="opacity:0.55;pointer-events:none">
-                    <div class="municipio-icon">🏘️</div>
-                    <div class="municipio-name">Nunchía</div>
-                    <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar A Familiar y Comunitaria - Educación Inicial Campesina</div>
-                    <span class="status-badge status-inactive">🔒 Cerrada</span>
+                <div class="municipio-card" onclick="selectMunicipio('miritiparana')" id="card-miritiparana">
+                    <div class="municipio-icon">🌿</div>
+                    <div class="municipio-name">Miriti-Paraná</div>
+                    <div class="municipio-modalidades">Educación Inicial Propia e Intercultural (diaria)</div>
+                    <span class="status-badge status-active">✅ Abierta · 32 cupos</span>
                 </div>
-                <div class="municipio-card" id="card-orocue" style="opacity:0.55;pointer-events:none">
-                    <div class="municipio-icon">🏞️</div>
-                    <div class="municipio-name">Orocué</div>
-                    <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar Familiar y Comunitaria</div>
-                    <span class="status-badge status-inactive">🔒 Cerrada</span>
-                </div>
-                <div class="municipio-card" id="card-sanluis" style="opacity:0.55;pointer-events:none">
-                    <div class="municipio-icon">🌾</div>
-                    <div class="municipio-name">San Luis de Palenque</div>
-                    <div class="municipio-modalidades">CDI - Auxiliar Pedagógico/a</div>
-                    <span class="status-badge status-inactive">🔒 Cerrada</span>
+                <div class="municipio-card" onclick="selectMunicipio('puertosantander')" id="card-puertosantander">
+                    <div class="municipio-icon">🛶</div>
+                    <div class="municipio-name">Puerto Santander</div>
+                    <div class="municipio-modalidades">Educación Inicial Propia e Intercultural (diaria) · Educación Inicial en el Hogar</div>
+                    <span class="status-badge status-active">✅ Abierta · 51 cupos</span>
                 </div>
             </div>
         </div>
 
-        <div id="content-mani" class="municipio-content">
+        <div id="content-lapedrera" class="municipio-content">
             <div class="nav-top">
                 <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 Maní</span>
+                <span style="font-weight:bold; color:#667eea">📍 La Pedrera (Amazonas)</span>
             </div>
-            <h2 class="section-title">Convocatoria Maní</h2>
+            <h2 class="section-title">Convocatoria La Pedrera</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('mani','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('mani','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
-                <button class="modalidad-tab" onclick="showModalidad('mani','postular')">📝 Postular</button>
+                <button class="modalidad-tab active" onclick="showModalidad('lapedrera','propia')">🌾 Educación Inicial Propia e Intercultural (diaria)</button>
+                <button class="modalidad-tab" onclick="showModalidad('lapedrera','hogar')">🏠 Educación Inicial en el Hogar</button>
+                <button class="modalidad-tab" onclick="showModalidad('lapedrera','postular')">📝 Postular</button>
             </div>
-            <div id="mani-cdi" class="modalidad-content active"></div>
-            <div id="mani-hogar" class="modalidad-content"></div>
-            <div id="mani-postular" class="modalidad-content"></div>
+            <div id="lapedrera-propia" class="modalidad-content active"></div>
+            <div id="lapedrera-hogar" class="modalidad-content"></div>
+            <div id="lapedrera-postular" class="modalidad-content"></div>
         </div>
 
-        <div id="content-nunchia" class="municipio-content">
+        <div id="content-miritiparana" class="municipio-content">
             <div class="nav-top">
                 <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 Nunchía</span>
+                <span style="font-weight:bold; color:#667eea">📍 Miriti-Paraná (Amazonas)</span>
             </div>
-            <h2 class="section-title">Convocatoria Nunchía</h2>
+            <h2 class="section-title">Convocatoria Miriti-Paraná</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('nunchia','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('nunchia','hogar')">🏠 Educación Inicial en el Hogar - A - Familiar y Comunitaria</button>
-                <button class="modalidad-tab" onclick="showModalidad('nunchia','campesina')">🌾 Educación Inicial Campesina</button>
-                <button class="modalidad-tab" onclick="showModalidad('nunchia','postular')">📝 Postular</button>
+                <button class="modalidad-tab active" onclick="showModalidad('miritiparana','propia')">🌾 Educación Inicial Propia e Intercultural (diaria)</button>
+                <button class="modalidad-tab" onclick="showModalidad('miritiparana','postular')">📝 Postular</button>
             </div>
-            <div id="nunchia-cdi" class="modalidad-content active"></div>
-            <div id="nunchia-hogar" class="modalidad-content"></div>
-            <div id="nunchia-campesina" class="modalidad-content"></div>
-            <div id="nunchia-postular" class="modalidad-content"></div>
+            <div id="miritiparana-propia" class="modalidad-content active"></div>
+            <div id="miritiparana-postular" class="modalidad-content"></div>
         </div>
 
-        <div id="content-orocue" class="municipio-content">
+        <div id="content-puertosantander" class="municipio-content">
             <div class="nav-top">
                 <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 Orocué</span>
+                <span style="font-weight:bold; color:#667eea">📍 Puerto Santander (Amazonas)</span>
             </div>
-            <h2 class="section-title">Convocatoria Orocué</h2>
+            <h2 class="section-title">Convocatoria Puerto Santander</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('orocue','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('orocue','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
-                <button class="modalidad-tab" onclick="showModalidad('orocue','postular')">📝 Postular</button>
+                <button class="modalidad-tab active" onclick="showModalidad('puertosantander','propia')">🌾 Educación Inicial Propia e Intercultural (diaria)</button>
+                <button class="modalidad-tab" onclick="showModalidad('puertosantander','hogar')">🏠 Educación Inicial en el Hogar</button>
+                <button class="modalidad-tab" onclick="showModalidad('puertosantander','postular')">📝 Postular</button>
             </div>
-            <div id="orocue-cdi" class="modalidad-content active"></div>
-            <div id="orocue-hogar" class="modalidad-content"></div>
-            <div id="orocue-postular" class="modalidad-content"></div>
-        </div>
-
-        <div id="content-sanluis" class="municipio-content">
-            <div class="nav-top">
-                <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 San Luis de Palenque</span>
-            </div>
-            <h2 class="section-title">Convocatoria San Luis de Palenque</h2>
-            <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('sanluis','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('sanluis','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
-                <button class="modalidad-tab" onclick="showModalidad('sanluis','postular')">📝 Postular</button>
-            </div>
-            <div id="sanluis-cdi" class="modalidad-content active"></div>
-            <div id="sanluis-hogar" class="modalidad-content"></div>
-            <div id="sanluis-postular" class="modalidad-content"></div>
+            <div id="puertosantander-propia" class="modalidad-content active"></div>
+            <div id="puertosantander-hogar" class="modalidad-content"></div>
+            <div id="puertosantander-postular" class="modalidad-content"></div>
         </div>
 
         <div class="action-buttons" style="margin-top:3rem">
@@ -453,41 +431,60 @@
     </div>
 
     <div class="countdown-floating">
-        <h4>⏰ Convocatoria 3 Cerrada</h4>
+        <h4>⏰ Cierre: jueves 24/09/2026 - 12:00 m.</h4>
         <div id="countdown-content"></div>
     </div>
 
     <script>
         const CORREOS_MUNICIPIOS = {
-            'Maní': 'proalimentarsv+convocatoria.mani@gmail.com',
-            'Nunchía': 'proalimentarsv+convocatoria.nunchia@gmail.com',
-            'Orocué': 'proalimentarsv+convocatoria.orocue@gmail.com',
-            'San Luis de Palenque': 'proalimentarsv+convocatoria.sanluisdepalenque@gmail.com'
+            'La Pedrera': 'soporte.parasistemasdedatos+cvamazonas@gmail.com',
+            'Miriti-Paraná': 'soporte.parasistemasdedatos+cvamazonas@gmail.com',
+            'Puerto Santander': 'soporte.parasistemasdedatos+cvamazonas@gmail.com'
         };
 
-        const ROLES_CDI = [
-            {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
-            {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'12 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral'],e:'12 meses'}]},
-            {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'12 meses'}]},
-            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación de culminación de estudios en nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar de enfermería'],e:'12 meses'}]},
-            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años de experiencia','Compromiso de continuar formación hasta 9° grado'],e:'6 años'}]},
-            {t:'Gestor de Alimentos',p:[{n:'',r:['Básica primaria completa','Certificación médica manipulación alimentos'],e:'6 meses'}]},
-            {t:'Auxiliar Servicios Generales',p:[{n:'',r:['Certificado manipulación alimentos vigente'],e:'6 meses'}]},
-            {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
+        const COBERTURA = {
+            lapedrera: { propia: '172 cupos · 10 UDS · atención diaria (6 a 8 horas, 5 días a la semana)', hogar: '15 cupos · 1 UDS' },
+            miritiparana: { propia: '32 cupos · 1 UDS · atención diaria (6 a 8 horas, 5 días a la semana)' },
+            puertosantander: { propia: '35 cupos · 2 UDS · atención diaria (6 a 8 horas, 5 días a la semana)', hogar: '16 cupos · 1 UDS' }
+        };
+
+        /* Roles y perfiles - Educacion Inicial Propia e Intercultural (atencion diaria).
+           Fuente: Guia Operativa del Servicio Educacion Inicial Propia e Intercultural - EIPI,
+           GO3.MT3.PP v2 (26/12/2025), Tabla 6. */
+        const ROLES_PROPIA = [
+            {t:'Coordinador/a técnico',p:[
+                {n:'Perfil 1',r:['Profesional en ciencias de la educación: educación de primera infancia, educación inicial, educación infantil, pedagogía infantil o educación preescolar'],e:'1 año de experiencia en coordinación pedagógica o en coordinación de trabajo con familias/comunitario, o 3 años de trabajo pedagógico con primera infancia, mujeres y personas en estado de gestación o formación a familias (posgrado en primera infancia equivale a 2 años)'},
+                {n:'Perfil optativo',r:['Ciencias de la educación: educación especial, educación comunitaria, psicopedagogía, básica primaria, artes plásticas, escénicas o musicales, lingüística y literatura','Ciencias sociales y humanas: psicología, trabajo social, desarrollo familiar, antropología o sociología'],e:'1 año de experiencia en coordinación pedagógica o de trabajo con familias/comunitario, o 3 años de trabajo pedagógico con primera infancia'}]},
+            {t:'Profesional en pedagogía',p:[
+                {n:'Perfil 1',r:['Profesional en pedagogía infantil, educación inicial, educación infantil o psicopedagogía'],e:'1 año de experiencia laboral directa en trabajo pedagógico con primera infancia o formación y acompañamiento a familias'},
+                {n:'Perfil optativo 1',r:['Licenciado/a en artes plásticas, escénicas o musicales, lingüística y literatura, o etnoeducación'],e:'2 años de experiencia directa en trabajo educativo con primera infancia'},
+                {n:'Perfil 2',r:['Normalista superior o estudiante de pedagogía infantil o de licenciaturas en artes plásticas, escénicas, musicales o etnoeducación (mínimo 80% de asignaturas aprobadas)'],e:'6 meses de experiencia en trabajo con niñas, niños, familias o comunidades'}]},
+            {t:'Agente educativo comunitario',p:[
+                {n:'Perfil 1',r:['Profesional en pedagogía infantil, educación inicial, educación infantil o psicopedagogía'],e:'6 meses de experiencia en trabajo educativo ajustado a la cultura, preferiblemente con comunidades, familias o primera infancia'},
+                {n:'Perfil optativo 1',r:['Licenciado/a en artes plásticas, escénicas o musicales, o etnoeducación'],e:'6 meses de experiencia en trabajo educativo ajustado a la cultura'},
+                {n:'Perfil 2',r:['Normalista superior, técnico profesional, tecnólogo o técnico laboral en desarrollo infantil o atención integral a la primera infancia'],e:'1 año de experiencia en trabajo pedagógico con primera infancia o formación y acompañamiento a familias'},
+                {n:'Perfil optativo 2 (comunitario)',r:['Haber cursado el máximo nivel de escolaridad formal ofertado en la comunidad','Residir en el sector donde funciona la UCA por lo menos un (1) año','Ser reconocido/a por la comunidad por su saber tradicional y conocimiento de la cultura','Hablar la lengua nativa (en caso de que aplique)','No haber sido sancionado/a por las autoridades tradicionales'],e:'1 año de experiencia en trabajo pedagógico con primera infancia o formación y acompañamiento a familias'}]},
+            {t:'Profesional psicosocial',p:[
+                {n:'Perfil 1',r:['Profesional en psicología, trabajo social, desarrollo familiar, psicopedagogía, sociología o antropología'],e:'1 año de experiencia profesional en trabajo con niñas, niños, familias o comunidades'},
+                {n:'Perfil optativo 1',r:['Profesional en etnoeducación o desarrollo comunitario'],e:'2 años de experiencia en trabajo con niñas, niños, familia o comunidad'},
+                {n:'Perfil 2',r:['Estudiante de psicología, psicopedagogía, trabajo social, desarrollo familiar o comunitario, sociología o antropología, con certificación de culminación del plan de estudios'],e:'6 meses de experiencia laboral o prácticas universitarias'}]},
+            {t:'Profesional en salud y nutrición',p:[
+                {n:'Perfil 1',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses de experiencia profesional después de la matrícula profesional'},
+                {n:'Perfil optativo 1',r:['Certificación de culminación del plan de estudios de nutrición o nutrición y dietética'],e:'6 meses de prácticas universitarias en nutrición comunitaria, pública o afines'},
+                {n:'Perfil 2',r:['Profesional en enfermería'],e:'6 meses de experiencia en salud y nutrición, primera infancia o trabajo comunitario'},
+                {n:'Perfil optativo 2',r:['Técnico/a en auxiliar de enfermería'],e:'12 meses de experiencia en salud y nutrición, primera infancia o trabajo comunitario'}]},
+            {t:'Profesional administrativo',p:[
+                {n:'Perfil 1',r:['Profesional en ciencias económicas, administrativas y sistemas'],e:'1 año de experiencia laboral con funciones afines al cargo'},
+                {n:'Perfil optativo',r:['Técnico o tecnólogo en ciencias económicas, administrativas y sistemas'],e:'1 año de experiencia laboral con funciones afines al cargo'}]},
+            {t:'Gestor/a de alimentos',p:[
+                {n:'',r:['Básica primaria terminada o que sepa leer y escribir','Certificación médica vigente de aptitud para la manipulación de alimentos','Aprobación de la comunidad para la preparación de alimentos en la modalidad de atención','Ser reconocido/a por la comunidad por su saber tradicional','Manejo de la lengua nativa y conocimiento de las tradiciones, usos y costumbres','Disposición para preparar alimentos bajo el acompañamiento del profesional en salud y nutrición'],e:'6 meses de experiencia en cargos similares'}]},
+            {t:'Sabedor/a cultural',p:[
+                {n:'Perfil 1',r:['Persona con saberes y habilidades propias y tradicionales de la cultura a la que pertenece, que hable la lengua nativa y facilite procesos comunitarios','Residir en el sector donde funciona la UCA por lo menos un (1) año','Disponibilidad de tiempo para la atención de las niñas y los niños participantes','Ser reconocido/a por la comunidad por su saber tradicional y conocimiento de la cultura','No haber sido sancionado/a por las autoridades tradicionales'],e:'Experiencia laboral o certificada por la autoridad comunitaria, en trabajo educativo ajustado a la cultura y las tradiciones, preferiblemente con familias o primera infancia'}]}
         ];
 
-        const ROLES_CAMPESINA = [
-            {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
-            {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'6 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'12 meses'}]},
-            {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'6 meses'}]},
-            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación de culminación de estudios en nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar de enfermería'],e:'12 meses'}]},
-            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años de experiencia','Compromiso de continuar formación hasta 9° grado'],e:'6 años'}]},
-            {t:'Gestor/a Comunitario/a',p:[{n:'',r:['Bachiller o técnico con experiencia comunitaria','Conocimiento del territorio, dinámicas familiares y comunitarias'],e:'6 meses'}]},
-            {t:'Gestor de Alimentos',p:[{n:'',r:['Básica primaria completa','Certificación médica para manipulación de alimentos vigente'],e:'6 meses'}]},
-            {t:'Auxiliar Servicios Generales',p:[{n:'',r:['Certificado de manipulación de alimentos vigente'],e:'6 meses'}]},
-            {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
-        ];
-
+        /* Roles y perfiles - Educacion Inicial en el Hogar.
+           Fuente: Guia Operativa del Servicio Educacion Inicial en el Hogar,
+           GO1.MT2.PP v2 (26/12/2025), Tabla 11. */
         const ROLES_HOGAR = [
             {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
             {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'6 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral'],e:'12 meses'}]},
@@ -740,16 +737,9 @@
         }
 
         const VACANTES_ABIERTAS = {
-            mani: {
-                cdi: [],
-                hogar: []
-            },
-            sanluis: {
-                cdi: [],
-                hogar: []
-            },
-            nunchia: { cdi: [], hogar: [], campesina: [] },
-            orocue: { cdi: [], hogar: [] }
+            lapedrera: { propia: [{t:'Coordinador/a técnico'},{t:'Profesional en pedagogía'},{t:'Agente educativo comunitario'},{t:'Profesional psicosocial'},{t:'Profesional en salud y nutrición'},{t:'Profesional administrativo'},{t:'Gestor/a de alimentos'},{t:'Sabedor/a cultural'}], hogar: [{t:'Coordinador/a'},{t:'Agente Educativo/a'},{t:'Profesional Psicosocial'},{t:'Profesional Salud y Nutrición'},{t:'Auxiliar Pedagógico/a'},{t:'Auxiliar Administrativo/a'}] },
+            miritiparana: { propia: [{t:'Coordinador/a técnico'},{t:'Profesional en pedagogía'},{t:'Agente educativo comunitario'},{t:'Profesional psicosocial'},{t:'Profesional en salud y nutrición'},{t:'Profesional administrativo'},{t:'Gestor/a de alimentos'},{t:'Sabedor/a cultural'}] },
+            puertosantander: { propia: [{t:'Coordinador/a técnico'},{t:'Profesional en pedagogía'},{t:'Agente educativo comunitario'},{t:'Profesional psicosocial'},{t:'Profesional en salud y nutrición'},{t:'Profesional administrativo'},{t:'Gestor/a de alimentos'},{t:'Sabedor/a cultural'}], hogar: [{t:'Coordinador/a'},{t:'Agente Educativo/a'},{t:'Profesional Psicosocial'},{t:'Profesional Salud y Nutrición'},{t:'Auxiliar Pedagógico/a'},{t:'Auxiliar Administrativo/a'}] }
         };
 
         function crearTarjetaRol(rol, abiertos) {
@@ -770,6 +760,15 @@
             return html + '</div>';
         }
 
+        function coberturaHTML(municipio, modalidad) {
+            const cupos = (COBERTURA[municipio] || {})[modalidad];
+            if (!cupos) return '';
+            return `<div class="info-box" style="background-color:#e8f5e9;border-left:4px solid #28a745">
+                <h3>📊 Cobertura del servicio</h3>
+                <ul class="info-list"><li>${cupos}</li></ul>
+            </div>`;
+        }
+
         function renderizarRoles() {
             const timeline = getTimelineHTML(1);
             const warning = getWarningHTML();
@@ -781,25 +780,19 @@
                     const abiertos = !v ? [] : (v.perfiles || rol.p.map(p => p.n));
                     return crearTarjetaRol(rol, abiertos);
                 }).join('');
-                return timeline + warning + '<div class="roles-grid">' + cards + '</div>';
+                return timeline + warning + coberturaHTML(municipio, modalidad) + '<div class="roles-grid">' + cards + '</div>';
             }
 
-            document.getElementById('mani-cdi').innerHTML = rolesHTML('mani', 'cdi', ROLES_CDI);
-            document.getElementById('mani-hogar').innerHTML = rolesHTML('mani', 'hogar', ROLES_HOGAR);
-            document.getElementById('mani-postular').innerHTML = generarPostularHTML('Maní');
+            document.getElementById('lapedrera-propia').innerHTML = rolesHTML('lapedrera', 'propia', ROLES_PROPIA);
+            document.getElementById('lapedrera-hogar').innerHTML = rolesHTML('lapedrera', 'hogar', ROLES_HOGAR);
+            document.getElementById('lapedrera-postular').innerHTML = generarPostularHTML('La Pedrera');
 
-            document.getElementById('nunchia-cdi').innerHTML = rolesHTML('nunchia', 'cdi', ROLES_CDI);
-            document.getElementById('nunchia-hogar').innerHTML = rolesHTML('nunchia', 'hogar', ROLES_HOGAR);
-            document.getElementById('nunchia-campesina').innerHTML = rolesHTML('nunchia', 'campesina', ROLES_CAMPESINA);
-            document.getElementById('nunchia-postular').innerHTML = generarPostularHTML('Nunchía');
+            document.getElementById('miritiparana-propia').innerHTML = rolesHTML('miritiparana', 'propia', ROLES_PROPIA);
+            document.getElementById('miritiparana-postular').innerHTML = generarPostularHTML('Miriti-Paraná');
 
-            document.getElementById('orocue-cdi').innerHTML = rolesHTML('orocue', 'cdi', ROLES_CDI);
-            document.getElementById('orocue-hogar').innerHTML = rolesHTML('orocue', 'hogar', ROLES_HOGAR);
-            document.getElementById('orocue-postular').innerHTML = generarPostularHTML('Orocué');
-
-            document.getElementById('sanluis-cdi').innerHTML = rolesHTML('sanluis', 'cdi', ROLES_CDI);
-            document.getElementById('sanluis-hogar').innerHTML = rolesHTML('sanluis', 'hogar', ROLES_HOGAR);
-            document.getElementById('sanluis-postular').innerHTML = generarPostularHTML('San Luis de Palenque');
+            document.getElementById('puertosantander-propia').innerHTML = rolesHTML('puertosantander', 'propia', ROLES_PROPIA);
+            document.getElementById('puertosantander-hogar').innerHTML = rolesHTML('puertosantander', 'hogar', ROLES_HOGAR);
+            document.getElementById('puertosantander-postular').innerHTML = generarPostularHTML('Puerto Santander');
         }
 
         function selectMunicipio(mun) {
@@ -823,7 +816,7 @@
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-09-11T12:00:00').getTime();
+            const deadline = new Date('2026-09-24T12:00:00').getTime();
             const now = new Date().getTime();
             const distance = deadline - now;
             if (distance < 0) {

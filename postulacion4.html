@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convocatoria Amazonas - La Pedrera, Miriti-Paraná y Puerto Santander</title>
+    <title>Convocatoria Amazonas - Zonas 1 y 1A (Leticia y Puerto Nariño)</title>
     <style>
         * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
         body{line-height:1.6;color:#333;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding-bottom:150px;overflow-x:hidden}
@@ -23,6 +23,7 @@
         .status-badge{display:inline-block;padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem;font-weight:600;margin-top:0.8rem}
         .status-active{background-color:#28a745;color:white}
         .status-inactive{background-color:#dc3545;color:white}
+        .zona-title{grid-column:1/-1;color:white;text-align:center;font-size:1.2rem;font-weight:700;margin:1rem 0 0;text-shadow:0 2px 6px rgba(0,0,0,0.3);letter-spacing:0.3px}
         .read-guide{background:rgba(255,255,255,0.96);border-left:5px solid #28a745;border-radius:12px;padding:1rem 1.2rem;margin:0 auto 2rem;max-width:900px;display:flex;align-items:center;gap:1rem;box-shadow:0 8px 22px rgba(0,0,0,0.12)}
         .read-guide-icon{font-size:2rem;color:#28a745;animation:arrowBounce 1.2s infinite;line-height:1}
         .read-guide-text{color:#2c3e50;font-weight:600;font-size:1rem;line-height:1.5}
@@ -326,23 +327,21 @@
     <header class="header">
         <div class="child-decoration" style="top:10px; left:10px">🎨</div>
         <div class="child-decoration" style="top:10px; right:10px">🧩</div>
-        <h1>Convocatoria Multi-Municipio 4</h1>
+        <h1>Convocatoria Multi-Municipio 4 — Amazonas</h1>
         <p class="subtitle">Corporación Proalimentar Salud Y Vida</p>
         <div class="location-badges">
-            <span class="location-badge">📍 La Pedrera (Amazonas)</span>
-            <span class="location-badge">📍 Miriti-Paraná (Amazonas)</span>
-            <span class="location-badge">📍 Puerto Santander (Amazonas)</span>
+            <span class="location-badge">📍 Zona 1: Leticia</span>
+            <span class="location-badge">📍 Zona 1A: Puerto Nariño</span>
         </div>
     </header>
 
 
     <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#fff3cd;border:2px solid #ffc107;border-left:6px solid #ffc107;border-radius:12px;color:#856404;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
-        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — Zona 3 Amazonas (270 cupos)</strong>
-        Está abierta la convocatoria de talento humano para los tres municipios de la Zona 3:
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — Amazonas (Zonas 1 y 1A) · 699 cupos</strong>
+        Está abierta la convocatoria de talento humano para Leticia (Zona 1) y Puerto Nariño (Zona 1A):
         <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
-            <li><strong>La Pedrera</strong> — Educación Inicial Propia e Intercultural (diaria) y Educación Inicial en el Hogar · 187 cupos (11 UDS)</li>
-            <li><strong>Miriti-Paraná</strong> — Educación Inicial Propia e Intercultural (diaria) · 32 cupos (1 UDS)</li>
-            <li><strong>Puerto Santander</strong> — Educación Inicial Propia e Intercultural (diaria) y Educación Inicial en el Hogar · 51 cupos (3 UDS)</li>
+            <li><strong>Zona 1</strong> — Leticia · Educación Inicial Institucional (CDI) · 556 cupos (5 UDS)</li>
+            <li><strong>Zona 1A</strong> — Puerto Nariño · Educación Inicial Propia e Intercultural (diaria) · 143 cupos (10 UDS)</li>
         </ul>
         Cierre: <strong>jueves 24/09/2026, 12:00 m.</strong>
     </div>
@@ -358,71 +357,48 @@
                 </div>
             </div>
             <div class="municipio-selector">
-                <div class="municipio-card" onclick="selectMunicipio('lapedrera')" id="card-lapedrera">
-                    <div class="municipio-icon">🌳</div>
-                    <div class="municipio-name">La Pedrera</div>
-                    <div class="municipio-modalidades">Educación Inicial Propia e Intercultural (diaria) · Educación Inicial en el Hogar</div>
-                    <span class="status-badge status-active">✅ Abierta · 187 cupos</span>
+                <h3 class="zona-title">Zona 1 (Amazonas) — Leticia · 556 cupos</h3>
+                <div class="municipio-card" onclick="selectMunicipio('leticia')" id="card-leticia">
+                    <div class="municipio-icon">🏙️</div>
+                    <div class="municipio-name">Leticia</div>
+                    <div class="municipio-modalidades">Educación Inicial Institucional (CDI)</div>
+                    <span class="status-badge status-active">✅ Abierta · 556 cupos</span>
                 </div>
-                <div class="municipio-card" onclick="selectMunicipio('miritiparana')" id="card-miritiparana">
-                    <div class="municipio-icon">🌿</div>
-                    <div class="municipio-name">Miriti-Paraná</div>
-                    <div class="municipio-modalidades">Educación Inicial Propia e Intercultural (diaria)</div>
-                    <span class="status-badge status-active">✅ Abierta · 32 cupos</span>
-                </div>
-                <div class="municipio-card" onclick="selectMunicipio('puertosantander')" id="card-puertosantander">
+                <h3 class="zona-title">Zona 1A (Amazonas) — Puerto Nariño · 143 cupos</h3>
+                <div class="municipio-card" onclick="selectMunicipio('puertonarino')" id="card-puertonarino">
                     <div class="municipio-icon">🛶</div>
-                    <div class="municipio-name">Puerto Santander</div>
-                    <div class="municipio-modalidades">Educación Inicial Propia e Intercultural (diaria) · Educación Inicial en el Hogar</div>
-                    <span class="status-badge status-active">✅ Abierta · 51 cupos</span>
+                    <div class="municipio-name">Puerto Nariño</div>
+                    <div class="municipio-modalidades">Educación Inicial Propia e Intercultural (diaria)</div>
+                    <span class="status-badge status-active">✅ Abierta · 143 cupos</span>
                 </div>
             </div>
         </div>
 
-        <div id="content-lapedrera" class="municipio-content">
+        <div id="content-leticia" class="municipio-content">
             <div class="nav-top">
                 <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 La Pedrera (Amazonas)</span>
+                <span style="font-weight:bold; color:#667eea">📍 Leticia (Amazonas) — Zona 1</span>
             </div>
-            <h2 class="section-title">Convocatoria La Pedrera</h2>
+            <h2 class="section-title">Convocatoria Leticia</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('lapedrera','propia')">🌾 Educación Inicial Propia e Intercultural (diaria)</button>
-                <button class="modalidad-tab" onclick="showModalidad('lapedrera','hogar')">🏠 Educación Inicial en el Hogar</button>
-                <button class="modalidad-tab" onclick="showModalidad('lapedrera','postular')">📝 Postular</button>
+                <button class="modalidad-tab active" onclick="showModalidad('leticia','institucional')">🏫 Educación Inicial Institucional (CDI)</button>
+                <button class="modalidad-tab" onclick="showModalidad('leticia','postular')">📝 Postular</button>
             </div>
-            <div id="lapedrera-propia" class="modalidad-content active"></div>
-            <div id="lapedrera-hogar" class="modalidad-content"></div>
-            <div id="lapedrera-postular" class="modalidad-content"></div>
+            <div id="leticia-institucional" class="modalidad-content active"></div>
+            <div id="leticia-postular" class="modalidad-content"></div>
         </div>
-
-        <div id="content-miritiparana" class="municipio-content">
+        <div id="content-puertonarino" class="municipio-content">
             <div class="nav-top">
                 <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 Miriti-Paraná (Amazonas)</span>
+                <span style="font-weight:bold; color:#667eea">📍 Puerto Nariño (Amazonas) — Zona 1A</span>
             </div>
-            <h2 class="section-title">Convocatoria Miriti-Paraná</h2>
+            <h2 class="section-title">Convocatoria Puerto Nariño</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('miritiparana','propia')">🌾 Educación Inicial Propia e Intercultural (diaria)</button>
-                <button class="modalidad-tab" onclick="showModalidad('miritiparana','postular')">📝 Postular</button>
+                <button class="modalidad-tab active" onclick="showModalidad('puertonarino','propia')">🌾 Educación Inicial Propia e Intercultural (diaria)</button>
+                <button class="modalidad-tab" onclick="showModalidad('puertonarino','postular')">📝 Postular</button>
             </div>
-            <div id="miritiparana-propia" class="modalidad-content active"></div>
-            <div id="miritiparana-postular" class="modalidad-content"></div>
-        </div>
-
-        <div id="content-puertosantander" class="municipio-content">
-            <div class="nav-top">
-                <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 Puerto Santander (Amazonas)</span>
-            </div>
-            <h2 class="section-title">Convocatoria Puerto Santander</h2>
-            <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('puertosantander','propia')">🌾 Educación Inicial Propia e Intercultural (diaria)</button>
-                <button class="modalidad-tab" onclick="showModalidad('puertosantander','hogar')">🏠 Educación Inicial en el Hogar</button>
-                <button class="modalidad-tab" onclick="showModalidad('puertosantander','postular')">📝 Postular</button>
-            </div>
-            <div id="puertosantander-propia" class="modalidad-content active"></div>
-            <div id="puertosantander-hogar" class="modalidad-content"></div>
-            <div id="puertosantander-postular" class="modalidad-content"></div>
+            <div id="puertonarino-propia" class="modalidad-content active"></div>
+            <div id="puertonarino-postular" class="modalidad-content"></div>
         </div>
 
         <div class="action-buttons" style="margin-top:3rem">
@@ -437,16 +413,27 @@
 
     <script>
         const CORREOS_MUNICIPIOS = {
-            'La Pedrera': 'soporte.parasistemasdedatos+cvamazonas@gmail.com',
-            'Miriti-Paraná': 'soporte.parasistemasdedatos+cvamazonas@gmail.com',
-            'Puerto Santander': 'soporte.parasistemasdedatos+cvamazonas@gmail.com'
+            'Leticia': 'soporte.parasistemasdedatos+cvamazonas@gmail.com',
+            'Puerto Nariño': 'soporte.parasistemasdedatos+cvamazonas@gmail.com'
         };
 
         const COBERTURA = {
-            lapedrera: { propia: '172 cupos · 10 UDS · atención diaria (6 a 8 horas, 5 días a la semana)', hogar: '15 cupos · 1 UDS' },
-            miritiparana: { propia: '32 cupos · 1 UDS · atención diaria (6 a 8 horas, 5 días a la semana)' },
-            puertosantander: { propia: '35 cupos · 2 UDS · atención diaria (6 a 8 horas, 5 días a la semana)', hogar: '16 cupos · 1 UDS' }
+            leticia: { institucional: '556 cupos · 5 UDS (CDI) · atención diaria' },
+            puertonarino: { propia: '143 cupos · 10 UDS · atención diaria (6 a 8 horas, 5 días a la semana)' }
         };
+
+/* Roles y perfiles - Modalidad Institucional (CDI).
+           Mismos cargos ya publicados en las convocatorias de CDI de la asociacion. */
+const ROLES_INSTITUCIONAL = [
+            {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
+            {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'12 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral'],e:'12 meses'}]},
+            {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'12 meses'}]},
+            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación de culminación de estudios en nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar de enfermería'],e:'12 meses'}]},
+            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años de experiencia','Compromiso de continuar formación hasta 9° grado'],e:'6 años'}]},
+            {t:'Gestor de Alimentos',p:[{n:'',r:['Básica primaria completa','Certificación médica manipulación alimentos'],e:'6 meses'}]},
+            {t:'Auxiliar Servicios Generales',p:[{n:'',r:['Certificado manipulación alimentos vigente'],e:'6 meses'}]},
+            {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
+        ];
 
         /* Roles y perfiles - Educacion Inicial Propia e Intercultural (atencion diaria).
            Fuente: Guia Operativa del Servicio Educacion Inicial Propia e Intercultural - EIPI,
@@ -737,9 +724,8 @@
         }
 
         const VACANTES_ABIERTAS = {
-            lapedrera: { propia: [{t:'Coordinador/a técnico'},{t:'Profesional en pedagogía'},{t:'Agente educativo comunitario'},{t:'Profesional psicosocial'},{t:'Profesional en salud y nutrición'},{t:'Profesional administrativo'},{t:'Gestor/a de alimentos'},{t:'Sabedor/a cultural'}], hogar: [{t:'Coordinador/a'},{t:'Agente Educativo/a'},{t:'Profesional Psicosocial'},{t:'Profesional Salud y Nutrición'},{t:'Auxiliar Pedagógico/a'},{t:'Auxiliar Administrativo/a'}] },
-            miritiparana: { propia: [{t:'Coordinador/a técnico'},{t:'Profesional en pedagogía'},{t:'Agente educativo comunitario'},{t:'Profesional psicosocial'},{t:'Profesional en salud y nutrición'},{t:'Profesional administrativo'},{t:'Gestor/a de alimentos'},{t:'Sabedor/a cultural'}] },
-            puertosantander: { propia: [{t:'Coordinador/a técnico'},{t:'Profesional en pedagogía'},{t:'Agente educativo comunitario'},{t:'Profesional psicosocial'},{t:'Profesional en salud y nutrición'},{t:'Profesional administrativo'},{t:'Gestor/a de alimentos'},{t:'Sabedor/a cultural'}], hogar: [{t:'Coordinador/a'},{t:'Agente Educativo/a'},{t:'Profesional Psicosocial'},{t:'Profesional Salud y Nutrición'},{t:'Auxiliar Pedagógico/a'},{t:'Auxiliar Administrativo/a'}] }
+            leticia: { institucional: [{t:'Coordinador/a'}, {t:'Agente Educativo/a'}, {t:'Profesional Psicosocial'}, {t:'Profesional Salud y Nutrición'}, {t:'Auxiliar Pedagógico/a'}, {t:'Gestor de Alimentos'}, {t:'Auxiliar Servicios Generales'}, {t:'Auxiliar Administrativo/a'}] },
+            puertonarino: { propia: [{t:'Coordinador/a técnico'}, {t:'Profesional en pedagogía'}, {t:'Agente educativo comunitario'}, {t:'Profesional psicosocial'}, {t:'Profesional en salud y nutrición'}, {t:'Profesional administrativo'}, {t:'Gestor/a de alimentos'}, {t:'Sabedor/a cultural'}] }
         };
 
         function crearTarjetaRol(rol, abiertos) {
@@ -783,16 +769,10 @@
                 return timeline + warning + coberturaHTML(municipio, modalidad) + '<div class="roles-grid">' + cards + '</div>';
             }
 
-            document.getElementById('lapedrera-propia').innerHTML = rolesHTML('lapedrera', 'propia', ROLES_PROPIA);
-            document.getElementById('lapedrera-hogar').innerHTML = rolesHTML('lapedrera', 'hogar', ROLES_HOGAR);
-            document.getElementById('lapedrera-postular').innerHTML = generarPostularHTML('La Pedrera');
-
-            document.getElementById('miritiparana-propia').innerHTML = rolesHTML('miritiparana', 'propia', ROLES_PROPIA);
-            document.getElementById('miritiparana-postular').innerHTML = generarPostularHTML('Miriti-Paraná');
-
-            document.getElementById('puertosantander-propia').innerHTML = rolesHTML('puertosantander', 'propia', ROLES_PROPIA);
-            document.getElementById('puertosantander-hogar').innerHTML = rolesHTML('puertosantander', 'hogar', ROLES_HOGAR);
-            document.getElementById('puertosantander-postular').innerHTML = generarPostularHTML('Puerto Santander');
+            document.getElementById('leticia-institucional').innerHTML = rolesHTML('leticia', 'institucional', ROLES_INSTITUCIONAL);
+            document.getElementById('leticia-postular').innerHTML = generarPostularHTML('Leticia');
+            document.getElementById('puertonarino-propia').innerHTML = rolesHTML('puertonarino', 'propia', ROLES_PROPIA);
+            document.getElementById('puertonarino-postular').innerHTML = generarPostularHTML('Puerto Nariño');
         }
 
         function selectMunicipio(mun) {

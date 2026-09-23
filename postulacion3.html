@@ -337,10 +337,11 @@
     </header>
 
 
-    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#f8d7da;border:2px solid #dc3545;border-left:6px solid #dc3545;border-radius:12px;color:#721c24;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
-        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">🔒 Convocatoria cerrada</strong>
-        La Convocatoria 3 cerró el <strong>viernes 11/09/2026 a las 12:00 m.</strong> Ya no se reciben postulaciones para Maní, Nunchía, Orocué ni San Luis de Palenque.
-        <span style="display:block;margin-top:0.6rem">La convocatoria vigente es la <strong>Convocatoria 4 - Amazonas (Zona 3)</strong>: <a href="postulacion4.html" style="color:#721c24;font-weight:600">ver convocatoria abierta</a>.</span>
+    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#fff3cd;border:2px solid #f0ad4e;border-left:6px solid #f0ad4e;border-radius:12px;color:#7a5b00;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Reapertura parcial — 1 vacante abierta</strong>
+        Queda abierta <strong>1 vacante</strong> en <strong>San Luis de Palenque</strong>: <strong>Agente Educativo/a (Perfil 1 y Perfil 2)</strong> para el <strong>CDI Gavancitos</strong>. Maní, Nunchía y Orocué siguen cerradas.<br>
+        Cierre: <strong>jueves 24/09/2026 a las 12:00 m.</strong>
+        <span style="display:block;margin-top:0.6rem">El resto de los cargos de la Convocatoria 3 permanece cerrado.</span>
     </div>
 
     <div class="container">
@@ -372,11 +373,11 @@
                     <div class="municipio-modalidades">Centro de Desarrollo Infantil - Educación Inicial en el Hogar Familiar y Comunitaria</div>
                     <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
-                <div class="municipio-card" id="card-sanluis" style="opacity:0.55;pointer-events:none">
+                <div class="municipio-card" id="card-sanluis" onclick="selectMunicipio('sanluis')">
                     <div class="municipio-icon">🌾</div>
                     <div class="municipio-name">San Luis de Palenque</div>
-                    <div class="municipio-modalidades">CDI - Auxiliar Pedagógico/a</div>
-                    <span class="status-badge status-inactive">🔒 Cerrada</span>
+                    <div class="municipio-modalidades">CDI Gavancitos - Agente Educativo/a (Perfil 1 y 2)</div>
+                    <span class="status-badge status-active">✅ Abierta · 1 cargo (CDI)</span>
                 </div>
             </div>
         </div>
@@ -453,7 +454,7 @@
     </div>
 
     <div class="countdown-floating">
-        <h4>⏰ Convocatoria 3 Cerrada</h4>
+        <h4>⏰ Cierre: San Luis de Palenque</h4>
         <div id="countdown-content"></div>
     </div>
 
@@ -745,7 +746,7 @@
                 hogar: []
             },
             sanluis: {
-                cdi: [],
+                cdi: [{ t: 'Agente Educativo/a' }],
                 hogar: []
             },
             nunchia: { cdi: [], hogar: [], campesina: [] },
@@ -823,7 +824,7 @@
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-09-11T12:00:00').getTime();
+            const deadline = new Date('2026-09-24T12:00:00').getTime();
             const now = new Date().getTime();
             const distance = deadline - now;
             if (distance < 0) {

@@ -40,6 +40,9 @@
         .role-card h3{color:#667eea;font-size:1.15rem;margin-bottom:0.8rem}
         .role-card h3::before{content:'👤 '}
         .perfil-section{margin:0.8rem 0;padding:0.8rem;background-color:rgba(255,255,255,0.6);border-radius:8px;border-left:3px solid #667eea}
+        .rol-status{display:inline-block;padding:0.2rem 0.75rem;border-radius:15px;font-size:0.72rem;font-weight:700;margin-bottom:0.6rem}
+        .role-card.cerrada{opacity:0.5;filter:grayscale(0.5)}
+        .perfil-section.cerrada{opacity:0.45}
         .perfil-badge{display:inline-block;background-color:#667eea;color:white;padding:0.25rem 0.8rem;border-radius:15px;font-size:0.75rem;margin-bottom:0.5rem;font-weight:600}
         .requirement{font-size:0.88rem;color:#555;margin:0.4rem 0;padding-left:1.2rem;position:relative;line-height:1.5}
         .requirement::before{content:'•';position:absolute;left:0;color:#667eea;font-weight:bold}
@@ -325,6 +328,12 @@
         </div>
     </header>
 
+    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#d4edda;border:2px solid #28a745;border-left:6px solid #28a745;border-radius:12px;color:#155724;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">✅ Convocatoria abierta — 1 vacante</strong>
+        Aguazul: <strong>Nutricionista</strong> (Profesional Salud y Nutrición - Perfil 1 Nutricionista) en <strong>Educación Inicial</strong>.<br>
+        Cierre: <strong>martes 29/09/2026 a las 12:00 m.</strong>
+    </div>
+
     <div class="container">
         <div id="selector-principal">
             <h2 style="text-align:center;color:white;margin-bottom:2rem">Seleccione su Municipio</h2>
@@ -332,20 +341,20 @@
                 <div class="municipio-card" onclick="selectMunicipio('aguazul')" id="card-aguazul">
                     <div class="municipio-icon">🏛️</div>
                     <div class="municipio-name">Aguazul</div>
-                    <div class="municipio-modalidades">CDI - Educación Inicial</div>
-                    <span class="status-badge status-inactive">⏰ Cerrada</span>
+                    <div class="municipio-modalidades">Educación Inicial - Nutricionista</div>
+                    <span class="status-badge status-active">✅ Abierta · 1 cargo (Nutricionista)</span>
                 </div>
-                <div class="municipio-card" onclick="selectMunicipio('chameza')" id="card-chameza">
+                <div class="municipio-card" style="opacity:0.55;pointer-events:none" id="card-chameza">
                     <div class="municipio-icon">🏘️</div>
                     <div class="municipio-name">Chameza</div>
                     <div class="municipio-modalidades">CDI - Educación Inicial</div>
-                    <span class="status-badge status-inactive">⏰ Cerrada</span>
+                    <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
-                <div class="municipio-card" onclick="selectMunicipio('recetor')" id="card-recetor">
+                <div class="municipio-card" style="opacity:0.55;pointer-events:none" id="card-recetor">
                     <div class="municipio-icon">🏞️</div>
                     <div class="municipio-name">Recetor</div>
                     <div class="municipio-modalidades">Educación Inicial</div>
-                    <span class="status-badge status-inactive">⏰ Cerrada</span>
+                    <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
             </div>
         </div>
@@ -357,12 +366,12 @@
             </div>
             <h2 class="section-title">Convocatoria Aguazul</h2>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('aguazul','cdi')">🏫 CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('aguazul','hogar')">🏠 Educación Inicial</button>
+                <button class="modalidad-tab" onclick="showModalidad('aguazul','cdi')">🏫 CDI</button>
+                <button class="modalidad-tab active" onclick="showModalidad('aguazul','hogar')">🏠 Educación Inicial</button>
                 <button class="modalidad-tab" onclick="showModalidad('aguazul','postular')">📝 Postular</button>
             </div>
-            <div id="aguazul-cdi" class="modalidad-content active"></div>
-            <div id="aguazul-hogar" class="modalidad-content"></div>
+            <div id="aguazul-cdi" class="modalidad-content"></div>
+            <div id="aguazul-hogar" class="modalidad-content active"></div>
             <div id="aguazul-postular" class="modalidad-content"></div>
         </div>
 
@@ -402,7 +411,7 @@
     </div>
 
     <div class="countdown-floating">
-        <h4>⏰ Convocatoria 2 Cerrada</h4>
+        <h4>⏰ Cierre: Aguazul (Nutricionista)</h4>
         <div id="countdown-content"></div>
     </div>
 
@@ -430,6 +439,12 @@
             {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico atención integral'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años experiencia','Continuar hasta 9° grado'],e:'6 años'}]},
             {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
         ];
+
+        const VACANTES_ABIERTAS = {
+            aguazul: { cdi: [], hogar: [{ t: 'Profesional Salud y Nutrición', perfiles: ['P1 Nutricionista'] }] },
+            chameza: { cdi: [], hogar: [] },
+            recetor: { hogar: [] }
+        };
 
         function getTimelineHTML(activeStep) {
             return `
@@ -665,11 +680,18 @@
             `;
         }
 
-        function crearTarjetaRol(rol) {
-            let html = `<div class="role-card"><h3>${rol.t}</h3>`;
+        function crearTarjetaRol(rol, abiertos) {
+            let html = `<div class="role-card${abiertos.length === 0 ? ' cerrada' : ''}">`;
+            if (abiertos.length === 0) {
+                html += `<span class="rol-status status-inactive">🔒 Cerrada</span>`;
+            } else {
+                html += `<span class="rol-status status-active">✅ Abierta</span>`;
+            }
+            html += `<h3>${rol.t}</h3>`;
             rol.p.forEach(perfil => {
-                html += '<div class="perfil-section">';
-                if(perfil.n) html += `<span class="perfil-badge">${perfil.n}</span>`;
+                const abierto = abiertos.includes(perfil.n);
+                html += `<div class="perfil-section${abierto ? '' : ' cerrada'}">`;
+                if (perfil.n) html += `<span class="perfil-badge">${perfil.n}</span>`;
                 perfil.r.forEach(req => html += `<div class="requirement">${req}</div>`);
                 html += `<div class="experience">⏱️ ${perfil.e}</div></div>`;
             });
@@ -679,18 +701,26 @@
         function renderizarRoles() {
             const timeline = getTimelineHTML(1);
             const warning = getWarningHTML();
-            const cdiHTML = timeline + warning + '<div class="roles-grid">' + ROLES_CDI.map(crearTarjetaRol).join('') + '</div>';
-            const hogarHTML = timeline + warning + '<div class="roles-grid">' + ROLES_HOGAR.map(crearTarjetaRol).join('') + '</div>';
-            
-            document.getElementById('aguazul-cdi').innerHTML = cdiHTML;
-            document.getElementById('aguazul-hogar').innerHTML = hogarHTML;
+
+            function rolesHTML(municipio, modalidad, master) {
+                const vacantes = (VACANTES_ABIERTAS[municipio] || {})[modalidad] || [];
+                const cards = master.map(rol => {
+                    const v = vacantes.find(x => x.t === rol.t);
+                    const abiertos = !v ? [] : (v.perfiles || rol.p.map(p => p.n));
+                    return crearTarjetaRol(rol, abiertos);
+                }).join('');
+                return timeline + warning + '<div class="roles-grid">' + cards + '</div>';
+            }
+
+            document.getElementById('aguazul-cdi').innerHTML = rolesHTML('aguazul', 'cdi', ROLES_CDI);
+            document.getElementById('aguazul-hogar').innerHTML = rolesHTML('aguazul', 'hogar', ROLES_HOGAR);
             document.getElementById('aguazul-postular').innerHTML = generarPostularHTML('Aguazul');
-            
-            document.getElementById('chameza-cdi').innerHTML = cdiHTML;
-            document.getElementById('chameza-hogar').innerHTML = hogarHTML;
+
+            document.getElementById('chameza-cdi').innerHTML = rolesHTML('chameza', 'cdi', ROLES_CDI);
+            document.getElementById('chameza-hogar').innerHTML = rolesHTML('chameza', 'hogar', ROLES_HOGAR);
             document.getElementById('chameza-postular').innerHTML = generarPostularHTML('Chameza');
-            
-            document.getElementById('recetor-hogar').innerHTML = hogarHTML;
+
+            document.getElementById('recetor-hogar').innerHTML = rolesHTML('recetor', 'hogar', ROLES_HOGAR);
             document.getElementById('recetor-postular').innerHTML = generarPostularHTML('Recetor');
         }
 
@@ -715,7 +745,7 @@
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-08-04T00:00:00').getTime();
+            const deadline = new Date('2026-09-29T12:00:00').getTime();
             const now = new Date().getTime();
             const distance = deadline - now;
             if (distance < 0) {

@@ -334,11 +334,11 @@
     </header>
 
 
-    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#d4edda;border:2px solid #28a745;border-left:6px solid #28a745;border-radius:12px;color:#155724;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
-        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — 1 cargo</strong>
+    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#f8d7da;border:2px solid #dc3545;border-left:6px solid #dc3545;border-radius:12px;color:#721c24;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">🔒 Convocatoria cerrada</strong>
         Maní: <strong>Auxiliar Pedagógico/a</strong> (Perfil 1) para <strong>Educación Inicial en el Hogar Familiar y Comunitaria (EIH)</strong>.<br>
-        Cierre: <strong>miércoles 30/09/2026 a las 12:00 m.</strong> No se recibirán postulaciones después de esa hora.<br>
-        <span style="font-size:0.9rem">Las demás convocatorias de esta página (San Luis de Palenque, Nunchía y Orocué) ya cerraron.</span>
+        Cerró el <strong>miércoles 30/09/2026 a las 12:00 m.</strong> No se reciben más postulaciones.<br>
+        <span style="font-size:0.9rem">Todas las convocatorias de esta página (Maní, San Luis de Palenque, Nunchía y Orocué) ya cerraron.</span>
     </div>
 
     <div class="container">
@@ -352,11 +352,11 @@
                 </div>
             </div>
             <div class="municipio-selector">
-                <div class="municipio-card" onclick="selectMunicipio('mani')" id="card-mani">
+                <div class="municipio-card" style="opacity:0.55;pointer-events:none" id="card-mani">
                     <div class="municipio-icon">🏛️</div>
                     <div class="municipio-name">Maní</div>
                     <div class="municipio-modalidades">Educación Inicial en el Hogar Familiar y Comunitaria (EIH) - Auxiliar Pedagógico/a</div>
-                    <span class="status-badge status-active">✅ Abierta · 1 cargo (EIH)</span>
+                    <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
                 <div class="municipio-card" id="card-nunchia" style="display:none">
                     <div class="municipio-icon">🏘️</div>
@@ -451,7 +451,7 @@
     </div>
 
     <div class="countdown-floating">
-        <h4>⏰ Cierre: miércoles 30/09/2026 · 12:00 m.</h4>
+        <h4>⏰ Convocatoria 3 Cerrada</h4>
         <div id="countdown-content"></div>
     </div>
 
@@ -740,7 +740,7 @@
         const VACANTES_ABIERTAS = {
             mani: {
                 cdi: [],
-                hogar: [{t:'Auxiliar Pedagógico/a', perfiles:['Perfil 1']}]
+                hogar: []
             },
             sanluis: {
                 cdi: [],

@@ -329,9 +329,9 @@
     </header>
 
     <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#d4edda;border:2px solid #28a745;border-left:6px solid #28a745;border-radius:12px;color:#155724;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
-        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">✅ Convocatoria abierta — 1 vacante</strong>
-        Aguazul: <strong>Nutricionista</strong> (Profesional Salud y Nutrición - Perfil 1 Nutricionista) en <strong>Educación Inicial</strong>.<br>
-        Cierre: <strong>martes 29/09/2026 a las 12:00 m.</strong>
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">✅ Convocatoria abierta — 2 vacantes</strong>
+        Aguazul: <strong>Nutricionista</strong> (Profesional Salud y Nutrición - Perfil 1 Nutricionista) en <strong>Educación Inicial en el Hogar (EIH)</strong> y <strong>Gestor de Alimentos</strong> en <strong>CDI</strong>.<br>
+        Cierre: <strong>martes 06/10/2026 a las 4:00 p.m.</strong>
     </div>
 
     <div class="container">
@@ -341,8 +341,8 @@
                 <div class="municipio-card" onclick="selectMunicipio('aguazul')" id="card-aguazul">
                     <div class="municipio-icon">🏛️</div>
                     <div class="municipio-name">Aguazul</div>
-                    <div class="municipio-modalidades">Educación Inicial - Nutricionista</div>
-                    <span class="status-badge status-active">✅ Abierta · 1 cargo (Nutricionista)</span>
+                    <div class="municipio-modalidades">CDI - Educación Inicial en el Hogar</div>
+                    <span class="status-badge status-active">✅ Abierta · 2 cargos (CDI y Educación Inicial)</span>
                 </div>
                 <div class="municipio-card" style="opacity:0.55;pointer-events:none" id="card-chameza">
                     <div class="municipio-icon">🏘️</div>
@@ -411,13 +411,13 @@
     </div>
 
     <div class="countdown-floating">
-        <h4>⏰ Cierre: Aguazul (Nutricionista)</h4>
+        <h4>⏰ Cierre: Aguazul (Nutricionista y Gestor de Alimentos)</h4>
         <div id="countdown-content"></div>
     </div>
 
     <script>
         const CORREOS_MUNICIPIOS = {
-            'Aguazul': 'proalimentarsv+convocatoria.aguazul@gmail.com',
+            'Aguazul': 'proalimentarsv@gmail.com',
             'Chameza': 'proalimentarsv+convocatoria.chameza@gmail.com',
             'Recetor': 'proalimentarsv+convocatoria.recetor@gmail.com'
         };
@@ -441,7 +441,7 @@
         ];
 
         const VACANTES_ABIERTAS = {
-            aguazul: { cdi: [], hogar: [{ t: 'Profesional Salud y Nutrición', perfiles: ['P1 Nutricionista'] }] },
+            aguazul: { cdi: [{ t: 'Gestor de Alimentos' }], hogar: [{ t: 'Profesional Salud y Nutrición', perfiles: ['P1 Nutricionista'] }] },
             chameza: { cdi: [], hogar: [] },
             recetor: { hogar: [] }
         };
@@ -745,7 +745,7 @@
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-09-29T12:00:00').getTime();
+            const deadline = new Date('2026-10-06T16:00:00').getTime();
             const now = new Date().getTime();
             const distance = deadline - now;
             if (distance < 0) {

@@ -201,6 +201,42 @@
             font-weight: 600;
         }
 
+        /* Estados de cargo (abierta / cerrada) */
+        .rol-status {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .status-active { background-color: #28a745; color: white; }
+        .status-inactive { background-color: #dc3545; color: white; }
+
+        .role-card.cerrada { opacity: 0.6; }
+
+        .perfil-section {
+            margin: 0.8rem 0;
+            padding: 0.8rem;
+            background-color: rgba(255,255,255,0.6);
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .perfil-section.cerrada { opacity: 0.45; }
+
+        .perfil-badge {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 0.25rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
         /* Información General */
         .info-box {
             background-color: #f8f9fa;
@@ -523,10 +559,20 @@
         <div class="location-badge">📍 Yopal, Casanare</div>
     </header>
 
+    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#d4edda;border:2px solid #28a745;border-left:6px solid #28a745;border-radius:12px;color:#155724;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — 1 cargo</strong>
+        Está abierto <strong>1 cargo</strong>:
+        <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
+            <li><strong>Agente Educativo/a Perfil 2</strong> — Yopal (CDI)</li>
+        </ul>
+        Los demás cargos de esta convocatoria están <strong>cerrados</strong>.
+        Cierre: <strong>sábado 17/10/2026, 12:00 m.</strong> No se recibirán postulaciones después de esa hora.
+    </div>
+
     <div class="container">
         <div class="nav-top">
             <a href="index.html" class="btn btn-secondary btn-sm">⬅️ Volver al Inicio</a>
-            <span style="font-weight:bold; color:#d32f2f">⏰ Convocatoria Cerrada</span>
+            <span style="font-weight:bold; color:#1e7e34">⏰ Convocatoria Abierta · Cierre: sábado 17/10/2026, 12:00 m.</span>
         </div>
 
         <div class="nav-tabs">
@@ -561,61 +607,71 @@
             <h2 class="section-title">Perfiles Requeridos</h2>
             
             <div class="roles-grid">
-                <!-- Coordinador -->
+                <!-- Agente Educativo - UNICO CARGO ABIERTO -->
                 <div class="role-card">
+                    <span class="rol-status status-active">✅ Abierta</span>
+                    <h3>Agente Educativo/a</h3>
+                    <div class="perfil-section cerrada">
+                        <span class="perfil-badge">Perfil 1</span>
+                        <div class="requirement">Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial</div>
+                        <div class="requirement">Licenciatura en artes plásticas, escénicas, musicales o etnoeducación</div>
+                        <div class="experience">⏱️ 12 meses</div>
+                    </div>
+                    <div class="perfil-section">
+                        <span class="perfil-badge">Perfil 2</span>
+                        <div class="requirement">Normalista superior o técnico en atención integral</div>
+                        <div class="experience">⏱️ 12 meses</div>
+                    </div>
+                </div>
+
+                <!-- Cargos cerrados -->
+                <div class="role-card cerrada">
+                    <span class="rol-status status-inactive">🔒 Cerrada</span>
                     <h3>Coordinador/a</h3>
                     <div class="requirement">Profesional en ciencias de la educación, ciencias sociales o humanas</div>
                     <div class="experience">⏱️ 36 meses de experiencia (12 meses en cargos de coordinación)</div>
                 </div>
 
-                <!-- Agente Educativo -->
-                <div class="role-card">
-                    <h3>Agente Educativo/a</h3>
-                    <div class="requirement">Licenciatura en pedagogía infantil, educación preescolar o inicial</div>
-                    <div class="requirement">Alternativa: Normalista superior o técnico en primera infancia</div>
-                    <div class="experience">⏱️ 12 meses de experiencia relacionada</div>
-                </div>
-
-                <!-- Profesional Psicosocial -->
-                <div class="role-card">
+                <div class="role-card cerrada">
+                    <span class="rol-status status-inactive">🔒 Cerrada</span>
                     <h3>Profesional Psicosocial</h3>
                     <div class="requirement">Título profesional en psicología, trabajo social, desarrollo familiar o sociología</div>
                     <div class="experience">⏱️ 12 meses de experiencia relacionada</div>
                 </div>
 
-                <!-- Profesional Salud y Nutrición -->
-                <div class="role-card">
+                <div class="role-card cerrada">
+                    <span class="rol-status status-inactive">🔒 Cerrada</span>
                     <h3>Profesional Salud y Nutrición</h3>
                     <div class="requirement">Nutricionista o nutrición y dietética</div>
                     <div class="requirement">Alternativa: Enfermero/a o técnico auxiliar de enfermería</div>
                     <div class="experience">⏱️ 6-12 meses según perfil</div>
                 </div>
 
-                <!-- Auxiliar Pedagógico -->
-                <div class="role-card">
+                <div class="role-card cerrada">
+                    <span class="rol-status status-inactive">🔒 Cerrada</span>
                     <h3>Auxiliar Pedagógico/a</h3>
                     <div class="requirement">Normalista superior o técnico en primera infancia</div>
                     <div class="requirement">Madres/padres transitados: Primaria + 6 años experiencia</div>
                     <div class="experience">⏱️ 6 meses de experiencia</div>
                 </div>
 
-                <!-- Gestor de Alimentos -->
-                <div class="role-card">
+                <div class="role-card cerrada">
+                    <span class="rol-status status-inactive">🔒 Cerrada</span>
                     <h3>Gestor/a de Alimentos</h3>
                     <div class="requirement">Básica primaria completa</div>
                     <div class="requirement">Certificación médica para manipulación de alimentos vigente</div>
                     <div class="experience">⏱️ 6 meses de experiencia</div>
                 </div>
 
-                <!-- Auxiliar Servicios Generales -->
-                <div class="role-card">
+                <div class="role-card cerrada">
+                    <span class="rol-status status-inactive">🔒 Cerrada</span>
                     <h3>Auxiliar Servicios Generales</h3>
                     <div class="requirement">Certificado de manipulación de alimentos vigente</div>
                     <div class="experience">⏱️ 6 meses de experiencia</div>
                 </div>
 
-                <!-- Auxiliar Administrativo -->
-                <div class="role-card">
+                <div class="role-card cerrada">
+                    <span class="rol-status status-inactive">🔒 Cerrada</span>
                     <h3>Auxiliar Administrativo/a</h3>
                     <div class="requirement">Técnico o tecnólogo en ciencias económicas, administrativas o sistemas</div>
                     <div class="experience">⏱️ 12 meses de experiencia</div>
@@ -682,7 +738,7 @@
                 <ul class="info-list">
                     <li>Hoja de vida en formato único actualizado</li>
                     <li>Asunto del correo: <strong>"Aspirante [CARGO] - Yopal - [NOMBRE COMPLETO]"</strong></li>
-                    <li>Enviar a: <strong style="color: #667eea;">proalimentarsv+convocatoria.yopal@gmail.com</strong></li>
+                    <li>Enviar a: <strong style="color: #667eea;">proalimentarsv@gmail.com</strong></li>
                     <li>No se aceptarán postulaciones incompletas</li>
                 </ul>
             </div>
@@ -743,7 +799,7 @@
 
             <!-- Botones de Acción -->
             <div class="action-buttons" style="margin-top: 2rem;">
-                <a href="mailto:proalimentarsv+convocatoria.yopal@gmail.com" class="btn btn-success">
+                <a href="mailto:proalimentarsv@gmail.com" class="btn btn-success">
                     📧 Enviar Hoja de Vida Ahora (Finalizar)
                 </a>
                 <button onclick="showTab('roles')" class="btn btn-secondary">
@@ -762,7 +818,7 @@
 
     <!-- Cuenta Regresiva Flotante -->
     <div class="countdown-floating">
-        <h4>⏰ Convocatoria 1 Cerrada</h4>
+        <h4>⏰ Cierre: sábado 17/10/2026 - 12:00 m.</h4>
         <div id="countdown-content"></div>
     </div>
 
@@ -788,7 +844,7 @@
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-08-04T00:00:00').getTime();
+            const deadline = new Date('2026-10-17T12:00:00').getTime();
             const now = new Date().getTime();
             const distance = deadline - now;
 

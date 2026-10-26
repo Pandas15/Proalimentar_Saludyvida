@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco de Hojas de Vida - San Luis de Palenque y Orocué</title>
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+        body{line-height:1.6;color:#333;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding-bottom:150px;overflow-x:hidden}
+        .header{background-color:rgba(255,255,255,0.95);padding:2rem;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:relative;z-index:10}
+        .header h1{color:#667eea;font-size:2rem;margin-bottom:0.5rem}
+        .header .subtitle{color:#666;font-size:1.1rem}
+        .location-badges{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1rem}
+        .location-badge{background-color:#667eea;color:white;padding:0.5rem 1.5rem;border-radius:25px;font-weight:bold}
+        .container{max-width:1200px;margin:2rem auto;padding:0 1rem;position:relative;z-index:5}
+        .municipio-selector{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:2rem}
+        .municipio-card{background:white;border-radius:15px;padding:2rem;text-align:center;cursor:pointer;transition:all 0.3s;border:3px solid transparent;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+        .municipio-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(102,126,234,0.3)}
+        .municipio-card.active{border-color:#667eea;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white}
+        .municipio-icon{font-size:3rem;margin-bottom:1rem}
+        .municipio-name{font-size:1.5rem;font-weight:bold;margin-bottom:0.5rem}
+        .municipio-modalidades{font-size:0.9rem;margin-top:0.8rem;opacity:0.9}
+        .status-badge{display:inline-block;padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem;font-weight:600;margin-top:0.8rem}
+        .status-active{background-color:#28a745;color:white}
+        .status-inactive{background-color:#dc3545;color:white}
+        .read-guide{background:rgba(255,255,255,0.96);border-left:5px solid #28a745;border-radius:12px;padding:1rem 1.2rem;margin:0 auto 2rem;max-width:900px;display:flex;align-items:center;gap:1rem;box-shadow:0 8px 22px rgba(0,0,0,0.12)}
+        .read-guide-icon{font-size:2rem;color:#28a745;animation:arrowBounce 1.2s infinite;line-height:1}
+        .read-guide-text{color:#2c3e50;font-weight:600;font-size:1rem;line-height:1.5}
+        .read-guide-text span{display:block;color:#667eea;font-size:0.92rem;font-weight:500;margin-top:0.2rem}
+        @keyframes arrowBounce{0%,100%{transform:translateY(-4px)}50%{transform:translateY(7px)}}
+        .municipio-content{display:none;background-color:white;border-radius:15px;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.1);animation:fadeIn 0.5s}
+        .municipio-content.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .section-title{color:#667eea;font-size:1.8rem;margin-bottom:1.5rem;text-align:center;position:relative;padding-bottom:0.5rem}
+        .section-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:3px;background:linear-gradient(90deg,#667eea,#764ba2)}
+        .modalidad-tabs{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;justify-content:center}
+        .modalidad-tab{background-color:white;color:#667eea;border:2px solid #667eea;padding:0.8rem 1.4rem;border-radius:25px;cursor:pointer;font-size:0.92rem;font-weight:600;transition:all 0.3s;white-space:normal;line-height:1.25;max-width:360px}
+        .modalidad-tab:hover{background-color:#667eea;color:white}
+        .modalidad-tab.active{background-color:#667eea;color:white}
+        .modalidad-content{display:none}
+        .modalidad-content.active{display:block}
+        .roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin:2rem 0}
+        .role-card{background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);border-radius:12px;padding:1.5rem;transition:all 0.3s;border:2px solid transparent}
+        .role-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(102,126,234,0.2);border-color:#667eea}
+        .role-card h3{color:#667eea;font-size:1.15rem;margin-bottom:0.8rem}
+        .role-card h3::before{content:'👤 '}
+        .perfil-section{margin:0.8rem 0;padding:0.8rem;background-color:rgba(255,255,255,0.6);border-radius:8px;border-left:3px solid #667eea}
+        .perfil-badge{display:inline-block;background-color:#667eea;color:white;padding:0.25rem 0.8rem;border-radius:15px;font-size:0.75rem;margin-bottom:0.5rem;font-weight:600}
+        .requirement{font-size:0.88rem;color:#555;margin:0.4rem 0;padding-left:1.2rem;position:relative;line-height:1.5}
+        .requirement::before{content:'•';position:absolute;left:0;color:#667eea;font-weight:bold}
+        .experience{background-color:rgba(102,126,234,0.15);padding:0.6rem;border-radius:6px;margin-top:0.5rem;font-size:0.85rem;color:#667eea;font-weight:600}
+        .rol-status{display:inline-block;padding:0.2rem 0.75rem;border-radius:15px;font-size:0.72rem;font-weight:700;margin-bottom:0.6rem}
+        .role-card.cerrada{opacity:0.5;filter:grayscale(0.5)}
+        .perfil-section.cerrada{opacity:0.45}
+        .info-box{background-color:#f8f9fa;border-left:4px solid #667eea;padding:1.5rem;margin:1.5rem 0;border-radius:8px}
+        .info-box h3{color:#667eea;margin-bottom:1rem;font-size:1.2rem}
+        .info-list{list-style:none}
+        .info-list li{padding:0.5rem 0;padding-left:1.5rem;position:relative;line-height:1.6}
+        .info-list li::before{content:'✓';position:absolute;left:0;color:#667eea;font-weight:bold}
+        .form-container{margin:2rem 0;padding:1.5rem;background-color:#f8f9fa;border-radius:10px}
+        .form-iframe{width:100%;height:1200px;border:none;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1);margin-top:1rem}
+        .action-buttons{display:flex;gap:1rem;justify-content:center;margin:2rem 0;flex-wrap:wrap}
+        .btn{padding:1rem 2rem;border-radius:25px;text-decoration:none;font-weight:600;transition:all 0.3s;border:none;cursor:pointer;font-size:1rem;display:inline-block}
+        .btn-success{background-color:#28a745;color:white}
+        .btn-success:hover{background-color:#218838;transform:translateY(-2px)}
+        .btn-secondary{background-color:white;color:#667eea;border:2px solid #667eea}
+        .btn-secondary:hover{background-color:#667eea;color:white}
+        .btn-sm{padding:0.5rem 1.2rem;font-size:0.85rem}
+        .alert-box{background-color:#fff3cd;border-left:4px solid #ffc107;padding:1.5rem;margin:1.5rem 0;border-radius:8px;color:#856404}
+        .countdown-floating{position:fixed;bottom:30px;right:30px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;padding:1.5rem;border-radius:15px;box-shadow:0 10px 30px rgba(102,126,234,0.4);z-index:1000;min-width:280px;animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+        .countdown-floating h4{font-size:0.9rem;margin-bottom:0.8rem;text-align:center}
+        .countdown-timer{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;text-align:center}
+        .countdown-item{background-color:rgba(255,255,255,0.2);padding:0.8rem 0.5rem;border-radius:8px}
+        .countdown-number{display:block;font-size:1.8rem;font-weight:bold}
+        .countdown-label{display:block;font-size:0.7rem;margin-top:0.3rem}
+        
+        /* Estilos de Advertencia y Flujo */
+        .warning-banner {
+            background-color: #fdecea;
+            border: 2px solid #f44336;
+            color: #d32f2f;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: bold;
+        }
+        .warning-icon { font-size: 1.5rem; }
+
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+            padding: 0 1rem;
+        }
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 3px solid #667eea;
+            color: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .step.active .step-number {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 0 15px rgba(102,126,234,0.5);
+        }
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #666;
+        }
+        .step.active .step-label { color: #667eea; }
+
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        /* NUEVOS ELEMENTOS: Mascotas y Animaciones */
+        .floating-mascot {
+            position: fixed;
+            z-index: 100;
+            pointer-events: none;
+            font-size: 3rem;
+            animation: float 4s ease-in-out infinite;
+        }
+        .mascot-1 { top: 150px; left: 20px; animation-delay: 0s; }
+        .mascot-2 { top: 300px; right: 20px; animation-delay: 1s; }
+        .mascot-3 { bottom: 100px; left: 20px; animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .child-decoration {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* NUEVOS ESTILOS: Secciones con línea vertical (como en la imagen) */
+        .email-header {
+            background-color: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .email-header p {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            word-break: break-all;
+        }
+
+        .email-header-note {
+            color: #667eea;
+            font-size: 0.95rem;
+            margin-top: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .email-header-note::before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .doc-section-new {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .doc-section-header {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .doc-section-header h4 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .doc-section-header-icon {
+            font-size: 1.8rem;
+        }
+
+        .doc-section-content {
+            padding: 1.5rem;
+            border-left: 5px solid #667eea;
+        }
+
+        .doc-item-new {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            align-items: flex-start;
+        }
+
+        .doc-item-check {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .doc-item-text {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .doc-item-text strong {
+            color: #667eea;
+        }
+
+        .doc-link-new {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .doc-link-new:hover {
+            text-decoration: underline;
+        }
+
+        .incomplete-warning {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            color: #856404;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .incomplete-warning::before {
+            content: '⚠️';
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width:768px){
+            .municipio-selector{grid-template-columns:1fr}
+            .roles-grid{grid-template-columns:1fr}
+            .form-iframe{height:1400px}
+            .countdown-floating{bottom:20px;right:20px;left:20px;min-width:auto}
+            .process-timeline::before { display: none; }
+            .process-timeline { flex-direction: column; gap: 1rem; align-items: flex-start; }
+            .step { display: flex; align-items: center; gap: 1rem; }
+            .step-number { margin: 0; }
+            .floating-mascot { display: none; }
+            .read-guide{align-items:flex-start;margin-bottom:1.5rem}
+            .read-guide-icon{font-size:1.8rem}
+            .doc-section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mascotas Flotantes -->
+    <div class="floating-mascot mascot-1">👶</div>
+    <div class="floating-mascot mascot-2">👨‍👩‍👧‍👦</div>
+    <div class="floating-mascot mascot-3">​👩🏻‍🍼​</div>
+
+    <header class="header">
+        <div class="child-decoration" style="top:10px; left:10px">🎨</div>
+        <div class="child-decoration" style="top:10px; right:10px">🧩</div>
+        <h1>Banco de Hojas de Vida</h1>
+        <p class="subtitle">Corporación Proalimentar Salud Y Vida</p>
+        <div class="location-badges">
+            <span class="location-badge">📍 San Luis de Palenque - Casanare</span>
+            <span class="location-badge">📍 Orocué - Casanare</span>
+        </div>
+    </header>
+
+
+    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#d4edda;border:2px solid #28a745;border-left:6px solid #28a745;border-radius:12px;color:#155724;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">📥 Banco de hojas de vida — inscripción permanente</strong>
+        Esta <strong>no es una oferta con fecha de cierre</strong>. Es nuestro banco de hojas de vida para los servicios de la Corporación Proalimentar Salud y Vida en <strong>San Luis de Palenque</strong> y <strong>Orocué</strong>.
+        <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
+            <li>Revisa los <strong>cargos y perfiles</strong> de la modalidad que te interesa.</li>
+            <li>Envía tu <strong>hoja de vida con los soportes</strong> al correo del municipio.</li>
+            <li>Tu hoja de vida <strong>queda registrada</strong> y se tiene en cuenta cuando se abre una vacante.</li>
+        </ul>
+        Puedes inscribirte en cualquier momento. La inscripción <strong>no garantiza la contratación</strong> y no recibe respuesta inmediata.
+    </div>
+
+    <div class="container">
+        <div id="selector-principal">
+            <h2 style="text-align:center;color:white;margin-bottom:2rem">Seleccione su Municipio</h2>
+            <div class="read-guide">
+                <div class="read-guide-icon">↓</div>
+                <div class="read-guide-text">
+                    Lea toda la información antes de inscribirse.
+                    <span>Primero seleccione el municipio, luego revise cargos, modalidad, documentos y correo de envío.</span>
+                </div>
+            </div>
+            <div class="municipio-selector">
+                <div class="municipio-card" onclick="selectMunicipio('sanluis')" id="card-sanluis">
+                    <div class="municipio-icon">🌾</div>
+                    <div class="municipio-name">San Luis de Palenque</div>
+                    <div class="municipio-modalidades">CDI Gavancitos - Educación Inicial en el Hogar</div>
+                    <span class="status-badge status-active">📥 Inscripción abierta · CDI y Hogar</span>
+                </div>
+                <div class="municipio-card" onclick="selectMunicipio('orocue')" id="card-orocue">
+                    <div class="municipio-icon">🏞️</div>
+                    <div class="municipio-name">Orocué</div>
+                    <div class="municipio-modalidades">CDI Buen Comienzo - Educación Inicial en el Hogar</div>
+                    <span class="status-badge status-active">📥 Inscripción abierta · CDI y Hogar</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-sanluis" class="municipio-content">
+            <div class="nav-top">
+                <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
+                <span style="font-weight:bold; color:#667eea">📍 San Luis de Palenque</span>
+            </div>
+            <h2 class="section-title">Banco de hojas de vida - San Luis de Palenque</h2>
+            <div class="info-box" style="margin-top:0">
+                <h3>🏠 Nuestras unidades de servicio</h3>
+                <p><strong>CDI Gavancitos</strong> y 5 unidades de Educación Inicial en el Hogar: Gavancitos 3, Guanapalo, Las Calles, Santa Hercilia y Santana.</p>
+                <p style="margin-top:0.6rem">Inscríbete en el cargo que corresponda a tu perfil. Los requisitos son los mismos que exige el ICBF para cada cargo.</p>
+            </div>
+            <div class="modalidad-tabs">
+                <button class="modalidad-tab active" onclick="showModalidad('sanluis','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('sanluis','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
+                <button class="modalidad-tab" onclick="showModalidad('sanluis','postular')">📝 Inscribir mi hoja de vida</button>
+            </div>
+            <div id="sanluis-cdi" class="modalidad-content active"></div>
+            <div id="sanluis-hogar" class="modalidad-content"></div>
+            <div id="sanluis-postular" class="modalidad-content"></div>
+        </div>
+
+<div id="content-orocue" class="municipio-content">
+            <div class="nav-top">
+                <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
+                <span style="font-weight:bold; color:#667eea">📍 Orocué</span>
+            </div>
+            <h2 class="section-title">Banco de hojas de vida - Orocué</h2>
+            <div class="info-box" style="margin-top:0">
+                <h3>🏠 Nuestras unidades de servicio</h3>
+                <p><strong>CDI Buen Comienzo Institucional</strong> y 5 unidades de Educación Inicial en el Hogar: Algarrobo, Carrizales, Colonia, Familiar y Mariara.</p>
+                <p style="margin-top:0.6rem">Inscríbete en el cargo que corresponda a tu perfil. Los requisitos son los mismos que exige el ICBF para cada cargo.</p>
+            </div>
+            <div class="modalidad-tabs">
+                <button class="modalidad-tab active" onclick="showModalidad('orocue','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('orocue','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
+                <button class="modalidad-tab" onclick="showModalidad('orocue','postular')">📝 Inscribir mi hoja de vida</button>
+            </div>
+            <div id="orocue-cdi" class="modalidad-content active"></div>
+            <div id="orocue-hogar" class="modalidad-content"></div>
+            <div id="orocue-postular" class="modalidad-content"></div>
+        </div>
+
+                <div class="action-buttons" style="margin-top:3rem">
+            <a href="index.html" class="btn btn-secondary">⬅️ Volver al Inicio</a>
+        </div>
+    </div>
+
+    <div class="countdown-floating" style="background:linear-gradient(135deg,#1e7d5a 0%,#0f9d70 100%);box-shadow:0 10px 30px rgba(15,157,112,0.4)">
+        <h4>📥 Banco de hojas de vida</h4>
+        <div style="text-align:center;font-size:0.92rem;line-height:1.45">Inscripción permanente<br><strong>San Luis de Palenque y Orocué</strong><br><span style="opacity:0.85;font-size:0.85rem">Sin fecha de cierre</span></div>
+    </div>
+
+
+    <script>
+        const CORREOS_MUNICIPIOS = {
+            'Orocué': 'proalimentarsv+banco.orocue@gmail.com',
+            'San Luis de Palenque': 'proalimentarsv+banco.sanluisdepalenque@gmail.com'
+        };
+
+        const ROLES_CDI = [
+            {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
+            {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'12 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral'],e:'12 meses'}]},
+            {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'12 meses'}]},
+            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación de culminación de estudios en nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar de enfermería'],e:'12 meses'}]},
+            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años de experiencia','Compromiso de continuar formación hasta 9° grado'],e:'6 años'}]},
+            {t:'Gestor de Alimentos',p:[{n:'',r:['Básica primaria completa','Certificación médica manipulación alimentos'],e:'6 meses'}]},
+            {t:'Auxiliar Servicios Generales',p:[{n:'',r:['Certificado manipulación alimentos vigente'],e:'6 meses'}]},
+            {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
+        ];
+
+        const ROLES_HOGAR = [
+            {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
+            {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'6 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral'],e:'12 meses'}]},
+            {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'6 meses'}]},
+            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación culminación nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar enfermería'],e:'12 meses'}]},
+            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico atención integral'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años experiencia','Continuar hasta 9° grado'],e:'6 años'}]},
+            {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
+        ];
+
+        /* En el banco de hojas de vida TODOS los cargos reciben inscripciones */
+        const CARGOS_BANCO = {
+            sanluis: { cdi: 'todos', hogar: 'todos' },
+            orocue:  { cdi: 'todos', hogar: 'todos' }
+        };
+
+        function getTimelineHTML(activeStep) {
+            return `
+                <div class="process-timeline">
+                    <div class="step ${activeStep >= 1 ? 'active' : ''}">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Ver Cargos</div>
+                    </div>
+                    <div class="step ${activeStep >= 2 ? 'active' : ''}">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Reunir Documentos</div>
+                    </div>
+                    <div class="step ${activeStep >= 3 ? 'active' : ''}">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Enviar Hoja de Vida</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getWarningHTML() {
+            return `
+                <div class="warning-banner">
+                    <span class="warning-icon">📥</span>
+                    <div>
+                        Para inscribirte en el banco de hojas de vida debes enviar tu HOJA DE VIDA con los soportes al correo del municipio. La inscripción queda registrada en nuestra base y se tiene en cuenta cuando se abre una vacante.
+                    </div>
+                </div>
+            `;
+        }
+
+        function getDocumentosRequeridosHTML() {
+            return `
+                <div class="doc-section-new">
+                    <div class="doc-section-header">
+                        <div class="doc-section-header-icon">📋</div>
+                        <h4>Documentos para inscribirte</h4>
+                    </div>
+                    <div class="doc-section-content">
+                        <div class="incomplete-warning">Sin estos documentos la inscripción no queda registrada</div>
+
+                        <h5 style="color:#667eea;font-size:1.1rem;margin:1.5rem 0 1rem 0;font-weight:600">📄 Documentos básicos (OBLIGATORIOS)</h5>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text">
+                                <strong>Hoja de vida formato único</strong> actualizada
+                                <a href="https://www.funcionpublica.gov.co/formato-unico-hoja-de-vida" target="_blank" class="doc-link-new">🔗 Descargar</a>
+                            </div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Cédula de ciudadanía</strong> legible (ambas caras)</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Diploma y acta de grado</strong> del título que acredita el perfil</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Tarjeta profesional</strong> (si el cargo lo exige)</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Certificados laborales</strong> en orden cronológico</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>RUT actualizado</strong></div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">✓</div>
+                            <div class="doc-item-text"><strong>Autorización de tratamiento de datos</strong> personales firmada</div>
+                        </div>
+
+                        <h5 style="color:#667eea;font-size:1.1rem;margin:1.5rem 0 1rem 0;font-weight:600">🕓 Se solicitan al abrirse una vacante</h5>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">•</div>
+                            <div class="doc-item-text">Antecedentes: Policía Nacional, Procuraduría, Contraloría, medidas correctivas, inhabilidades por delitos sexuales (ICBF) y SIMIT</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">•</div>
+                            <div class="doc-item-text">Certificados de afiliación a EPS y AFP</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">•</div>
+                            <div class="doc-item-text">Libreta militar (hombres menores de 50 años)</div>
+                        </div>
+
+                        <div class="doc-item-new">
+                            <div class="doc-item-check">•</div>
+                            <div class="doc-item-text">Según el cargo: RETHUS, manipulación de alimentos, certificado médico ocupacional y esquema de vacunación</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background-color:#e3f2fd;border-left:5px solid #2196f3;padding:1.5rem;border-radius:8px;margin:1.5rem 0">
+                    <p style="color:#1565c0;font-weight:600;margin-bottom:0.8rem;font-size:1rem">💡 Recomendaciones Importantes:</p>
+                    <ul style="list-style:none;color:#555;font-size:0.95rem;line-height:1.8">
+                        <li style="margin-bottom:0.5rem">✓ Todos los documentos en formato PDF</li>
+                        <li style="margin-bottom:0.5rem">✓ Copias legibles y de buena calidad</li>
+                        <li style="margin-bottom:0.5rem">✓ Nombres de archivos claros y descriptivos</li>
+                        <li style="margin-bottom:0.5rem">✓ Puedes comprimir en archivo .ZIP si son muchos</li>
+                        <li style="margin-bottom:0.5rem">✓ Si tu hoja de vida se actualiza, vuelve a enviarla: reemplaza la anterior</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        function generarPostularHTML(municipio) {
+            const correo = CORREOS_MUNICIPIOS[municipio];
+            return `
+                ${getTimelineHTML(3)}
+                ${getWarningHTML()}
+
+                <div class="email-header">
+                    <p>${correo}</p>
+                    <div class="email-header-note">Correo de inscripción al banco de hojas de vida</div>
+                </div>
+
+                <div class="info-box">
+                    <h3>📧 Cómo inscribirte</h3>
+                    <ul class="info-list">
+                        <li>Revisa en las pestañas anteriores los cargos y requisitos de la modalidad que te interesa</li>
+                        <li>Reúne los documentos de la lista</li>
+                        <li>Envía todo a: <strong style="color:#667eea">${correo}</strong></li>
+                        <li>Asunto: <strong>"Banco de hojas de vida - [CARGO] - ${municipio} - [NOMBRE]"</strong></li>
+                        <li>Ejemplo: <strong>"Banco de hojas de vida - Agente Educativo - ${municipio} - María López"</strong></li>
+                        <li>En el cuerpo: nombre completo, cédula, teléfono, cargo y modalidad</li>
+                    </ul>
+                </div>
+
+                ${getDocumentosRequeridosHTML()}
+
+                <div class="action-buttons">
+                    <a href="mailto:${correo}" class="btn btn-success">📧 Enviar mi hoja de vida</a>
+                </div>
+            `;
+        }
+
+        function crearTarjetaRol(rol) {
+            let html = `<div class="role-card">`;
+            html += `<span class="rol-status status-active">📥 Recibe hojas de vida</span>`;
+            html += `<h3>${rol.t}</h3>`;
+            rol.p.forEach(perfil => {
+                html += `<div class="perfil-section">`;
+                if (perfil.n) html += `<span class="perfil-badge">${perfil.n}</span>`;
+                perfil.r.forEach(req => html += `<div class="requirement">${req}</div>`);
+                html += `<div class="experience">⏱️ ${perfil.e}</div></div>`;
+            });
+            return html + '</div>';
+        }
+
+        function renderizarRoles() {
+            const timeline = getTimelineHTML(1);
+            const warning = getWarningHTML();
+
+            function rolesHTML(municipio, modalidad, master) {
+                const cards = master.map(rol => crearTarjetaRol(rol)).join('');
+                return timeline + warning + '<div class="roles-grid">' + cards + '</div>';
+            }
+
+            document.getElementById('sanluis-cdi').innerHTML = rolesHTML('sanluis', 'cdi', ROLES_CDI);
+            document.getElementById('sanluis-hogar').innerHTML = rolesHTML('sanluis', 'hogar', ROLES_HOGAR);
+            document.getElementById('sanluis-postular').innerHTML = generarPostularHTML('San Luis de Palenque');
+
+            document.getElementById('orocue-cdi').innerHTML = rolesHTML('orocue', 'cdi', ROLES_CDI);
+            document.getElementById('orocue-hogar').innerHTML = rolesHTML('orocue', 'hogar', ROLES_HOGAR);
+            document.getElementById('orocue-postular').innerHTML = generarPostularHTML('Orocué');
+        }
+
+        function selectMunicipio(mun) {
+            document.getElementById('selector-principal').style.display = 'none';
+            document.querySelectorAll('.municipio-content').forEach(c => c.classList.remove('active'));
+            document.getElementById('content-' + mun).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function resetView() {
+            document.getElementById('selector-principal').style.display = 'block';
+            document.querySelectorAll('.municipio-content').forEach(c => c.classList.remove('active'));
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function showModalidad(mun, mod) {
+            document.querySelectorAll(`#content-${mun} .modalidad-tab`).forEach(t => t.classList.remove('active'));
+            document.querySelectorAll(`#content-${mun} .modalidad-content`).forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(`${mun}-${mod}`).classList.add('active');
+        }
+
+        renderizarRoles();
+    </script>
+</body>
+</html>

@@ -334,15 +334,9 @@
     </header>
 
 
-    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#d4edda;border:2px solid #28a745;border-left:6px solid #28a745;border-radius:12px;color:#155724;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
-        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — 2 cargos</strong>
-        Están abiertos <strong>2 cargos</strong>:
-        <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
-            <li><strong>Profesional Psicosocial</strong> — Maní (CDI)</li>
-            <li><strong>Agente Educativo/a Perfil 2</strong> — Maní (CDI)</li>
-        </ul>
-        Los demás municipios (San Luis de Palenque, Nunchía y Orocué) y los demás cargos están <strong>cerrados</strong>.
-        Cierre: <strong>jueves 08/10/2026, 4:00 p.m.</strong> No se recibirán postulaciones después de esa hora.
+    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#f8d7da;border:2px solid #dc3545;border-left:6px solid #dc3545;border-radius:12px;color:#721c24;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">🔒 Convocatoria cerrada</strong>
+        Esta convocatoria (Convocatoria 3) cerró el <strong>jueves 08/10/2026 a las 4:00 p.m.</strong> y ya no recibe postulaciones. Si quieres que tu hoja de vida quede registrada para futuras vacantes en San Luis de Palenque y Orocué, inscríbete en el <a href="banco-hojas-vida.html" style="color:#721c24;font-weight:700;text-decoration:underline">Banco de Hojas de Vida</a>.
     </div>
 
     <div class="container">
@@ -356,11 +350,11 @@
                 </div>
             </div>
             <div class="municipio-selector">
-                <div class="municipio-card" onclick="selectMunicipio('mani')" id="card-mani">
+                <div class="municipio-card" style="opacity:0.55;pointer-events:none" id="card-mani">
                     <div class="municipio-icon">🏛️</div>
                     <div class="municipio-name">Maní</div>
                     <div class="municipio-modalidades">Centro de Desarrollo Infantil (CDI) - Profesional Psicosocial y Agente Educativo/a (Perfil 2)</div>
-                    <span class="status-badge status-active">✅ Abierta · 2 cargos (CDI)</span>
+                    <span class="status-badge status-inactive">🔒 Cerrada</span>
                 </div>
                 <div class="municipio-card" id="card-nunchia" style="display:none">
                     <div class="municipio-icon">🏘️</div>
@@ -455,7 +449,7 @@
     </div>
 
     <div class="countdown-floating">
-        <h4>⏰ Cierre: jueves 08/10/2026 - 4:00 p.m.</h4>
+        <h4>🔒 Convocatoria cerrada</h4>
         <div id="countdown-content"></div>
     </div>
 
@@ -741,15 +735,9 @@
             `;
         }
 
-        const VACANTES_ABIERTAS = {
-            mani: {
-                cdi: [{ t: 'Profesional Psicosocial' }, { t: 'Agente Educativo/a', perfiles: ['Perfil 2'] }],
-                hogar: []
-            },
-            sanluis: {
-                cdi: [],
-                hogar: []
-            },
+                const VACANTES_ABIERTAS = {
+            mani: { cdi: [], hogar: [] },
+            sanluis: { cdi: [], hogar: [] },
             nunchia: { cdi: [], hogar: [], campesina: [] },
             orocue: { cdi: [], hogar: [] }
         };
@@ -759,7 +747,7 @@
             if (abiertos.length === 0) {
                 html += `<span class="rol-status status-inactive">🔒 Cerrada</span>`;
             } else {
-                html += `<span class="rol-status status-active">✅ Abierta</span>`;
+                html += `<span class="rol-status status-inactive">🔒 Cerrada</span>`;
             }
             html += `<h3>${rol.t}</h3>`;
             rol.p.forEach(perfil => {
@@ -829,7 +817,7 @@
             const now = new Date().getTime();
             const distance = deadline - now;
             if (distance < 0) {
-                document.getElementById('countdown-content').innerHTML = '<div style="text-align:center;padding:1rem">⏰ Cerrada</div>';
+                document.getElementById('countdown-content').innerHTML = '<div style="text-align:center;padding:0.8rem;font-size:0.92rem">No recibe más postulaciones</div>';
                 return;
             }
             const d = Math.floor(distance / (1000 * 60 * 60 * 24));

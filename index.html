@@ -108,6 +108,19 @@
             50% { opacity: 0.7; box-shadow: 0 0 25px rgba(22,160,133,0.7); }
         }
 
+        .parpadeo-color-5 {
+            animation: parpadeoColor5 2s infinite;
+            background: linear-gradient(135deg, #0f9d70 0%, #0b7a56 100%);
+            font-weight: 600;
+            z-index: 10;
+            position: relative;
+        }
+
+        @keyframes parpadeoColor5 {
+            0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(15,157,112,0.5); }
+            50% { opacity: 0.7; box-shadow: 0 0 25px rgba(11,122,86,0.7); }
+        }
+
         .parpadeo-color-4 {
             animation: parpadeoColor4 2s infinite;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -565,13 +578,13 @@
     <!-- Banner Flotante de Convocatoria -->
     <div class="banner-flotante" id="bannerFlotante">
         <button class="banner-cerrar" onclick="cerrarBanner()">×</button>
-        <div class="banner-icon">📋</div>
-        <div class="banner-titulo">Convocatoria reabierta: Aguazul</div>
+        <div class="banner-icon">📥</div>
+        <div class="banner-titulo">Banco de Hojas de Vida</div>
         <div class="banner-mensaje">
-            1 cargo abierto en Aguazul: Nutricionista (Profesional Salud y Nutrición - Perfil 1) en Educación Inicial en el Hogar (EIH). Cierra el viernes 23/10/2026 a las 12:00 de la noche.
+            Inscripción permanente en San Luis de Palenque y Orocué. Registra tu hoja de vida para los cargos de CDI y Educación Inicial en el Hogar: queda en nuestra base para futuras vacantes.
         </div>
         <div class="banner-botones">
-            <a href="postulacion2.html" class="banner-btn">Ver Convocatoria 2 (Aguazul)</a>
+            <a href="banco-hojas-vida.html" class="banner-btn">Ver Banco de Hojas de Vida</a>
         </div>
     </div>
 
@@ -586,10 +599,11 @@
                 <li><a href="#mision">Misión</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#galeria">Galería</a></li>
-                <li><a href="postulacion4.html" class="parpadeo-color-4">📋 Convocatoria 4 - Abierta</a></li>
-                <li><a href="postulacion3.html">📋 Convocatoria 3 - Abierta (Maní - CDI)</a></li>
-                <li><a href="postulacion1.html" class="parpadeo-color-3">📋 Convocatoria 1 - Abierta (Yopal - Agente Educativo P2)</a></li>
-                <li><a href="postulacion2.html">📋 Convocatoria 2 - Reabierta (Aguazul - Nutricionista)</a></li>
+                <li><a href="banco-hojas-vida.html" class="parpadeo-color-5">📥 Banco de Hojas de Vida - Abierto</a></li>
+                <li><a href="postulacion4.html" class="convocatoria-cerrada">📋 Convocatoria 4 - Cerrada</a></li>
+                <li><a href="postulacion3.html" class="convocatoria-cerrada">📋 Convocatoria 3 - Cerrada</a></li>
+                <li><a href="postulacion1.html" class="convocatoria-cerrada">📋 Convocatoria 1 - Cerrada</a></li>
+                <li><a href="postulacion2.html" class="convocatoria-cerrada">📋 Convocatoria 2 - Cerrada</a></li>
                 <li><a href="convocatoria-mani-cdi-agente-educativo.html" class="convocatoria-cerrada">📋 Agente Educativo Maní - Cerrada</a></li>
                 <li><a href="convocatoria-proveedores-alimentos.html" class="convocatoria-cerrada">📋 Proveedores de Alimentos - Cerrada</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -610,36 +624,50 @@
 
     <section id="convocatorias" class="section">
         <div class="container">
+            <div class="destacado" style="background:linear-gradient(135deg,#0f5d4a 0%,#0b3d30 100%);box-shadow:0 20px 50px rgba(15,93,74,0.35)">
+                <h3>📥 Banco de Hojas de Vida - San Luis de Palenque y Orocué</h3>
+                <p><strong>Inscripción permanente, sin fecha de cierre</strong>:</p>
+                <p style="margin-top:0.8rem">• <strong>San Luis de Palenque</strong> - CDI Gavancitos y Educación Inicial en el Hogar</p>
+                <p style="margin-top:0.4rem">• <strong>Orocué</strong> - CDI Buen Comienzo y Educación Inicial en el Hogar</p>
+                <p style="margin-top:0.8rem;opacity:0.9">Registra tu hoja de vida para los cargos de nuestros servicios; queda en nuestra base para futuras vacantes.</p>
+                <div class="hero-buttons">
+                    <a href="banco-hojas-vida.html" class="hero-btn btn-outline">📥 Inscribir mi hoja de vida</a>
+                </div>
+            </div>
             <div class="destacado">
                 <h3>📋 Convocatoria 1: Yopal - Agente Educativo/a Perfil 2</h3>
+                <p style="margin:0 0 1.2rem;display:inline-block;background:rgba(0,0,0,0.35);padding:0.4rem 1.1rem;border-radius:20px;font-weight:700">🔒 Cerrada el sábado 17/10/2026</p>
                 <p><strong>1 vacante abierta</strong>:</p>
                 <p style="margin-top:0.8rem">• <strong>Agente Educativo/a Perfil 2</strong> - Centro de Desarrollo Infantil (CDI), Yopal</p>
                 <p style="margin-top:0.8rem;opacity:0.9">Cierre: <strong>sábado 17/10/2026 a las 12:00 m.</strong></p>
                 <div class="hero-buttons">
-                    <a href="postulacion1.html" class="hero-btn btn-outline">📋 Ver Convocatoria 1</a>
+                    <a href="postulacion1.html" class="hero-btn btn-outline">📋 Ver Convocatoria 1 (cerrada)</a>
                 </div>
             </div>
             <div class="destacado">
                 <h3>🔁 Convocatoria 2: Aguazul - Nutricionista (reabierta)</h3>
+                <p style="margin:0 0 1.2rem;display:inline-block;background:rgba(0,0,0,0.35);padding:0.4rem 1.1rem;border-radius:20px;font-weight:700">🔒 Cerrada el viernes 23/10/2026</p>
                 <p><strong>1 vacante abierta</strong>:</p>
                 <p style="margin-top:0.8rem">• <strong>Nutricionista</strong> (Profesional Salud y Nutrición - Perfil 1) - Educación Inicial en el Hogar, Aguazul</p>
                 <p style="margin-top:0.8rem;opacity:0.9">Cierre: <strong>viernes 23/10/2026 a las 12:00 de la noche</strong></p>
                 <div class="hero-buttons">
-                    <a href="postulacion2.html" class="hero-btn btn-outline">📋 Ver Convocatoria 2</a>
+                    <a href="postulacion2.html" class="hero-btn btn-outline">📋 Ver Convocatoria 2 (cerrada)</a>
                 </div>
             </div>
             <div class="destacado">
                 <h3>📋 Convocatoria 3: Maní - Profesional Psicosocial y Agente Educativo/a Perfil 2</h3>
+                <p style="margin:0 0 1.2rem;display:inline-block;background:rgba(0,0,0,0.35);padding:0.4rem 1.1rem;border-radius:20px;font-weight:700">🔒 Cerrada el jueves 08/10/2026</p>
                 <p><strong>2 vacantes abiertas</strong>:</p>
                 <p style="margin-top:0.8rem">• <strong>Profesional Psicosocial</strong> - Centro de Desarrollo Infantil (CDI), Maní</p>
                 <p style="margin-top:0.4rem">• <strong>Agente Educativo/a Perfil 2</strong> - Centro de Desarrollo Infantil (CDI), Maní</p>
                 <p style="margin-top:0.8rem;opacity:0.9">Cierre: <strong>jueves 08/10/2026 a las 4:00 p.m.</strong></p>
                 <div class="hero-buttons">
-                    <a href="postulacion3.html" class="hero-btn btn-outline">📋 Ver Convocatoria 3</a>
+                    <a href="postulacion3.html" class="hero-btn btn-outline">📋 Ver Convocatoria 3 (cerrada)</a>
                 </div>
             </div>
             <div class="destacado">
                 <h3>📋 Convocatoria 4 - Amazonas (Zonas 1, 1A y 3)</h3>
+                <p style="margin:0 0 1.2rem;display:inline-block;background:rgba(0,0,0,0.35);padding:0.4rem 1.1rem;border-radius:20px;font-weight:700">🔒 Cerrada el lunes 28/09/2026</p>
                 <p>Talento humano para <strong>5 municipios</strong> (969 cupos):</p>
                 <p style="margin-top:0.8rem">• <strong>Leticia</strong> (Zona 1) - Educación Inicial Institucional (CDI) · 556 cupos</p>
                 <p style="margin-top:0.4rem">• <strong>Puerto Nariño</strong> (Zona 1A) - Educación Inicial Propia e Intercultural (diaria) · 143 cupos</p>
@@ -648,7 +676,7 @@
                 <p style="margin-top:0.4rem">• <strong>Puerto Santander</strong> (Zona 3) - Propia e Intercultural (diaria) y Educación Inicial en el Hogar · 51 cupos</p>
                 <p style="margin-top:0.8rem;opacity:0.9">Cierre: <strong>lunes 28/09/2026 a las 11:59 p.m.</strong></p>
                 <div class="hero-buttons">
-                    <a href="postulacion4.html" class="hero-btn btn-outline">📋 Ver Convocatoria 4</a>
+                    <a href="postulacion4.html" class="hero-btn btn-outline">📋 Ver Convocatoria 4 (cerrada)</a>
                 </div>
             </div>
             <div style="text-align:center;margin-top:1.5rem;opacity:0.85">

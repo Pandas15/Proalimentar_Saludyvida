@@ -559,25 +559,20 @@
         <div class="location-badge">📍 Yopal, Casanare</div>
     </header>
 
-    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#d4edda;border:2px solid #28a745;border-left:6px solid #28a745;border-radius:12px;color:#155724;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
-        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">⚠️ Convocatoria abierta — 1 cargo</strong>
-        Está abierto <strong>1 cargo</strong>:
-        <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
-            <li><strong>Agente Educativo/a Perfil 2</strong> — Yopal (CDI)</li>
-        </ul>
-        Los demás cargos de esta convocatoria están <strong>cerrados</strong>.
-        Cierre: <strong>sábado 17/10/2026, 12:00 m.</strong> No se recibirán postulaciones después de esa hora.
+    <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#f8d7da;border:2px solid #dc3545;border-left:6px solid #dc3545;border-radius:12px;color:#721c24;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">🔒 Convocatoria cerrada</strong>
+        Esta convocatoria (Convocatoria 1) cerró el <strong>sábado 17/10/2026 a las 12:00 m.</strong> y ya no recibe postulaciones. Si quieres que tu hoja de vida quede registrada para futuras vacantes en San Luis de Palenque y Orocué, inscríbete en el <a href="banco-hojas-vida.html" style="color:#721c24;font-weight:700;text-decoration:underline">Banco de Hojas de Vida</a>.
     </div>
 
     <div class="container">
         <div class="nav-top">
             <a href="index.html" class="btn btn-secondary btn-sm">⬅️ Volver al Inicio</a>
-            <span style="font-weight:bold; color:#1e7e34">⏰ Convocatoria Abierta · Cierre: sábado 17/10/2026, 12:00 m.</span>
+            <span style="font-weight:bold; color:#dc3545">🔒 Convocatoria cerrada · Cierre: sábado 17/10/2026, 12:00 m.</span>
         </div>
 
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="showTab('roles')">👥 Cargos Disponibles</button>
-            <button class="tab-btn" onclick="showTab('postular')">📝 Información y Postulación</button>
+            <button class="tab-btn" onclick="showTab('postular')">📝 Información (convocatoria cerrada)</button>
         </div>
 
         <!-- CARGOS DISPONIBLES -->
@@ -609,7 +604,7 @@
             <div class="roles-grid">
                 <!-- Agente Educativo - UNICO CARGO ABIERTO -->
                 <div class="role-card">
-                    <span class="rol-status status-active">✅ Abierta</span>
+                    <span class="rol-status status-inactive">🔒 Cerrada</span>
                     <h3>Agente Educativo/a</h3>
                     <div class="perfil-section cerrada">
                         <span class="perfil-badge">Perfil 1</span>
@@ -617,7 +612,7 @@
                         <div class="requirement">Licenciatura en artes plásticas, escénicas, musicales o etnoeducación</div>
                         <div class="experience">⏱️ 12 meses</div>
                     </div>
-                    <div class="perfil-section">
+                    <div class="perfil-section cerrada">
                         <span class="perfil-badge">Perfil 2</span>
                         <div class="requirement">Normalista superior o técnico en atención integral</div>
                         <div class="experience">⏱️ 12 meses</div>
@@ -691,6 +686,9 @@
 
         <!-- INFORMACIÓN Y POSTULACIÓN -->
         <div id="postular" class="content">
+            <div style="background:#f8d7da;border:2px solid #dc3545;border-left:6px solid #dc3545;border-radius:10px;color:#721c24;padding:1rem 1.2rem;margin-bottom:1.5rem;font-weight:600">
+                🔒 Esta convocatoria está cerrada desde el sábado 17/10/2026. La información se mantiene solo como referencia; no se reciben postulaciones.
+            </div>
             <div class="process-timeline">
                 <div class="step active">
                     <div class="step-number">1</div>
@@ -799,9 +797,9 @@
 
             <!-- Botones de Acción -->
             <div class="action-buttons" style="margin-top: 2rem;">
-                <a href="mailto:proalimentarsv@gmail.com" class="btn btn-success">
-                    📧 Enviar Hoja de Vida Ahora (Finalizar)
-                </a>
+                <span class="btn btn-secondary" style="background:#dc3545;color:#fff;cursor:default">
+                    🔒 Convocatoria cerrada - no se reciben postulaciones
+                </span>
                 <button onclick="showTab('roles')" class="btn btn-secondary">
                     👥 Ver Cargos Disponibles
                 </button>
@@ -818,7 +816,7 @@
 
     <!-- Cuenta Regresiva Flotante -->
     <div class="countdown-floating">
-        <h4>⏰ Cierre: sábado 17/10/2026 - 12:00 m.</h4>
+        <h4>🔒 Convocatoria cerrada</h4>
         <div id="countdown-content"></div>
     </div>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banco de Hojas de Vida - San Luis de Palenque y Orocué</title>
+    <title>Banco de Hojas de Vida - Nunchía y Orocué</title>
     <style>
         * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
         body{line-height:1.6;color:#333;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding-bottom:150px;overflow-x:hidden}
@@ -329,7 +329,7 @@
         <h1>Banco de Hojas de Vida</h1>
         <p class="subtitle">Corporación Proalimentar Salud Y Vida</p>
         <div class="location-badges">
-            <span class="location-badge">📍 San Luis de Palenque - Casanare</span>
+            <span class="location-badge">📍 Nunchía - Casanare</span>
             <span class="location-badge">📍 Orocué - Casanare</span>
         </div>
     </header>
@@ -337,7 +337,7 @@
 
     <div style="max-width:900px;margin:1.5rem auto 0;padding:1.2rem 1.5rem;background:#d4edda;border:2px solid #28a745;border-left:6px solid #28a745;border-radius:12px;color:#155724;box-shadow:0 8px 22px rgba(0,0,0,0.15);position:relative;z-index:6">
         <strong style="display:block;font-size:1.05rem;margin-bottom:0.5rem">📥 Banco de hojas de vida — inscripción permanente</strong>
-        Esta <strong>no es una oferta con fecha de cierre</strong>. Es nuestro banco de hojas de vida para los servicios de la Corporación Proalimentar Salud y Vida en <strong>San Luis de Palenque</strong> y <strong>Orocué</strong>.
+        Esta <strong>no es una oferta con fecha de cierre</strong>. Es nuestro banco de hojas de vida para los servicios de la Corporación Proalimentar Salud y Vida en <strong>Nunchía</strong> y <strong>Orocué</strong>.
         <ul style="margin:0.6rem 0 0.6rem 1.2rem;line-height:1.7">
             <li>Revisa los <strong>cargos y perfiles</strong> de la modalidad que te interesa.</li>
             <li>Envía tu <strong>hoja de vida con los soportes</strong> al correo del municipio.</li>
@@ -357,11 +357,11 @@
                 </div>
             </div>
             <div class="municipio-selector">
-                <div class="municipio-card" onclick="selectMunicipio('sanluis')" id="card-sanluis">
-                    <div class="municipio-icon">🌾</div>
-                    <div class="municipio-name">San Luis de Palenque</div>
-                    <div class="municipio-modalidades">CDI Gavancitos - Educación Inicial en el Hogar</div>
-                    <span class="status-badge status-active">📥 Inscripción abierta · CDI y Hogar</span>
+                <div class="municipio-card" onclick="selectMunicipio('nunchia')" id="card-nunchia">
+                    <div class="municipio-icon">🏘️</div>
+                    <div class="municipio-name">Nunchía</div>
+                    <div class="municipio-modalidades">CDI San Juan Bosco - Educación Inicial en el Hogar - Educación Inicial Campesina</div>
+                    <span class="status-badge status-active">📥 Inscripción abierta · CDI, Hogar y Campesina</span>
                 </div>
                 <div class="municipio-card" onclick="selectMunicipio('orocue')" id="card-orocue">
                     <div class="municipio-icon">🏞️</div>
@@ -372,25 +372,27 @@
             </div>
         </div>
 
-        <div id="content-sanluis" class="municipio-content">
+        <div id="content-nunchia" class="municipio-content">
             <div class="nav-top">
                 <button onclick="resetView()" class="btn btn-secondary btn-sm">⬅️ Cambiar Municipio</button>
-                <span style="font-weight:bold; color:#667eea">📍 San Luis de Palenque</span>
+                <span style="font-weight:bold; color:#667eea">📍 Nunchía</span>
             </div>
-            <h2 class="section-title">Banco de hojas de vida - San Luis de Palenque</h2>
+            <h2 class="section-title">Banco de hojas de vida - Nunchía</h2>
             <div class="info-box" style="margin-top:0">
                 <h3>🏠 Nuestras unidades de servicio</h3>
-                <p><strong>CDI Gavancitos</strong> y 5 unidades de Educación Inicial en el Hogar: Gavancitos 3, Guanapalo, Las Calles, Santa Hercilia y Santana.</p>
+                <p><strong>CDI San Juan Bosco</strong> (sedes San Juan Bosco y Yopalosa); unidad de Educación Inicial en el Hogar: San Juan Bosco Sede Nunchía; y 5 unidades de Educación Inicial Campesina: San Juan Bosco 2, Pedregal, Sede Corea, Sede Pretexto y Sede Vijagual.</p>
                 <p style="margin-top:0.6rem">Inscríbete en el cargo que corresponda a tu perfil. Los requisitos son los mismos que exige el ICBF para cada cargo.</p>
             </div>
             <div class="modalidad-tabs">
-                <button class="modalidad-tab active" onclick="showModalidad('sanluis','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
-                <button class="modalidad-tab" onclick="showModalidad('sanluis','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
-                <button class="modalidad-tab" onclick="showModalidad('sanluis','postular')">📝 Inscribir mi hoja de vida</button>
+                <button class="modalidad-tab active" onclick="showModalidad('nunchia','cdi')">🏫 Centro de Desarrollo Infantil - CDI</button>
+                <button class="modalidad-tab" onclick="showModalidad('nunchia','hogar')">🏠 Educación Inicial en el Hogar Familiar y Comunitaria</button>
+                <button class="modalidad-tab" onclick="showModalidad('nunchia','campesina')">🌾 Educación Inicial Campesina</button>
+                <button class="modalidad-tab" onclick="showModalidad('nunchia','postular')">📝 Inscribir mi hoja de vida</button>
             </div>
-            <div id="sanluis-cdi" class="modalidad-content active"></div>
-            <div id="sanluis-hogar" class="modalidad-content"></div>
-            <div id="sanluis-postular" class="modalidad-content"></div>
+            <div id="nunchia-cdi" class="modalidad-content active"></div>
+            <div id="nunchia-hogar" class="modalidad-content"></div>
+            <div id="nunchia-campesina" class="modalidad-content"></div>
+            <div id="nunchia-postular" class="modalidad-content"></div>
         </div>
 
 <div id="content-orocue" class="municipio-content">
@@ -421,14 +423,14 @@
 
     <div class="countdown-floating" style="background:linear-gradient(135deg,#1e7d5a 0%,#0f9d70 100%);box-shadow:0 10px 30px rgba(15,157,112,0.4)">
         <h4>📥 Banco de hojas de vida</h4>
-        <div style="text-align:center;font-size:0.92rem;line-height:1.45">Inscripción permanente<br><strong>San Luis de Palenque y Orocué</strong><br><span style="opacity:0.85;font-size:0.85rem">Sin fecha de cierre</span></div>
+        <div style="text-align:center;font-size:0.92rem;line-height:1.45">Inscripción permanente<br><strong>Nunchía y Orocué</strong><br><span style="opacity:0.85;font-size:0.85rem">Sin fecha de cierre</span></div>
     </div>
 
 
     <script>
         const CORREOS_MUNICIPIOS = {
-            'Orocué': 'proalimentarsv@gmail.com',
-            'San Luis de Palenque': 'proalimentarsv@gmail.com'
+            'Nunchía': 'proalimentarsv@gmail.com',
+            'Orocué': 'proalimentarsv@gmail.com'
         };
 
         const ROLES_CDI = [
@@ -451,9 +453,21 @@
             {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
         ];
 
+        const ROLES_CAMPESINA = [
+            {t:'Coordinador/a',p:[{n:'',r:['Profesional en ciencias de la educación: primera infancia, educación inicial, pedagogía infantil, educación infantil o preescolar','Profesionales en desarrollo familiar, educación especial, educación comunitaria, psicopedagogía, básica primaria','Profesional en psicología o trabajo social'],e:'36 meses (12 relacionados)'}]},
+            {t:'Agente Educativo/a',p:[{n:'Perfil 1',r:['Profesional en pedagogía infantil, educación preescolar, inicial, infantil, especial','Licenciatura en artes plásticas, escénicas, musicales o etnoeducación'],e:'6 meses'},{n:'Perfil 2',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'12 meses'}]},
+            {t:'Profesional Psicosocial',p:[{n:'',r:['Psicología, trabajo social, desarrollo familiar o comunitario','Psicopedagogía, sociología o antropología'],e:'6 meses'}]},
+            {t:'Profesional Salud y Nutrición',p:[{n:'P1 Nutricionista',r:['Profesional en nutrición o nutrición y dietética'],e:'6 meses'},{n:'P1 Optativo',r:['Certificación de culminación de estudios en nutrición'],e:'6 meses prácticas/laboral'},{n:'P2 Enfermería',r:['Profesional en enfermería'],e:'6 meses prácticas/laboral'},{n:'P2 Optativo',r:['Técnico auxiliar de enfermería'],e:'12 meses'}]},
+            {t:'Auxiliar Pedagógico/a',p:[{n:'Perfil 1',r:['Normalista superior o técnico en atención integral a la primera infancia'],e:'6 meses'},{n:'P2 Transitados',r:['Básica primaria + 6 años de experiencia','Compromiso de continuar formación hasta 9° grado'],e:'6 años'}]},
+            {t:'Gestor/a Comunitario/a',p:[{n:'',r:['Bachiller o técnico con experiencia comunitaria','Conocimiento del territorio, dinámicas familiares y comunitarias'],e:'6 meses'}]},
+            {t:'Gestor de Alimentos',p:[{n:'',r:['Básica primaria completa','Certificación médica para manipulación de alimentos vigente'],e:'6 meses'}]},
+            {t:'Auxiliar Servicios Generales',p:[{n:'',r:['Certificado de manipulación de alimentos vigente'],e:'6 meses'}]},
+            {t:'Auxiliar Administrativo/a',p:[{n:'',r:['Técnico/tecnólogo: económicas, administrativas, sistemas, SST'],e:'12 meses'}]}
+        ];
+
         /* En el banco de hojas de vida TODOS los cargos reciben inscripciones */
         const CARGOS_BANCO = {
-            sanluis: { cdi: 'todos', hogar: 'todos' },
+            nunchia: { cdi: 'todos', hogar: 'todos', campesina: 'todos' },
             orocue:  { cdi: 'todos', hogar: 'todos' }
         };
 
@@ -627,9 +641,10 @@
                 return timeline + warning + '<div class="roles-grid">' + cards + '</div>';
             }
 
-            document.getElementById('sanluis-cdi').innerHTML = rolesHTML('sanluis', 'cdi', ROLES_CDI);
-            document.getElementById('sanluis-hogar').innerHTML = rolesHTML('sanluis', 'hogar', ROLES_HOGAR);
-            document.getElementById('sanluis-postular').innerHTML = generarPostularHTML('San Luis de Palenque');
+            document.getElementById('nunchia-cdi').innerHTML = rolesHTML('nunchia', 'cdi', ROLES_CDI);
+            document.getElementById('nunchia-hogar').innerHTML = rolesHTML('nunchia', 'hogar', ROLES_HOGAR);
+            document.getElementById('nunchia-campesina').innerHTML = rolesHTML('nunchia', 'campesina', ROLES_CAMPESINA);
+            document.getElementById('nunchia-postular').innerHTML = generarPostularHTML('Nunchía');
 
             document.getElementById('orocue-cdi').innerHTML = rolesHTML('orocue', 'cdi', ROLES_CDI);
             document.getElementById('orocue-hogar').innerHTML = rolesHTML('orocue', 'hogar', ROLES_HOGAR);

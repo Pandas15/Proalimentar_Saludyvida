@@ -796,6 +796,16 @@
         .card:nth-child(3) {
             animation-delay: 0.4s;
         }
+
+        /* El salto a #convocatorias no debe dejar el aviso tapado por el header fijo */
+        #convocatorias {
+            scroll-margin-top: 100px;
+        }
+        @media (max-width: 768px) {
+            #convocatorias {
+                scroll-margin-top: 320px;
+            }
+        }
     </style>
 </head>
 <body>

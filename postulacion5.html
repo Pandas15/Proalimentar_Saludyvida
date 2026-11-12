@@ -347,7 +347,7 @@
             <li>Auxiliar Pedagógico/a</li>
             <li>Auxiliar Administrativo/a</li>
         </ul>
-        Cierre: <strong>jueves 12/11/2026 a las 12:00 m.</strong>
+        Cierre: <strong>jueves 12/11/2026 a las 12:00 de la noche</strong>
     </div>
 
     <div class="container">
@@ -715,7 +715,7 @@ document.getElementById('aguachica-hogar').innerHTML = rolesHTML('aguachica', 'h
         }
 
         function updateCountdown() {
-            const deadline = new Date('2026-11-12T12:00:00').getTime();
+            const deadline = new Date('2026-11-13T00:00:00').getTime();
             if (isNaN(deadline)) {
                 document.getElementById('countdown-content').innerHTML = '<div style="text-align:center;padding:0.8rem;font-size:0.92rem">Fecha de cierre por confirmar</div>';
                 return;
